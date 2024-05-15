@@ -12,20 +12,20 @@ export function Loader({ size }: { size: string }) {
 
         @keyframes l5 {
           0% {
-            box-shadow: 0.66rem 0 #7a839c, -0.66rem 0 #0002;
-            background: #7a839c;
+            box-shadow: 0.66rem 0 #fff, -0.66rem 0 #eee;
+            background: #fff;
           }
           33% {
-            box-shadow: 0.66rem 0 #7a839c, -0.66rem 0 #0002;
-            background: #0002;
+            box-shadow: 0.66rem 0 #fff, -0.66rem 0 #eee;
+            background: #eee;
           }
           66% {
-            box-shadow: 0.66rem 0 #0002, -0.66rem 0 #7a839c;
-            background: #0002;
+            box-shadow: 0.66rem 0 #eee, -0.66rem 0 #fff;
+            background: #eee;
           }
           100% {
-            box-shadow: 0.66rem 0 #0002, -0.66rem 0 #7a839c;
-            background: #7a839c;
+            box-shadow: 0.66rem 0 #eee, -0.66rem 0 #fff;
+            background: #fff;
           }
         }
       `}

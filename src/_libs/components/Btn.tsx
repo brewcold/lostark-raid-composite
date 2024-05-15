@@ -19,10 +19,11 @@ export function Btn({ children, type = 'submit', onClick, isLoading = false, siz
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          background-color: white;
+
           padding: 0.75rem 0.5rem 0.75rem 0.5rem;
-          border: 1px solid #7a839c;
-          color: #7a839c;
+          ${isLoading ? 'border: 1px solid transparent;' : 'border: 1px solid #7a839c;'}
+          ${isLoading ? 'color: white;' : 'color: #7a839c;'}
+          ${isLoading ? 'background-color: #7a839c;' : 'background-color: white;'}
           border-radius: 0.75rem;
           width: ${size};
           min-width: 3rem;
