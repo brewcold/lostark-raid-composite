@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+
+.next
+dist
+
 #zero-install
 .yarn/*
 !.yarn/cache
