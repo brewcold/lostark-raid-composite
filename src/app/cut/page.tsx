@@ -1,6 +1,6 @@
 'use client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import RaidCut from 'src/_libs/components/pages/RaidCut';
+import RaidCut from 'src/_libs/components/_pages/RaidCut';
 
 export default function Page() {
   const client = new QueryClient();

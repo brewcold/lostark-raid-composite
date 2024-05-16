@@ -1,4 +1,4 @@
-import { classEngravingType, classType } from '../_libs/types';
+import { classEngravingType, classType } from '../types';
 
 const crit10 = '치명타 적중 10%';
 const critdmg8 = '치명타 시 피해 증가 8%';

@@ -1,12 +1,14 @@
-/** @jsxImportSource @emotion/react */
 'use client';
-import { css } from '@emotion/react';
+
 import { classEngravingType } from '../../types';
-import { cynergy } from '../../../_constants/cynergy';
-import { useCharInfo } from '../../../_hooks/useCharInfo';
+import { cynergy } from '../../_constants/cynergy';
+import { useCharInfo } from '../../_hooks/useCharInfo';
 import { useState } from 'react';
-import { Btn } from 'src/_libs/components/Btn';
-import { Input } from 'src/_libs/components/Input';
+import { Btn } from 'src/_libs/components/Btn/Btn';
+import { Input } from 'src/_libs/components/Input/Input';
+import Flex from '../Flex/flex';
+import { Spacing } from '../Spacing/spacing';
+import { View } from '../View/view';
 
 export default function RaidCut() {
   const [input, setInput] = useState<string>('');
@@ -14,40 +16,32 @@ export default function RaidCut() {
   const { isLoading } = useCharInfo(characterName);
 
   return (
-    <div>
-      <div css={css({ marginTop: '1rem', marginBottom: '1rem', textAlign: 'center' })}>
-        <p
-          css={css({
-            padding: '0.5rem 1rem 0.5rem 1rem',
-            borderRadius: '0.75rem',
-            backgroundColor: '#7a839c',
-            color: 'white',
-          })}>
-          레이드 커트라인 도우미
-        </p>
-      </div>
+    <View>
+      <View>
+        <p>레이드 커트라인 도우미</p>
+      </View>
       <form
         onSubmit={e => {
           e.preventDefault();
           setCharacterName(input.trim());
         }}>
-        <div css={css({ display: 'flex' })}>
+        <Flex width="fill" flexDirection="row" justifyContents="center">
           <Input
             value={input}
             onChange={e => setInput(e.target.value)}
             placeholder="검색할 캐릭터 이름을 입력해주세요"
           />
-          <div css={css({ width: '0.75rem' })} />
-          <Btn size="4rem" type="submit" isLoading={isLoading}>
+          <Spacing size="1rem" dir="hori" />
+          <Btn type="submit" isLoading={isLoading} size="S">
             검색
           </Btn>
-        </div>
+        </Flex>
       </form>
 
-      <div style={{ marginTop: '1rem' }}>
+      <View>
         <RaidCut.Information characterName={characterName} />
-      </div>
-    </div>
+      </View>
+    </View>
   );
 }
 
@@ -114,7 +108,7 @@ RaidCut.Information = ({ characterName }: { characterName: string }) => {
     const armorTypes = ['투구', '상의', '하의', '장갑', '어깨'];
 
     return (
-      <div>
+      <View>
         <h1>{ArmoryProfile.CharacterName}</h1>
         <p>
           <span>{`${ArmoryProfile.ItemAvgLevel} ${ArmoryProfile.CharacterClassName}(${classEngraving.join()})`}</span>
@@ -122,10 +116,7 @@ RaidCut.Information = ({ characterName }: { characterName: string }) => {
           <span>{classCynergy}</span>
         </p>
 
-        <div
-          css={css({
-            marginTtop: '1rem',
-          })}>
+        <View>
           <p>
             카드 <strong>{cardOption}</strong>
           </p>
@@ -143,12 +134,12 @@ RaidCut.Information = ({ characterName }: { characterName: string }) => {
               })}
             </strong>
           </p>
-        </div>
+        </View>
 
         <p>
           {`전투 레벨 ${ArmoryProfile.CharacterLevel} 원정대 레벨 ${ArmoryProfile.ExpeditionLevel} 스킬포인트 ${ArmoryProfile.UsingSkillPoint}/${ArmoryProfile.TotalSkillPoint}`}
         </p>
-        <div style={{ marginTop: '1rem' }}>
+        <View style={{ marginTop: '1rem' }}>
           {ArmoryEquipment.map(a => {
             const type = a.Type;
             if (armorTypes.includes(type)) {
@@ -162,21 +153,21 @@ RaidCut.Information = ({ characterName }: { characterName: string }) => {
               );
           })}
           <p>방어구 평균 레벨 {armorLevel + 1525} </p>
-        </div>
-      </div>
+        </View>
+      </View>
     );
   } else if (status === 'pending')
     return (
-      <div>
+      <View>
         <p>서버에서 데이터를 가져오는 중입니다...</p>
-      </div>
+      </View>
     );
   else
     return (
-      <div>
+      <View>
         마지막 접속 종료시 캐릭터 상태를 받아오기 때문에
         <br />
         검색 결과가 현재 아이템 장착 상태와 다를 수 있습니다.
-      </div>
+      </View>
     );
 };

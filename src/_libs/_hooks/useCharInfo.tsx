@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import env from '../env';
-import { Armory } from '../_libs/types';
+import env from '../../env';
+import { Armory } from '../types';
 
 export const useCharInfo = (characterName: string) => {
   const headers = {

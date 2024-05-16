@@ -1,3 +1,4 @@
+import 'src/_libs/style/global.css';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -10,22 +11,14 @@ export const metadata: Metadata = {
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <html lang="ko">
-        <head>
-          <meta name="theme-color" content="#000000" />
-          <link
-            rel="stylesheet"
-            as="style"
-            crossOrigin="anonymous"
-            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"
-          />
-        </head>
-        <body>
-          <noscript>You need to enable JavaScript to run this app.</noscript>
-          <div id="root">{children}</div>
-        </body>
-      </html>
-    </>
+    <html lang="ko">
+      <head>
+        <meta name="theme-color" content="#000000" />
+      </head>
+      <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root">{children}</div>
+      </body>
+    </html>
   );
 }
