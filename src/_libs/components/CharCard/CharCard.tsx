@@ -8,7 +8,7 @@ import { Btn } from '../_common/Btn/Btn';
 import Flex from '../_common/Flex/Flex';
 import { Loader } from '../_common/Loader/Loader';
 import { Spacing } from '../_common/Spacing/spacing';
-import { Txt } from '../_common/Text/Text';
+import { Txt } from '../_common/Txt/Txt';
 import { View } from '../_common/View/View';
 import { CardBase } from './CardBase';
 import {
