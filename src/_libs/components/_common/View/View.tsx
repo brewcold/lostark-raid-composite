@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
-import { BASE } from './view.css';
+import { BASE } from './View.css';
 
 type ViewProps<T extends ElementType> = {
   as?: T;
