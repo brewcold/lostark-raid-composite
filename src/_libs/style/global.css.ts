@@ -35,7 +35,7 @@ globalStyle('h1, h2, h3, h4, h5, h6, p, span', {
   fontWeight: 400,
   fontSize: '1rem',
   lineHeight: '1',
-  color: COLORS.BLACK,
+  color: COLORS.MAIN,
 });
 globalStyle('body, button, input, textarea', {
   fontFamily: `${PRETENDARD}, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" `,
@@ -43,4 +43,5 @@ globalStyle('body, button, input, textarea', {
 });
 globalStyle('button, input, textarea', {
   fontSize: '0.85rem',
+  color: COLORS.MAIN,
 });
