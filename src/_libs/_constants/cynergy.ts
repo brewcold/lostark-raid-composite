@@ -1,20 +1,20 @@
 import { classEngravingType, classType } from '../types';
 
-const crit10 = '치명타 적중 10%';
-const critdmg8 = '치명타 시 피해 증가 8%';
-const atk6 = '공격력 증가 6%';
-const dmg6 = '받는 피해 증가 6%';
-const def12 = '방어력 감소 12%';
-const bhdmg9 = '백헤드 피해 증가 6%, 피해 증가 3%';
+const crit10 = '치적';
+const critdmg8 = '치명피증';
+const atk6 = '공증';
+const dmg6 = '피증';
+const def12 = '방깎';
+const bhdmg9 = '백헤드5% + 피증4%';
 const spt = '서포터';
 const clr = '정화';
-const immune = '상태이상 면역';
-const atkspd = '공격속도 증가';
-const mvspd = '이동속도 증가';
-const spd = '공격속도/이동속도 증가';
-const atkdebuf = '적 공격력 감소';
-const manaspd = '마나 회복 속도 증가';
-const mana = '마나 회복';
+const immune = '상면';
+const atkspd = '공속';
+const mvspd = '이속';
+const spd = '공이속';
+const atkdebuf = '공깎';
+const manaspd = '마나';
+const mana = '마나 순간 회복';
 
 export const cynergy: Record<
   (typeof classType)[number],
