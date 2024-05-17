@@ -8,7 +8,7 @@ interface BtnProps extends React.HTMLAttributes<HTMLButtonElement> {
   onClick?: () => void;
   size?: keyof typeof SIZE;
 }
-export function Btn({ children, type = 'submit', onClick, isLoading = false, size = 'L', ...props }: BtnProps) {
+export function Btn({ children, type = 'submit', onClick, isLoading = false, size = 'SMALL', ...props }: BtnProps) {
   return (
     <button className={`${BASE} ${LOADING[String(isLoading)]} ${SIZE[size]}`} type={type} onClick={onClick} {...props}>
       {isLoading ? <Loader /> : children}

@@ -6,7 +6,8 @@ export const BASE = style({
   alignItems: 'center',
   justifyContent: 'center',
   cursor: 'pointer',
-  padding: '0.75rem',
+  padding: '0 0.75rem 0 0.75rem',
+  height: '2.75rem',
   border: '1px solid #7a839c',
   borderRadius: '0.75rem',
   transition: 'all 0.1s',
@@ -22,13 +23,10 @@ export const BASE = style({
 });
 
 export const SIZE = styleVariants({
-  S: {
+  SMALL: {
     minWidth: '4rem',
   },
-  M: {
-    minWidth: '10rem',
-  },
-  L: {
+  FULL: {
     width: '100%',
   },
 });

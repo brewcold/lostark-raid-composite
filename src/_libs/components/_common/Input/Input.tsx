@@ -2,6 +2,7 @@ import { BASE } from './Input.css';
 
 interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   isLoading?: boolean;
+  name: string;
   type?: 'string' | 'number' | 'email' | 'password';
   value: string | number;
   placeholder?: string;
@@ -12,6 +13,7 @@ interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
 }
 export function Input({
   children,
+  name,
   type = 'string',
   placeholder,
   value,
@@ -24,6 +26,8 @@ export function Input({
   return (
     <input
       className={BASE}
+      name={name}
+      style={{ width: size }}
       type={type}
       placeholder={placeholder}
       value={value}

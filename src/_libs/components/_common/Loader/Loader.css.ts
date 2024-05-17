@@ -2,19 +2,19 @@ import { keyframes, style } from '@vanilla-extract/css';
 
 const l5 = keyframes({
   '0%': {
-    boxShadow: '0.66rem 0 #fff, -0.66rem 0 #eee',
+    boxShadow: '0.66rem 0 #fff, -0.66rem 0 #bbb',
     background: '#fff',
   },
   '33%': {
-    boxShadow: '0.66rem 0 #fff, -0.66rem 0 #eee',
-    background: '#eee',
+    boxShadow: '0.66rem 0 #fff, -0.66rem 0 #bbb',
+    background: '#bbb',
   },
   '66%': {
-    boxShadow: '0.66rem 0 #eee, -0.66rem 0 #fff',
-    background: '#eee',
+    boxShadow: '0.66rem 0 #bbb, -0.66rem 0 #fff',
+    background: '#bbb',
   },
   '100%': {
-    boxShadow: '0.66rem 0 #eee, -0.66rem 0 #fff',
+    boxShadow: '0.66rem 0 #bbb, -0.66rem 0 #fff',
     background: '#fff',
   },
 });
