@@ -1,11 +1,13 @@
-import Link from 'next/link';
+'use client';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import RaidCut from 'src/_libs/components/_pages/RaidCut';
 
 export default function Page() {
+  const client = new QueryClient();
+
   return (
-    <div>
-      {/* <Link href="/party">파티 구성</Link> */}
-      <br />
-      <Link href="/cut">레이드 커트라인 한 번에 보기</Link>
-    </div>
+    <QueryClientProvider client={client}>
+      <RaidCut />
+    </QueryClientProvider>
   );
 }

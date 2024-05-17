@@ -38,6 +38,7 @@ const RAW_RUNTIME_STATE =
           ["@storybook/react", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:8.1.0"],\
           ["@storybook/react-webpack5", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:8.1.0"],\
           ["@storybook/test", "npm:8.1.0"],\
+          ["@syyu/util", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:1.0.11"],\
           ["@tanstack/react-query", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:5.36.0"],\
           ["@testing-library/jest-dom", "npm:5.17.0"],\
           ["@testing-library/react", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:13.4.0"],\
@@ -51,6 +52,7 @@ const RAW_RUNTIME_STATE =
           ["eslint", "npm:9.2.0"],\
           ["eslint-config-react-app", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:7.0.1"],\
           ["eslint-plugin-storybook", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:0.8.0"],\
+          ["jotai", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:2.8.0"],\
           ["next", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:14.2.3"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:f136b3600aeb0cc81963609685e8caa4e03fc2d1b038a1390655c5c9d3a68bdaf6d40df16867ac156d01403168a00545226025b14ed43931045a980ea48837b3#npm:18.3.1"],\
@@ -6344,6 +6346,7 @@ const RAW_RUNTIME_STATE =
           ["@storybook/react", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:8.1.0"],\
           ["@storybook/react-webpack5", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:8.1.0"],\
           ["@storybook/test", "npm:8.1.0"],\
+          ["@syyu/util", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:1.0.11"],\
           ["@tanstack/react-query", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:5.36.0"],\
           ["@testing-library/jest-dom", "npm:5.17.0"],\
           ["@testing-library/react", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:13.4.0"],\
@@ -6357,6 +6360,7 @@ const RAW_RUNTIME_STATE =
           ["eslint", "npm:9.2.0"],\
           ["eslint-config-react-app", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:7.0.1"],\
           ["eslint-plugin-storybook", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:0.8.0"],\
+          ["jotai", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:2.8.0"],\
           ["next", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:14.2.3"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:f136b3600aeb0cc81963609685e8caa4e03fc2d1b038a1390655c5c9d3a68bdaf6d40df16867ac156d01403168a00545226025b14ed43931045a980ea48837b3#npm:18.3.1"],\
@@ -6365,6 +6369,28 @@ const RAW_RUNTIME_STATE =
           ["webpack", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:5.91.0"]\
         ],\
         "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@syyu/util", [\
+      ["npm:1.0.11", {\
+        "packageLocation": "../../../.yarn/berry/cache/@syyu-util-npm-1.0.11-e40f140993-10c0.zip/node_modules/@syyu/util/",\
+        "packageDependencies": [\
+          ["@syyu/util", "npm:1.0.11"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:1.0.11", {\
+        "packageLocation": "./.yarn/__virtual__/@syyu-util-virtual-bb5bd8f2a4/4/.yarn/berry/cache/@syyu-util-npm-1.0.11-e40f140993-10c0.zip/node_modules/@syyu/util/",\
+        "packageDependencies": [\
+          ["@syyu/util", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:1.0.11"],\
+          ["@types/react", "npm:18.3.2"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@tanstack/query-core", [\
@@ -12480,6 +12506,28 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:16.18.97"],\
           ["merge-stream", "npm:2.0.0"],\
           ["supports-color", "npm:8.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["jotai", [\
+      ["npm:2.8.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/jotai-npm-2.8.0-6ad70014ec-10c0.zip/node_modules/jotai/",\
+        "packageDependencies": [\
+          ["jotai", "npm:2.8.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:2.8.0", {\
+        "packageLocation": "./.yarn/__virtual__/jotai-virtual-67773bd1d2/4/.yarn/berry/cache/jotai-npm-2.8.0-6ad70014ec-10c0.zip/node_modules/jotai/",\
+        "packageDependencies": [\
+          ["jotai", "virtual:e920cc260886c0645b8bf913e0cc84f456ca480ca86546bb52520cc716471f233346fa306c360d35ac738f391b7ceddd8626f7e6b90555ec45aad17b93f8d49c#npm:2.8.0"],\
+          ["@types/react", "npm:18.3.2"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\
