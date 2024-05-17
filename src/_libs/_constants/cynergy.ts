@@ -12,7 +12,7 @@ const immune = '상면';
 const atkspd = '공속';
 const mvspd = '이속';
 const spd = '공이속';
-const atkdebuf = '공깎';
+const atkdebuf = '적 공깎';
 const manaspd = '마나';
 const mana = '마나 순간 회복';
 
@@ -98,5 +98,21 @@ export const cynergy: Record<
   기상술사: {
     이슬비: [crit10, atkdebuf],
     질풍노도: [crit10, spd],
+  },
+  리퍼: {
+    갈증: [def12],
+    '달의 소리': [def12],
+  },
+  소울이터: {
+    '그믐의 경계': [dmg6],
+    '만월의 집행자': [dmg6],
+  },
+  블레이드: {
+    버스트: [bhdmg9, spd],
+    '잔재된 기운': [bhdmg9, spd],
+  },
+  데모닉: {
+    '멈출 수 없는 충동': [dmg6],
+    '완벽한 억제': [dmg6],
   },
 };

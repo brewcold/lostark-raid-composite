@@ -235,6 +235,10 @@ export const classType = [
   '아르카나',
   '도화가',
   '기상술사',
+  '리퍼',
+  '소울이터',
+  '블레이드',
+  '데모닉',
 ] as const;
 
 export const classEngravingType = [
@@ -282,6 +286,14 @@ export const classEngravingType = [
   '만개',
   '이슬비',
   '질풍노도',
+  '갈증',
+  '달의 소리',
+  '완벽한 억제',
+  '잔재된 기운',
+  '버스트',
+  '멈출 수 없는 충동',
+  '그믐의 경계',
+  '만월의 집행자',
 ] as const;
 
 export type ClassEngravingType = (typeof cynergy)[(typeof classType)[number]];
