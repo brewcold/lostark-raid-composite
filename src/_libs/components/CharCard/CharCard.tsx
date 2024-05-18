@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai';
 import { useEffect } from 'react';
-import { partyMembers } from 'src/store/characters';
+import { partyInfo, partyMembers } from 'src/store/party';
 import { classEngravingType } from 'src/_libs/types';
 import { cynergy } from 'src/_libs/_constants/cynergy';
 import { useCharInfo } from 'src/_libs/_hooks/useCharInfo';
@@ -28,7 +28,8 @@ import {
 export function CharCard({ characterName }: { characterName: string }) {
   const { data, isFetching, status } = useCharInfo(characterName);
 
-  const [party, setParty] = useAtom(partyMembers);
+  const [party, setParty] = useAtom(partyInfo);
+  const [members] = useAtom(partyMembers);
 
   if (data) {
     const { ArmoryCard, ArmoryEngraving, ArmoryGem, ArmoryProfile, ArmoryEquipment, ArmorySkills } = data;
@@ -164,7 +165,7 @@ export function CharCard({ characterName }: { characterName: string }) {
           <Btn
             type="button"
             size="FULL"
-            onClick={() => setParty(new Set(Array.from(party).filter((c: string) => c !== characterName)))}>
+            onClick={() => setParty(new Set(Array.from(party).filter(c => c.characterName !== characterName)))}>
             삭제
           </Btn>
         </View>

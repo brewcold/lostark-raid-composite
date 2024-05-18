@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ComponentPropsWithRef, ElementType, forwardRef, ReactNode } from 'react';
 import { BASE } from './View.css';
 
 type ViewProps<T extends ElementType> = {
@@ -6,9 +6,18 @@ type ViewProps<T extends ElementType> = {
   styleVariant?: string;
   children: ReactNode;
   //TODO: FLEX/GRID OPTIONS
-} & ComponentPropsWithoutRef<T>;
-export function View<T extends ElementType>({ as, styleVariant, children }: ViewProps<T>) {
+} & ComponentPropsWithRef<T>;
+function Component<T extends ElementType>(
+  { as, styleVariant, children }: ViewProps<T>,
+  ref: React.RefObject<HTMLDivElement>
+) {
   const Component = as || 'div';
   const className = styleVariant || BASE;
-  return <Component className={className}>{children}</Component>;
+  return (
+    <Component ref={ref} className={className}>
+      {children}
+    </Component>
+  );
 }
+
+export const View = forwardRef(Component);
