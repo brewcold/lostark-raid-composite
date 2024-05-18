@@ -1,16 +1,13 @@
-'use client';
-import { ModalProvider } from '@syyu/util/react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Suspense } from 'react';
+import { Loader } from 'src/_libs/components/_common/Loader/Loader';
 import RaidCut from 'src/_libs/components/_pages/RaidCut';
 
 export default function Page() {
-  const client = new QueryClient();
-
   return (
-    <QueryClientProvider client={client}>
-      <ModalProvider>
+    <>
+      <Suspense fallback={<Loader />}>
         <RaidCut />
-      </ModalProvider>
-    </QueryClientProvider>
+      </Suspense>
+    </>
   );
 }
