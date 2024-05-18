@@ -10,10 +10,13 @@ import { View } from '../_common/View/View';
 import { CharCard } from '../CharCard/CharCard';
 import { useForm, useModal } from '@syyu/util/react';
 import { useAtom } from 'jotai';
-import { partyMembers } from 'src/store/characters';
+import { partyInfo, partyMembers } from 'src/store/party';
 import { Txt } from '../_common/Txt/Txt';
 import { GRID, GRID_ITEM_PARTY_NUM, PARTY_NUM, SITE_TITLE, CENTERED } from './RaidCut.css';
 import { Loader } from '../_common/Loader/Loader';
+import { Modal } from '../_common/Modal/Modal';
+import alerts from 'src/_libs/_constants/alerts';
+import meta from 'src/_libs/_constants/meta';
 interface formValues {
   characterName: string;
 }
@@ -21,42 +24,35 @@ interface formValues {
 export default function RaidCut() {
   const [characterName, setCharacterName] = useState<string>('');
   const { data, isLoading, isError } = useCharInfo(characterName);
-  const [party, setParty] = useAtom(partyMembers);
+  const [party, setParty] = useAtom(partyInfo);
+  const [members] = useAtom(partyMembers);
 
-  const { open, close } = useModal();
+  const { open, isOpen, close } = useModal();
 
   useEffect(() => {
-    if (data === null) setParty(new Set(Array.from(party).filter(m => m !== characterName)));
-    if (isError) setParty(new Set(Array.from(party).filter(m => m !== characterName)));
+    if (data === null || isError) {
+      setParty(prevParty => new Set(Array.from(prevParty).filter(m => m.characterName !== characterName)));
+    }
   }, [data, isError]);
 
   useEffect(() => {
     console.log(party);
+    console.log(isOpen);
     if (characterName.length === 0) return;
-    if (party.has(characterName)) {
-      open(
-        <div>
-          <Txt>이미 존재하는 캐릭터입니다.</Txt>
-          <button type="button" onClick={() => close()}>
-            닫기
-          </button>
-        </div>
-      );
+    if (members.has(characterName)) {
+      open(<Modal duration="1500">{alerts.IS_DUPLICATED}</Modal>);
+      setCharacterName('');
     } else if (party.size >= 8) {
-      open(
-        <div>
-          <Txt>파티가 가득 찼습니다.</Txt>
-          <button type="button" onClick={() => close()}>
-            닫기
-          </button>
-        </div>
-      );
-      setParty(new Set(Array.from(party).filter(m => m !== characterName)));
+      open(<Modal duration="1500">{alerts.IS_FULL}</Modal>);
+      setParty(prevParty => new Set(Array.from(prevParty).filter(m => m.characterName !== characterName)));
     } else {
-      setParty(new Set([...Array.from(party), characterName]));
-      setValues({ characterName: '' });
+      setParty(prevParty => {
+        const newParty = Array.from(prevParty);
+        newParty.push({ order: prevParty.size + 1, characterName });
+        return new Set([...newParty]);
+      });
     }
-    setCharacterName('');
+    setValues({ characterName: '' });
   }, [characterName]);
 
   const initialValues: formValues = { characterName: '' };
@@ -71,7 +67,7 @@ export default function RaidCut() {
       <>
         <Spacing size="2rem" />
         <Txt as="h1" styleVariant={SITE_TITLE}>
-          로스트아크 공대 최적화
+          {meta.TITLE}
         </Txt>
         <Spacing size="1rem" />
         <Flex flexDirection="column" justifyContents="flexStart">
@@ -106,14 +102,14 @@ export default function RaidCut() {
         ) : (
           <View styleVariant={GRID}>
             {Array.from(party).map((members, idx) => {
-              if (idx % 4 !== 0) return <CharCard key={members} characterName={members} />;
+              if (idx % 4 !== 0) return <CharCard key={members.order} characterName={members.characterName} />;
               else
                 return (
                   <Fragment key={idx}>
                     <View styleVariant={GRID_ITEM_PARTY_NUM}>
                       <Txt styleVariant={PARTY_NUM}>{Math.floor(idx / 4) + 1}파티</Txt>
                     </View>
-                    <CharCard key={members} characterName={members} />
+                    <CharCard key={members.order} characterName={members.characterName} />
                   </Fragment>
                 );
             })}
