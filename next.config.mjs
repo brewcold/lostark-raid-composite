@@ -3,7 +3,6 @@ import { withSentryConfig } from '@sentry/nextjs';
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin';
 const withVanillaExtract = createVanillaExtractPlugin();
 const nextConfig = {
-  distDir: './dist', // Changes the build output directory to `./dist/`.
   transpilePackages: ['jotai-devtools'],
 };
 
