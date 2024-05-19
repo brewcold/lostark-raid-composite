@@ -31,20 +31,36 @@ export default function RaidCut() {
 
   useEffect(() => {
     if (data === null || isError) {
-      setParty(prevParty => new Set(Array.from(prevParty).filter(m => m.characterName !== characterName)));
+      setParty(
+        prevParty =>
+          new Set(
+            Array.from(prevParty)
+              .filter(m => m.characterName !== characterName)
+              .map((m, idx) => {
+                return { order: idx + 1, characterName: m.characterName };
+              })
+          )
+      );
     }
   }, [data, isError]);
 
   useEffect(() => {
-    console.log(party);
-    console.log(isOpen);
     if (characterName.length === 0) return;
     if (members.has(characterName)) {
       open(<Modal duration="1500">{alerts.IS_DUPLICATED}</Modal>);
       setCharacterName('');
     } else if (party.size >= 8) {
       open(<Modal duration="1500">{alerts.IS_FULL}</Modal>);
-      setParty(prevParty => new Set(Array.from(prevParty).filter(m => m.characterName !== characterName)));
+      setParty(
+        prevParty =>
+          new Set(
+            Array.from(prevParty)
+              .filter(m => m.characterName !== characterName)
+              .map((m, idx) => {
+                return { order: idx + 1, characterName: m.characterName };
+              })
+          )
+      );
     } else {
       setParty(prevParty => {
         const newParty = Array.from(prevParty);
@@ -89,6 +105,7 @@ export default function RaidCut() {
               </Btn>
             </Flex>
           </form>
+
           <Spacing size="1rem" />
           <Txt>현재 아이템 장착 상태는 접속 종료 시 반영됩니다.</Txt>
         </Flex>
@@ -102,7 +119,7 @@ export default function RaidCut() {
         ) : (
           <View styleVariant={GRID}>
             {Array.from(party).map((members, idx) => {
-              if (idx % 4 !== 0) return <CharCard key={members.order} characterName={members.characterName} />;
+              if (idx % 4 !== 0) return <CharCard key={members.characterName} characterName={members.characterName} />;
               else
                 return (
                   <Fragment key={idx}>

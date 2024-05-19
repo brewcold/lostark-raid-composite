@@ -165,7 +165,17 @@ export function CharCard({ characterName }: { characterName: string }) {
           <Btn
             type="button"
             size="FULL"
-            onClick={() => setParty(new Set(Array.from(party).filter(c => c.characterName !== characterName)))}>
+            onClick={() =>
+              setParty(
+                new Set(
+                  Array.from(party)
+                    .filter(c => c.characterName !== characterName)
+                    .map((m, idx) => {
+                      return { order: idx + 1, characterName: m.characterName };
+                    })
+                )
+              )
+            }>
             삭제
           </Btn>
         </View>
