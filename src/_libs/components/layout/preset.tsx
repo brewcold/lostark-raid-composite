@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import { Btn } from '../_common/Btn/Btn';
 import Flex from '../_common/Flex/Flex';
 import { Spacing } from '../_common/Spacing/spacing';
+import { Txt } from '../_common/Txt/Txt';
 
 export function Preset() {
   const { open, isOpen, close } = useModal();
@@ -19,6 +20,8 @@ export function Preset() {
               </Btn>
             </Fragment>
           ))}
+          <Spacing size="0.5rem" dir="hori" />
+          <Txt>프리셋</Txt>
         </>
       </Flex>
     </Flex>
