@@ -1,13 +1,14 @@
 import { style } from '@vanilla-extract/css';
 import { COLORS } from 'src/_libs/style/colors';
 
-export const SITE_TITLE = style({
-  fontSize: '1.25rem',
-  fontWeight: 600,
+export const TUTORIAL = style({
+  fontSize: '1.15rem',
+  fontWeight: 500,
   textAlign: 'center',
 });
 export const GRID = style({
-  padding: '2rem',
+  padding: '0.75rem',
+  marginBottom: '5rem',
   display: 'grid',
   gridTemplateColumns: 'repeat(4, 1fr)',
   gap: '0.5rem',
@@ -29,5 +30,11 @@ export const CENTERED = style({
   height: '3rem',
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'center',
+});
+
+export const RIGHT = style({
+  display: 'flex',
+  justifyContent: 'flex-end',
   alignItems: 'center',
 });
