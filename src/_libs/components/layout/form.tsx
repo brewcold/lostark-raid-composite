@@ -89,6 +89,10 @@ export function Form() {
           <Btn type="submit" isLoading={isLoading} size="SMALL">
             검색
           </Btn>
+          <Spacing size="0.25rem" dir="hori" />
+          <Btn variant="SECONDARY" onClick={() => setParty(new Set())} size="SMALL">
+            공대 초기화
+          </Btn>
         </Flex>
       </form>
     </Flex>
