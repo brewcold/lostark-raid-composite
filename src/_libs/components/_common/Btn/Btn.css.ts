@@ -20,12 +20,11 @@ export const VARIANT = styleVariants({
     background: 'transparent',
     border: '1px solid transparent',
     color: COLORS.THEME,
-    transition: 'all 0.1s',
     padding: '0 0.75rem 0 0.75rem',
+    textUnderlineOffset: '0.25rem',
     selectors: {
       '&:hover': {
         textDecoration: 'underline',
-        textUnderlineOffset: '0.25rem',
         color: COLORS.MAIN,
       },
     },
