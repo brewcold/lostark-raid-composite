@@ -3515,12 +3515,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@syyu/util@npm:^1.0.11":
-  version: 1.0.11
-  resolution: "@syyu/util@npm:1.0.11"
+"@syyu/util@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@syyu/util@npm:1.2.0"
   peerDependencies:
     react: ^16.11.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/ad98dcc53ddb29a11d9d1ef11103b2aab81ff6ba10c3e5341eae565cef2174a048526a8abf2dd414ba27ad90726c448b8cf38b55287c185b1631e54ee058f9d0
+  checksum: 10c0/0e3021816d2527dcb75762bb8a46a5bc504d1a29c92be7f7dd35c57d120c0d9d9dd64eb6e4b0f57bd2841efdc731283f526ed892b99dbb578cb5ab9b906cea69
   languageName: node
   linkType: hard
 
@@ -7828,7 +7828,7 @@ __metadata:
     "@sentry/nextjs": "npm:^8"
     "@sentry/utils": "npm:^8.2.1"
     "@sentry/webpack-plugin": "npm:^2.16.1"
-    "@syyu/util": "npm:^1.0.11"
+    "@syyu/util": "npm:^1.2.0"
     "@tanstack/react-query": "npm:^5.36.0"
     "@testing-library/jest-dom": "npm:^5.17.0"
     "@testing-library/react": "npm:^13.4.0"

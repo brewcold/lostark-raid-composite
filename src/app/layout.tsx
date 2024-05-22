@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { COLORS } from 'src/_libs/style/colors';
 import { Providers } from './providers';
 import meta from 'src/_libs/_constants/meta';
+import { Navigation } from 'src/_libs/components/layout/navigation';
 
 export const metadata: Metadata = {
   title: meta.TITLE,
@@ -32,7 +33,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root">
-          <Providers>{children}</Providers>
+          <Providers>
+            <Navigation />
+            {children}
+          </Providers>
         </div>
       </body>
     </html>

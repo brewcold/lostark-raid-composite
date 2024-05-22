@@ -34,7 +34,7 @@ const RAW_RUNTIME_STATE =
           ["@sentry/nextjs", "virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:8.2.1"],\
           ["@sentry/utils", "npm:8.2.1"],\
           ["@sentry/webpack-plugin", "virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:2.16.1"],\
-          ["@syyu/util", "virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:1.0.11"],\
+          ["@syyu/util", "virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:1.2.0"],\
           ["@tanstack/react-query", "virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:5.36.0"],\
           ["@testing-library/jest-dom", "npm:5.17.0"],\
           ["@testing-library/react", "virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:13.4.0"],\
@@ -5583,17 +5583,17 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@syyu/util", [\
-      ["npm:1.0.11", {\
-        "packageLocation": "../../../.yarn/berry/cache/@syyu-util-npm-1.0.11-e40f140993-10c0.zip/node_modules/@syyu/util/",\
+      ["npm:1.2.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/@syyu-util-npm-1.2.0-28e56aa658-10c0.zip/node_modules/@syyu/util/",\
         "packageDependencies": [\
-          ["@syyu/util", "npm:1.0.11"]\
+          ["@syyu/util", "npm:1.2.0"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:1.0.11", {\
-        "packageLocation": "./.yarn/__virtual__/@syyu-util-virtual-1dcb6bcca2/4/.yarn/berry/cache/@syyu-util-npm-1.0.11-e40f140993-10c0.zip/node_modules/@syyu/util/",\
+      ["virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:1.2.0", {\
+        "packageLocation": "./.yarn/__virtual__/@syyu-util-virtual-ed99df48ac/4/.yarn/berry/cache/@syyu-util-npm-1.2.0-28e56aa658-10c0.zip/node_modules/@syyu/util/",\
         "packageDependencies": [\
-          ["@syyu/util", "virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:1.0.11"],\
+          ["@syyu/util", "virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:1.2.0"],\
           ["@types/react", "npm:18.3.2"],\
           ["react", "npm:18.3.1"]\
         ],\
@@ -10634,7 +10634,7 @@ const RAW_RUNTIME_STATE =
           ["@sentry/nextjs", "virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:8.2.1"],\
           ["@sentry/utils", "npm:8.2.1"],\
           ["@sentry/webpack-plugin", "virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:2.16.1"],\
-          ["@syyu/util", "virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:1.0.11"],\
+          ["@syyu/util", "virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:1.2.0"],\
           ["@tanstack/react-query", "virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:5.36.0"],\
           ["@testing-library/jest-dom", "npm:5.17.0"],\
           ["@testing-library/react", "virtual:798954cbd0025dcb8acf821e929899c09ea26c539a374196f5b8e491e0291eab8b88907c133faeb9e3ff3acb07e4bd77e8018b7b107418ca977d5ef2c05bec47#npm:13.4.0"],\

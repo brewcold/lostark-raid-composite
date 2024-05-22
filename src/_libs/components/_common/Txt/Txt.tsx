@@ -3,7 +3,7 @@ import { ElementType, PropsWithChildren } from 'react';
 
 interface TextProps<T extends ElementType> extends PropsWithChildren {
   as?: T | 'Link';
-  href?: 'string';
+  href?: string;
   styleVariant?: string;
 }
 export function Txt<T extends ElementType>({ as, href, children, styleVariant, ...props }: TextProps<T>) {
