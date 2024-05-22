@@ -1,6 +1,6 @@
 'use client';
 
-import { useCharInfo } from '../../_hooks/useCharInfo';
+import { useCharInfo } from '../../hooks/useCharInfo';
 import { Fragment } from 'react';
 import { Spacing } from '../_common/Spacing/spacing';
 import { View } from '../_common/View/View';

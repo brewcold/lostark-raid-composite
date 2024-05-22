@@ -1,4 +1,4 @@
-import { cynergy } from './_constants/cynergy';
+import { cynergy } from './constants/cynergy';
 
 interface ArmoryProfile {
   CharacterImage: string;

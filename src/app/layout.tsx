@@ -2,7 +2,7 @@ import 'src/_libs/style/global.css';
 import { Metadata } from 'next';
 import { COLORS } from 'src/_libs/style/colors';
 import { Providers } from './providers';
-import meta from 'src/_libs/_constants/meta';
+import meta from 'src/_libs/constants/meta';
 import { Navigation } from 'src/_libs/components/layout/navigation';
 
 export const metadata: Metadata = {
