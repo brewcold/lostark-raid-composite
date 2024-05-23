@@ -13,6 +13,7 @@ export const BASE = style({
   right: 0,
   width: '100%',
   margin: '0 auto',
+  zIndex: '99999',
 });
 
 export const INNER = style({
