@@ -22,6 +22,7 @@ export const BASE = style({
   transform: 'translateY(-50%) translateX(-50%)',
   background: 'transparent',
   borderRadius: '1.25rem',
+  border: `1px solid ${COLORS.THEME}`,
   padding: '1.75rem',
 });
 
