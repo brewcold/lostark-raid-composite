@@ -15,7 +15,7 @@ export const SHADOW = style({
 export const BASE = style({
   width: '85vw',
   maxWidth: '35rem',
-  minHeight: '10rem',
+  minHeight: '15rem',
   position: 'fixed',
   top: '50%',
   left: '50%',
@@ -39,7 +39,6 @@ export const BODY = style({
 });
 
 export const CONTROL = style({
+  marginTop: '2rem',
   width: '100%',
-  position: 'absolute',
-  bottom: 0,
 });
