@@ -19,13 +19,15 @@ export function Preset() {
     switch (action) {
       default:
         close();
+        break;
       case 'save':
         setPreset({ ...presets, [key]: Array.from(party) });
         close();
-
+        break;
       case 'delete':
         setPreset({ ...presets, [key]: [] });
         close();
+        break;
     }
   };
 
