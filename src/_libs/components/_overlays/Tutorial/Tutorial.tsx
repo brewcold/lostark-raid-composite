@@ -2,6 +2,7 @@ import { useModal } from '@syyu/util/react';
 import { useRef } from 'react';
 import ui from 'src/_libs/constants/ui';
 import { Btn } from '../../_common/Btn/Btn';
+import Flex from '../../_common/Flex/Flex';
 import { Overlay } from '../../_common/Overlay/Overlay';
 import { Txt } from '../../_common/Txt/Txt';
 import { OL, OL_LI, OVERLAY_BODY, OVERLAY_TITLE } from '../Overlays.css';
@@ -27,9 +28,11 @@ export function Tutorial() {
         </>
       }
       control={
-        <Btn type="button" onClick={close}>
-          {ui.buttons.close}
-        </Btn>
+        <Flex width="fill" justifyContents="flexEnd" alignItems="center">
+          <Btn type="button" onClick={close}>
+            {ui.buttons.close}
+          </Btn>
+        </Flex>
       }
     />
   );

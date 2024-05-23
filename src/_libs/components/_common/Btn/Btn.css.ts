@@ -17,6 +17,62 @@ export const VARIANT = styleVariants({
     },
   },
   SECONDARY: {
+    backgroundColor: COLORS.MAIN_OPACITY15,
+    border: '1px solid transparent',
+    color: COLORS.MAIN,
+    transition: 'all 0.15s',
+    padding: '0 0.75rem 0 0.75rem',
+    selectors: {
+      '&:hover': {
+        backgroundColor: COLORS.GRAY,
+        border: `1px solid ${COLORS.GRAY}`,
+        color: COLORS.WHITE,
+      },
+    },
+  },
+  WARN: {
+    backgroundColor: COLORS.RED,
+    border: '1px solid transparent',
+    color: COLORS.WHITE,
+    transition: 'all 0.15s',
+    padding: '0 0.75rem 0 0.75rem',
+    selectors: {
+      '&:hover': {
+        backgroundColor: COLORS.RED_DARK,
+        border: `1px solid ${COLORS.RED_DARK}`,
+        color: COLORS.WHITE,
+      },
+    },
+  },
+  OK: {
+    backgroundColor: COLORS.GREEN,
+    border: '1px solid transparent',
+    color: COLORS.WHITE,
+    transition: 'all 0.15s',
+    padding: '0 0.75rem 0 0.75rem',
+    selectors: {
+      '&:hover': {
+        backgroundColor: COLORS.GREEN_DARK,
+        border: `1px solid ${COLORS.GREEN_DARK}`,
+        color: COLORS.WHITE,
+      },
+    },
+  },
+  WHITE: {
+    backgroundColor: COLORS.WHITE,
+    border: `1px solid ${COLORS.GRAY}`,
+    color: COLORS.THEME,
+    transition: 'all 0.15s',
+    padding: '0 0.75rem 0 0.75rem',
+    selectors: {
+      '&:hover': {
+        border: `1px solid transparent`,
+        backgroundColor: COLORS.MAIN_OPACITY15,
+        color: COLORS.MAIN,
+      },
+    },
+  },
+  TEXT: {
     background: 'transparent',
     border: '1px solid transparent',
     color: COLORS.THEME,

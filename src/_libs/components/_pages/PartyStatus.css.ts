@@ -1,9 +1,15 @@
 import { style } from '@vanilla-extract/css';
 import { COLORS } from 'src/_libs/style/colors';
 
-export const TUTORIAL = style({
-  fontSize: '1.15rem',
-  fontWeight: 500,
+export const SITE_TITLE = style({
+  fontSize: '1.25rem',
+  fontWeight: 700,
+  textAlign: 'center',
+});
+
+export const INFO = style({
+  fontSize: '1rem',
+  lineHeight: '1.65rem',
   textAlign: 'center',
 });
 export const GRID = style({

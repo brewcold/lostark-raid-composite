@@ -11,10 +11,11 @@ export function Menu() {
 
   return (
     <Flex flexDirection="row" justifyContents="center">
-      <Btn variant="SECONDARY" onClick={() => (!isOpen ? open(<Tutorial />) : close())}>
+      <Btn variant="WHITE" onClick={() => (!isOpen ? open(<Tutorial />) : close())}>
         {ui.buttons.tutorial}
       </Btn>
-      <Btn variant="SECONDARY" onClick={() => (!isOpen ? open(<Inquiry />) : close())}>
+      <Spacing size="0.5rem" dir="hori" />
+      <Btn variant="WHITE" onClick={() => (!isOpen ? open(<Inquiry />) : close())}>
         {ui.buttons.inquiry}
       </Btn>
       <Spacing size="0.5rem" />

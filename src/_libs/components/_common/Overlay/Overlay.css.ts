@@ -20,9 +20,10 @@ export const BASE = style({
   top: '50%',
   left: '50%',
   transform: 'translateY(-50%) translateX(-50%)',
+  filter: `drop-shadow(0 4px 1.5rem ${COLORS.MAIN_OPACITY15})`,
   backgroundColor: COLORS.WHITE,
-  borderRadius: '1.25rem',
-  border: `1px solid ${COLORS.THEME}`,
+  borderRadius: '2rem',
+  border: `none`,
   padding: '1.75rem',
 });
 

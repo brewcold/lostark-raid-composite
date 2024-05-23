@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import ui from 'src/_libs/constants/ui';
 import { Btn } from '../../_common/Btn/Btn';
+import Flex from '../../_common/Flex/Flex';
 import { Overlay } from '../../_common/Overlay/Overlay';
 import { Txt } from '../../_common/Txt/Txt';
 import { OVERLAY_BODY, OVERLAY_TITLE } from '../Overlays.css';
@@ -24,9 +25,11 @@ export function Inquiry() {
         </>
       }
       control={
-        <Btn type="button" onClick={close}>
-          {ui.buttons.close}
-        </Btn>
+        <Flex width="fill" justifyContents="flexEnd" alignItems="center">
+          <Btn type="button" onClick={close}>
+            {ui.buttons.close}
+          </Btn>
+        </Flex>
       }
     />
   );
