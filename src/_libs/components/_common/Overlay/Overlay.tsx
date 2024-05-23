@@ -1,22 +1,24 @@
-import type { ComponentPropsWithRef, RefObject } from 'react';
-import Flex from '../Flex/Flex';
+'use client';
+import { ComponentPropsWithRef, forwardRef, ReactElement, ReactNode, Ref, RefObject } from 'react';
 import { View } from '../View/View';
-import { BASE } from './Overlay.css';
+import { BASE, BODY, CONTROL, FLEX, SHADOW } from './Overlay.css';
 
 interface OverlayProps extends ComponentPropsWithRef<'div'> {
-  body: () => React.ReactNode;
-  control: () => React.ReactNode;
+  body: (() => ReactElement | ReactNode) | ReactElement | ReactNode;
+  control: (() => ReactElement | ReactNode) | ReactElement | ReactNode;
 }
 
-export function Overlay({ body, control }: OverlayProps, ref: RefObject<HTMLDivElement>) {
+function Component({ body, control }: OverlayProps, ref: Ref<HTMLDivElement>) {
   return (
-    <View styleVariant={BASE} ref={ref}>
-      <View>
-        <Flex width="fill" flexDirection="column" justifyContents="spaceBetween" alignItems="flexStart">
-          {body()}
-          <View>{control()}</View>
-        </Flex>
+    <View styleVariant={SHADOW}>
+      <View styleVariant={BASE} ref={ref || null}>
+        <View styleVariant={BODY}>
+          {typeof body === 'function' ? body() : body}
+          <View styleVariant={CONTROL}>{typeof control === 'function' ? control() : control}</View>
+        </View>
       </View>
     </View>
   );
 }
+
+export const Overlay = forwardRef<HTMLDivElement, OverlayProps>(Component);
