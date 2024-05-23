@@ -3,7 +3,6 @@ import { useAtom } from 'jotai';
 import { Fragment, useState } from 'react';
 import { partyInfo, partyMembers } from 'src/store/party';
 import { preset, presetInit, presetKeys } from 'src/store/preset';
-import ui from 'src/_libs/constants/ui';
 import { Btn } from '../_common/Btn/Btn';
 import Flex from '../_common/Flex/Flex';
 import { Spacing } from '../_common/Spacing/spacing';
@@ -14,7 +13,6 @@ export function Preset() {
 
   const [presets, setPreset] = useAtom(preset);
   const [party, setParty] = useAtom(partyInfo);
-
   const [appliedPreset, setAppliedPreset] = useState<(typeof presetKeys)[number] | null>(null);
 
   const presetReducer = (key: (typeof presetKeys)[number], action: 'save' | 'delete' | 'close') => {
@@ -83,8 +81,6 @@ export function Preset() {
               </Fragment>
             );
           })}
-          <Spacing size="0.5rem" dir="hori" />
-          <Txt>{ui.titles.preset}</Txt>
         </>
       </Flex>
     </Flex>
