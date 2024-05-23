@@ -85,11 +85,11 @@ export function Form() {
             onChange={handleChange}
             placeholder={ui.placeholders.searchCharacterName}
           />
-          <Spacing size="0.75rem" dir="hori" />
+          <Spacing size="0.5rem" dir="hori" />
           <Btn type="submit" isLoading={isLoading} size="SMALL">
             {ui.buttons.search}
           </Btn>
-          <Spacing size="0.25rem" dir="hori" />
+          <Spacing size="0.5rem" dir="hori" />
           <Btn variant="SECONDARY" onClick={() => setParty(new Set())} size="SMALL">
             {ui.buttons.initialize}
           </Btn>
