@@ -87,11 +87,11 @@ export function Form() {
           />
           <Spacing size="0.75rem" dir="hori" />
           <Btn type="submit" isLoading={isLoading} size="SMALL">
-            검색
+            {ui.buttons.search}
           </Btn>
           <Spacing size="0.25rem" dir="hori" />
           <Btn variant="SECONDARY" onClick={() => setParty(new Set())} size="SMALL">
-            공대 초기화
+            {ui.buttons.initialize}
           </Btn>
         </Flex>
       </form>

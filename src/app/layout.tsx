@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { COLORS } from 'src/_libs/style/colors';
 import { Providers } from './providers';
 import meta from 'src/_libs/constants/meta';
-import { Navigation } from 'src/_libs/components/layout/navigation';
+import { Navigation } from 'src/_libs/components/Navigation/navigation';
 
 export const metadata: Metadata = {
   title: meta.TITLE,

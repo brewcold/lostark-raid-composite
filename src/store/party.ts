@@ -1,8 +1,10 @@
 import { atom } from 'jotai';
-interface Member {
+export interface Member {
   order: number;
   characterName: string;
 }
+
+export type Party = Member[];
 
 export const partyInfo = atom(new Set<Member>());
 

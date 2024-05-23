@@ -11,7 +11,7 @@ import { Txt } from '../_common/Txt/Txt';
 import { GRID, GRID_ITEM_PARTY_NUM, PARTY_NUM, CENTERED, TUTORIAL, RIGHT } from './PartyStatus.css';
 import { Loader } from '../_common/Loader/Loader';
 import { input } from 'src/store/input';
-import { Btn } from '../_common/Btn/Btn';
+import ui from 'src/_libs/constants/ui';
 
 export default function PartyStatus() {
   const [characterName] = useAtom(input);
@@ -23,7 +23,7 @@ export default function PartyStatus() {
       <Spacing size="1rem" />
       {party.size === 0 && (
         <Txt as="h2" styleVariant={TUTORIAL}>
-          캐릭터 이름을 검색하거나 공대 프리셋을 불러올 수 있습니다
+          {ui.fallbacks.init}
         </Txt>
       )}
       {party.size === 0 && isLoading ? (
