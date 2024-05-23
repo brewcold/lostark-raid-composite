@@ -8,7 +8,7 @@ export const SHADOW = style({
   zIndex: '9999',
   top: 0,
   left: 0,
-  backgroundColor: COLORS.MAIN_OPACITY,
+  background: 'transparent',
   padding: '1rem',
 });
 
@@ -20,7 +20,7 @@ export const BASE = style({
   top: '50%',
   left: '50%',
   transform: 'translateY(-50%) translateX(-50%)',
-  background: 'transparent',
+  backgroundColor: COLORS.WHITE,
   borderRadius: '1.25rem',
   border: `1px solid ${COLORS.THEME}`,
   padding: '1.75rem',
