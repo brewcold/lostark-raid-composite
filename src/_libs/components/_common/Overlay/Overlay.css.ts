@@ -20,7 +20,7 @@ export const BASE = style({
   top: '50%',
   left: '50%',
   transform: 'translateY(-50%) translateX(-50%)',
-  backgroundColor: COLORS.WHITE,
+  background: 'transparent',
   borderRadius: '1.25rem',
   padding: '1.75rem',
 });
