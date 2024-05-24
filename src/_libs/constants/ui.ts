@@ -12,7 +12,7 @@ export default {
   buttons: {
     initialize: '공격대 리셋',
     search: '찾기',
-    tutorial: '사용법 안내',
+    tutorial: '도움말',
     inquiry: '문의 및 버그 제보',
     close: '닫기',
   },

@@ -15,7 +15,7 @@ export function Tutorial() {
       body={
         <>
           <Txt as="h1" styleVariant={OVERLAY_TITLE}>
-            사용법 안내
+            {ui.buttons.tutorial}
           </Txt>
 
           <ol className={OL}>
