@@ -1,7 +1,7 @@
 import { classEngravingType, classType } from '../types';
 
 const crit10 = '치적';
-const critdmg8 = '치명피증';
+const critdmg8 = '치명피증8%';
 const atk6 = '공증';
 const dmg6 = '피증';
 const def12 = '방깎';
@@ -11,10 +11,12 @@ const clr = '정화';
 const immune = '상면';
 const atkspd = '공속';
 const mvspd = '이속';
+const mvspd8 = '이속8%';
 const spd = '공이속';
 const atkdebuf = '적 공깎';
-const manaspd = '마나';
+const manaspd = '마나 회복 속도';
 const mana = '마나 순간 회복';
+const no_mana_plz = '끝마*';
 
 export const cynergy: Record<
   (typeof classType)[number],
@@ -41,7 +43,7 @@ export const cynergy: Record<
   블래스터: { '화력 강화': [def12], '포격 강화': [def12] },
   호크아이: {
     '죽음의 습격': [dmg6],
-    '두 번째 동료': [dmg6, mvspd],
+    '두 번째 동료': [dmg6, mvspd8],
   },
   스카우터: {
     '진화의 유산': [atk6],
@@ -76,16 +78,16 @@ export const cynergy: Record<
     '수라의 길': [dmg6],
   },
   아르카나: {
-    '황제의 칙령': [crit10],
-    '황후의 은총': [crit10],
+    '황제의 칙령': [crit10, no_mana_plz],
+    '황후의 은총': [crit10, no_mana_plz],
   },
   서머너: {
     '상급 소환사': [def12, manaspd],
     '넘치는 교감': [def12, manaspd],
   },
   소서리스: {
-    점화: [dmg6],
-    환류: [dmg6],
+    점화: [dmg6, no_mana_plz],
+    환류: [dmg6, no_mana_plz],
   },
   바드: {
     '진실된 용맹': [spt, immune, manaspd],
@@ -97,7 +99,7 @@ export const cynergy: Record<
   },
   기상술사: {
     이슬비: [crit10, atkdebuf],
-    질풍노도: [crit10, spd],
+    질풍노도: [crit10, spd, no_mana_plz],
   },
   리퍼: {
     갈증: [def12],
@@ -105,7 +107,7 @@ export const cynergy: Record<
   },
   소울이터: {
     '그믐의 경계': [dmg6],
-    '만월의 집행자': [dmg6],
+    '만월의 집행자': [dmg6, no_mana_plz],
   },
   블레이드: {
     버스트: [bhdmg9, spd],
