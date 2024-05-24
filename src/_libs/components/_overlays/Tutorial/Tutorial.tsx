@@ -1,5 +1,4 @@
 import { useModal } from '@syyu/util/react';
-import { useRef } from 'react';
 import ui from 'src/_libs/constants/ui';
 import { Btn } from '../../_common/Btn/Btn';
 import Flex from '../../_common/Flex/Flex';

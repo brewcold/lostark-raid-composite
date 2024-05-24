@@ -1,14 +1,12 @@
 import { useModal } from '@syyu/util/react';
-import Link from 'next/link';
-import { useRef } from 'react';
 import ui from 'src/_libs/constants/ui';
 import { Btn } from '../../_common/Btn/Btn';
 import Flex from '../../_common/Flex/Flex';
 import { Overlay } from '../../_common/Overlay/Overlay';
 import { Txt } from '../../_common/Txt/Txt';
-import { OVERLAY_BODY, OVERLAY_TITLE } from '../Overlays.css';
+import { OVERLAY_BODY, OVERLAY_TITLE, UL, UL_LI } from '../Overlays.css';
 
-export function Inquiry() {
+export function Cynergy() {
   const { close } = useModal();
 
   return (
@@ -16,12 +14,16 @@ export function Inquiry() {
       body={
         <>
           <Txt as="h1" styleVariant={OVERLAY_TITLE}>
-            문의 및 버그 제보
+            {ui.buttons.cynergy}
           </Txt>
-          <Txt as="p" styleVariant={OVERLAY_BODY}>
-            <Link href="mailto:lostark.raid.composite@gmail.com">lostark.raid.composite (at) gmail.com</Link>로 제보해
-            주시면 확인 후 반영하겠습니다.
-          </Txt>
+
+          <ul className={UL}>
+            {ui.cynergy.map(t => (
+              <li key={t} className={UL_LI}>
+                <Txt styleVariant={OVERLAY_BODY}>{t}</Txt>
+              </li>
+            ))}
+          </ul>
         </>
       }
       control={
