@@ -20,7 +20,7 @@ export const BASE = style({
   top: '50%',
   left: '50%',
   transform: 'translateY(-50%) translateX(-50%)',
-  filter: `drop-shadow(0 4px 1.5rem ${COLORS.MAIN_OPACITY15})`,
+  filter: `drop-shadow(0 0 2px ${COLORS.MAIN_OPACITY15})`,
   backgroundColor: COLORS.WHITE,
   borderRadius: '2rem',
   border: `none`,
