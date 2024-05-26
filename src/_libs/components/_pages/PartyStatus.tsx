@@ -1,19 +1,18 @@
 'use client';
 import { useCharInfo } from '../../hooks/useCharInfo';
-import { DragEvent, Fragment, useRef } from 'react';
+import { useRef } from 'react';
 import { Spacing } from '../_common/Spacing/spacing';
 import { View } from '../_common/View/View';
-import { CharCard, DragActions } from '../CharCard/CharCard';
+import { CharCard } from '../CharCard/CharCard';
 import { useAtom } from 'jotai';
 import { Member, partyInfo } from 'src/store/party';
 import { Txt } from '../_common/Txt/Txt';
-import { GRID, GRID_ITEM_PARTY_NUM, PARTY_NUM, CENTERED, SITE_TITLE, INFO } from './PartyStatus.css';
+import { GRID, CENTERED, SITE_TITLE, INFO } from './PartyStatus.css';
 import { Loader } from '../_common/Loader/Loader';
 import { input } from 'src/store/input';
 import ui from 'src/_libs/constants/ui';
 import meta from 'src/_libs/constants/meta';
 import { useBooleanState } from '@syyu/util/react';
-import { useDrag } from 'src/_libs/hooks/useDrag';
 
 export default function PartyStatus() {
   const [characterName] = useAtom(input);
