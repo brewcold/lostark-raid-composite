@@ -6,10 +6,10 @@ export default {
     preset: '',
   },
   descriptions: {
-    presetNum: '번 프리셋입니다.',
+    presetNum: '프리셋 #',
     presetIsEmpty: '빈 프리셋입니다.',
     presetIsApplied: '번 프리셋이 적용되어 있습니다.',
-    preset_party: '공격대원: ',
+    preset_party: '공격대 구성: ',
   },
   fallbacks: {
     init: '캐릭터 이름을 검색하거나 좌측 상단의 공격대 프리셋을 불러올 수 있습니다.',

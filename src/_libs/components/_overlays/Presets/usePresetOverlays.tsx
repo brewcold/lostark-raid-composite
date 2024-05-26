@@ -65,15 +65,18 @@ usePresetOverlay.Save = ({ presets, presetKey, reducer }: PresetOverlayProps) =>
   return (
     <Overlay
       body={
-        <Txt>
-          {presetKey[1]}
-          {ui.descriptions.presetIsApplied}
-          <br />
-          {ui.descriptions.preset_party}
-          {Array.from(presets[presetKey])
-            .map(p => p.characterName)
-            .join(', ')}
-        </Txt>
+        <>
+          <Txt as="h3">
+            {presetKey[1]}
+            {ui.descriptions.presetIsApplied}
+          </Txt>
+          <Txt as="p">
+            {ui.descriptions.preset_party}
+            {Array.from(presets[presetKey])
+              .map(p => p.characterName)
+              .join(', ')}
+          </Txt>
+        </>
       }
       control={
         <Flex width="fill" justifyContents="flexEnd" alignItems="center">
@@ -95,12 +98,11 @@ usePresetOverlay.Delete = ({ presets, presetKey, reducer }: PresetOverlayProps) 
     <Overlay
       body={
         <>
-          <Txt>
-            [{presetKey[1]}
-            {ui.descriptions.presetNum}]
+          <Txt as="h3">
+            {ui.descriptions.presetNum}
+            {presetKey[1]}
           </Txt>
-          <br />
-          <Txt>{ui.descriptions.presetIsEmpty}</Txt>
+          <Txt as="p">{ui.descriptions.presetIsEmpty}</Txt>
         </>
       }
       control={
