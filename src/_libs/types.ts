@@ -296,4 +296,6 @@ export const classEngravingType = [
   '만월의 집행자',
 ] as const;
 
-export type ClassEngravingType = (typeof cynergy)[(typeof classType)[number]];
+export type ClassType = (typeof classType)[number];
+export type ClassEngravingType = (typeof classEngravingType)[number];
+export type ClassEngravingMap = Record<ClassEngravingType, [ClassType]>;
