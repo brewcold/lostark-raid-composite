@@ -5,6 +5,12 @@ export default {
   titles: {
     preset: '',
   },
+  descriptions: {
+    presetNum: '번 프리셋입니다.',
+    presetIsEmpty: '빈 프리셋입니다.',
+    presetIsApplied: '번 프리셋이 적용되어 있습니다.',
+    preset_party: '공격대원: ',
+  },
   fallbacks: {
     init: '캐릭터 이름을 검색하거나 좌측 상단의 공격대 프리셋을 불러올 수 있습니다.',
     example: '닉네임 예) 노돌리, 카아안, 클라스, 주다영, 필례, 괴물쥐, 부먹펩시파인애플피자지코, 베베초, 베르앤도',
@@ -16,6 +22,8 @@ export default {
     inquiry: '문의 및 버그 제보',
     close: '닫기',
     cynergy: '시너지 가이드',
+    presetSave: '프리셋 저장',
+    presetDelete: '프리셋 삭제',
   },
   tutorial: [
     '캐릭터 이름을 검색해 최대 8명까지 공격대를 구성할 수 있습니다.',
