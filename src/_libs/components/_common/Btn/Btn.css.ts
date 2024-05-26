@@ -8,6 +8,7 @@ export const VARIANT = styleVariants({
     color: COLORS.WHITE,
     transition: 'all 0.15s',
     padding: '0 0.75rem 0 0.75rem',
+    borderRadius: '0.75rem',
     selectors: {
       '&:hover': {
         backgroundColor: COLORS.MAIN,
@@ -22,6 +23,7 @@ export const VARIANT = styleVariants({
     color: COLORS.MAIN,
     transition: 'all 0.15s',
     padding: '0 0.75rem 0 0.75rem',
+    borderRadius: '0.75rem',
     selectors: {
       '&:hover': {
         backgroundColor: COLORS.GRAY,
@@ -36,6 +38,7 @@ export const VARIANT = styleVariants({
     color: COLORS.WHITE,
     transition: 'all 0.15s',
     padding: '0 0.75rem 0 0.75rem',
+    borderRadius: '0.75rem',
     selectors: {
       '&:hover': {
         backgroundColor: COLORS.RED_DARK,
@@ -50,6 +53,7 @@ export const VARIANT = styleVariants({
     color: COLORS.WHITE,
     transition: 'all 0.15s',
     padding: '0 0.75rem 0 0.75rem',
+    borderRadius: '0.75rem',
     selectors: {
       '&:hover': {
         backgroundColor: COLORS.GREEN_DARK,
@@ -64,6 +68,8 @@ export const VARIANT = styleVariants({
     color: COLORS.THEME,
     transition: 'all 0.15s',
     padding: '0 0.75rem 0 0.75rem',
+    borderRadius: '0.75rem',
+
     selectors: {
       '&:hover': {
         border: `1px solid transparent`,
@@ -76,8 +82,9 @@ export const VARIANT = styleVariants({
     background: 'transparent',
     border: '1px solid transparent',
     color: COLORS.THEME,
-    padding: '0 0.75rem 0 0.75rem',
+    padding: '0',
     textUnderlineOffset: '0.25rem',
+    borderRadius: '0.75rem',
     selectors: {
       '&:hover': {
         textDecoration: 'underline',
@@ -89,7 +96,9 @@ export const VARIANT = styleVariants({
     backgroundColor: COLORS.MAIN,
     border: '1px solid transparent',
     color: COLORS.WHITE,
-    width: '2rem',
+    borderRadius: '0.5rem',
+    width: '1.5rem',
+    height: '2.5rem',
     transition: 'all 0.1s',
     padding: '0 0.75rem 0 0.75rem',
     selectors: {
@@ -102,7 +111,9 @@ export const VARIANT = styleVariants({
     background: 'transparent',
     border: `1px solid ${COLORS.THEME}`,
     color: COLORS.THEME,
-    width: '2rem',
+    borderRadius: '0.5rem',
+    width: '1.75rem',
+    height: '2.5rem',
     transition: 'all 0.1s',
     padding: '0 0.75rem 0 0.75rem',
     selectors: {
@@ -119,18 +130,17 @@ export const BASE = style({
   alignItems: 'center',
   justifyContent: 'center',
   cursor: 'pointer',
-
-  borderRadius: '0.75rem',
-  height: '2.5rem',
 });
 
 export const SIZE = styleVariants({
   FIT: {},
   SMALL: {
     minWidth: '4rem',
+    height: '2.5rem',
   },
   FULL: {
     width: '100%',
+    height: '2.5rem',
   },
 });
 
