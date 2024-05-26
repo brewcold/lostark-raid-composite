@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { DragEvent, useEffect, useRef, useState } from 'react';
+import { DragEvent, Fragment, useEffect, useRef, useState } from 'react';
 import { Member, partyInfo, partyMembers } from 'src/store/party';
 import { classEngravingType } from 'src/_libs/types';
 import { cynergy } from 'src/_libs/constants/cynergy';
@@ -25,6 +25,9 @@ import {
   TOGGLE,
   TOGGLE_DETAIL,
 } from './CharCard.css';
+import { CardHeader } from './CardHeader';
+import { ErrorBoundary } from '@sentry/nextjs';
+import Error from '../_pages/error';
 
 export type DragActions = {
   onDragStart: (e: DragEvent) => void;
@@ -48,17 +51,17 @@ export function CharCard({ draggable, characterName, dragActions }: CharCardProp
   if (data) {
     const { ArmoryCard, ArmoryEngraving, ArmoryGem, ArmoryProfile, ArmoryEquipment, ArmorySkills } = data;
 
-    const cards = ArmoryCard.Effects[0].Items;
-    const cardOption = ArmoryCard.Effects[0].Items[cards.length - 1].Name;
+    const cards = ArmoryCard?.Effects[0].Items;
+    const cardOption = ArmoryCard?.Effects[0].Items[cards.length - 1].Name;
 
-    const classEngraving: (typeof classEngravingType)[number][] = ArmoryEngraving.Effects.filter(e => {
+    const classEngraving: (typeof classEngravingType)[number][] = ArmoryEngraving?.Effects.filter(e => {
       const trimIdx = e.Name.indexOf('Lv');
       const trimmed = e.Name.slice(0, trimIdx).trim() as (typeof classEngravingType)[number];
       return classEngravingType.includes(trimmed);
     }).map(e => e.Name.slice(0, e.Name.indexOf('Lv')).trim() as (typeof classEngravingType)[number]);
 
     const classCynergy = Array.from(
-      new Set(classEngraving.map(e => cynergy[ArmoryProfile.CharacterClassName][e]))
+      new Set(classEngraving?.map(e => cynergy[ArmoryProfile.CharacterClassName][e])) || []
     ).join(', ');
 
     const gemsList = ArmoryGem?.Gems.map(g => {
@@ -102,8 +105,8 @@ export function CharCard({ draggable, characterName, dragActions }: CharCardProp
       }
     });
 
-    let armorLevel = 0;
-    const armorTypes = ['투구', '상의', '하의', '장갑', '어깨'];
+    const armorTypes = ['무기', '투구', '상의', '하의', '장갑', '어깨'];
+    const armorSet = ['악몽', '사멸', '구원', '지배', '파괴', '배신', '매혹'];
 
     const order = Array.from(party).find(m => m.characterName === ArmoryProfile.CharacterName)?.order || 1;
     const partyNumber = order === 1 ? '공대장' : Math.floor((order - 1) / 4) + 1;
@@ -111,91 +114,94 @@ export function CharCard({ draggable, characterName, dragActions }: CharCardProp
     return (
       <CardBase draggable={draggable} dragActions={dragActions}>
         <View>
-          <Txt styleVariant={PARTY_NUMBER[partyNumber]}>{partyNumber}</Txt>
-          <Txt as="h1" styleVariant={CHAR_NAME}>
-            {ArmoryProfile.CharacterName}
-            <Txt as="span" styleVariant={ITEM_LEVEL}>
-              {ArmoryProfile.ItemAvgLevel}
+          <Flex justifyContents="spaceBetween">
+            <Txt styleVariant={PARTY_NUMBER[partyNumber]}>{partyNumber}</Txt>
+            <Btn
+              variant="TEXT"
+              type="button"
+              size="FIT"
+              onClick={() =>
+                setParty(
+                  new Set(
+                    Array.from(party)
+                      .filter(c => c.characterName !== characterName)
+                      .map((m, idx) => {
+                        return { order: idx + 1, characterName: m.characterName };
+                      })
+                  )
+                )
+              }>
+              삭제
+            </Btn>
+          </Flex>
+          <ErrorBoundary fallback={<Error />}>
+            <Txt as="h1" styleVariant={CHAR_NAME}>
+              {ArmoryProfile.CharacterName}
+              <Txt as="span" styleVariant={ITEM_LEVEL}>
+                {ArmoryProfile.ItemAvgLevel}
+              </Txt>
             </Txt>
-          </Txt>
-          <Spacing size="0.5rem" />
-          <View>
-            <Txt as="p" styleVariant={INFO}>{`${classEngraving.join(', ')} ${ArmoryProfile.CharacterClassName}`}</Txt>
-            <Txt as="p" styleVariant={INFO}>
-              {classCynergy}
-            </Txt>
-          </View>
-          <details className={TOGGLE_DETAIL}>
-            <summary className={TOGGLE}>정보 더보기</summary>
             <Spacing size="0.5rem" />
             <View>
+              <Txt as="p" styleVariant={INFO}>{`${classEngraving?.join(', ') || ''} ${
+                ArmoryProfile.CharacterClassName
+              }`}</Txt>
               <Txt as="p" styleVariant={INFO}>
-                <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
-                  {cardOption}
-                </Txt>
+                {classCynergy}
               </Txt>
+            </View>
+            <details className={TOGGLE_DETAIL}>
+              <summary className={TOGGLE}>정보 더보기</summary>
+              <Spacing size="0.5rem" />
+              <View>
+                <Txt as="p" styleVariant={INFO}>
+                  <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
+                    {cardOption}
+                  </Txt>
+                </Txt>
+                <Spacing size="0.5rem" />
+                <Txt as="p" styleVariant={INFO}>
+                  {Array.from(gems.keys()).map(k => {
+                    const amount = gems.get(k) || 0;
+                    return (
+                      <Txt as="span" styleVariant={INFO_SPAN_BOLD} key={k}>
+                        {`${k} `}
+                        {amount > 0 && (
+                          <Txt as="span" styleVariant={SUB_INFO_SPAN}>
+                            ×{amount} 
+                          </Txt>
+                        )}
+                      </Txt>
+                    );
+                  })}
+                </Txt>
+              </View>
               <Spacing size="0.5rem" />
               <Txt as="p" styleVariant={INFO}>
-                {Array.from(gems.keys()).map(k => {
-                  const amount = gems.get(k) || 0;
-                  return (
-                    <Txt as="span" styleVariant={INFO_SPAN_BOLD} key={k}>
-                      {`${k} `}
-                      {amount > 0 && (
-                        <Txt as="span" styleVariant={SUB_INFO_SPAN}>
-                          ×{amount} 
+                {ArmoryEquipment?.map(a => {
+                  const type = a.Type;
+                  if (armorTypes.includes(type)) {
+                    return (
+                      <Fragment key={a.Name}>
+                        <Txt as="span" styleVariant={INFO_SPAN}>
+                          {a.Type === '무기' ? a.Type + ' ' + a.Name : a.Name}
                         </Txt>
-                      )}
-                    </Txt>
-                  );
+                        <br />
+                      </Fragment>
+                    );
+                  }
+                  // TODO: 세트 레벨별 이름 및 계승상태 매칭 필요
                 })}
               </Txt>
-            </View>
-            <Spacing size="0.5rem" />
-            <Txt as="p" styleVariant={INFO}>
-              {ArmoryEquipment.map(a => {
-                const type = a.Type;
-                if (armorTypes.includes(type)) {
-                  armorLevel = armorLevel + parseInt(a.Name);
-                  return null;
-                } else if (type === '무기')
-                  return (
-                    <Txt as="span" styleVariant={INFO_SPAN} key={a.Name}>
-                      {a.Type} {a.Name}
-                    </Txt>
-                  );
-              })}
-              <br />
-              <Txt as="span" styleVariant={INFO}>
-                방어구 평균 레벨 {armorLevel + 1525}
-              </Txt>
-            </Txt>
-            <Spacing size="0.5rem" />
-            <View>
-              <Txt as="p" styleVariant={INFO}>
-                {`전투 레벨 ${ArmoryProfile.CharacterLevel} 원정대 ${ArmoryProfile.ExpeditionLevel}`} <br />
-                {`스킬포인트 ${ArmoryProfile.UsingSkillPoint} / ${ArmoryProfile.TotalSkillPoint}`}
-              </Txt>
-            </View>
-          </details>
-        </View>
-        <View styleVariant={CARD_FOOTER}>
-          <Btn
-            type="button"
-            size="FULL"
-            onClick={() =>
-              setParty(
-                new Set(
-                  Array.from(party)
-                    .filter(c => c.characterName !== characterName)
-                    .map((m, idx) => {
-                      return { order: idx + 1, characterName: m.characterName };
-                    })
-                )
-              )
-            }>
-            삭제
-          </Btn>
+              <Spacing size="0.5rem" />
+              <View>
+                <Txt as="p" styleVariant={INFO}>
+                  {`전투 레벨 ${ArmoryProfile.CharacterLevel} 원정대 ${ArmoryProfile.ExpeditionLevel}`} <br />
+                  {`스킬포인트 ${ArmoryProfile.UsingSkillPoint} / ${ArmoryProfile.TotalSkillPoint}`}
+                </Txt>
+              </View>
+            </details>
+          </ErrorBoundary>
         </View>
       </CardBase>
     );
