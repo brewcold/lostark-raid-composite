@@ -13,11 +13,11 @@ export const INFO = style({
   textAlign: 'center',
 });
 export const GRID = style({
-  padding: '0.75rem',
+  padding: '1rem',
   marginBottom: '5rem',
   display: 'grid',
   gridTemplateColumns: 'repeat(4, 1fr)',
-  gap: '0.5rem',
+  gap: '0.35rem',
 });
 
 export const GRID_ITEM_PARTY_NUM = style({
