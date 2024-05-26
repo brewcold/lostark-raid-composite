@@ -106,8 +106,7 @@ export function CharCard({ draggable, characterName, dragActions }: CharCardProp
     const armorTypes = ['투구', '상의', '하의', '장갑', '어깨'];
 
     const order = Array.from(party).find(m => m.characterName === ArmoryProfile.CharacterName)?.order || 1;
-
-    const partyNumber = order % 4 === 1 ? '공대장' : Math.floor(order / 4) + 1;
+    const partyNumber = order === 1 ? '공대장' : Math.floor((order - 1) / 4) + 1;
 
     return (
       <CardBase draggable={draggable} dragActions={dragActions}>

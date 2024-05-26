@@ -11,6 +11,7 @@ export const BASE = style({
   padding: '0.75rem 1.15rem 1.15rem 1.15rem',
   cursor: 'pointer',
   userSelect: 'none',
+  backgroundColor: COLORS.WHITE,
 });
 
 export const CARD_BODY = style({
