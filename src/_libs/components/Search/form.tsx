@@ -50,7 +50,7 @@ export function Form() {
     if (members.has(characterName)) {
       open(<Modal duration="1500">{alerts.IS_DUPLICATED}</Modal>);
       setCharacterName('');
-    } else if (party.size >= 16) {
+    } else if (party.size >= 20) {
       open(<Modal duration="1500">{alerts.IS_FULL}</Modal>);
       setParty(
         prevParty =>
