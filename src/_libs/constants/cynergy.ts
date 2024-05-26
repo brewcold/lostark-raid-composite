@@ -1,7 +1,7 @@
 import { classEngravingType, ClassType, classType } from '../types';
 
 const crit10 = '치적';
-const critdmg8 = '치명피증8%';
+const critdmg8 = '치명피증8%*';
 const atk6 = '공증';
 const dmg6 = '피증';
 const def12 = '방깎';
@@ -16,7 +16,7 @@ const spd = '공이속';
 const atkdebuf = '적 공깎';
 const manaspd = '마나 회복 속도';
 const mana = '마나 순간 회복';
-const no_mana_plz = '끝마*';
+const no_mana_plz = '끝마**';
 
 export const cynergy: Record<ClassType, Partial<Record<(typeof classEngravingType)[number], string>>> = {
   워로드: {
