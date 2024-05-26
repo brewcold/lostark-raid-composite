@@ -1,14 +1,26 @@
+const THEME = '#7a839c';
+const GRAY = '#97a1be';
+const RED = '#9c5a5a';
+const YELLOW = '#C7A961';
+const GREEN = '#7a9c7c';
+const BLACK = '#000';
+
 export const COLORS = {
-  THEME: '#7a839c',
-  GRAY: '#97a1be',
+  THEME,
+  GRAY,
   MAIN: '#44476f',
   MAIN_OPACITY85: 'rgba(68,71,111, .85)',
   MAIN_OPACITY15: 'rgba(68,71,111, .15)',
-  BLACK: '#000',
-  GREEN: '#7a9c7c',
+  BLACK,
+  GREEN,
   GREEN_DARK: '#6c8c6e',
-  RED: '#9c5a5a',
+  RED,
   RED_DARK: '#8c4c4c',
-  YELLOW: '#9c937a',
+  YELLOW,
   WHITE: '#fff',
+  PARTY_1: GREEN,
+  PARTY_2: THEME,
+  PARTY_3: RED,
+  PARTY_4: YELLOW,
+  PARTY_5: GRAY,
 };

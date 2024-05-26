@@ -25,29 +25,35 @@ const PARTY_NUMBER_BASE = style({
   color: COLORS.WHITE,
 });
 export const PARTY_NUMBER = styleVariants({
-  공대장: [PARTY_NUMBER_BASE, { backgroundColor: COLORS.YELLOW }],
+  공대장: [PARTY_NUMBER_BASE, { backgroundColor: COLORS.PARTY_1 }],
   1: [
     PARTY_NUMBER_BASE,
     {
-      backgroundColor: COLORS.THEME,
+      backgroundColor: COLORS.PARTY_1,
     },
   ],
   2: [
     PARTY_NUMBER_BASE,
     {
-      backgroundColor: COLORS.GREEN,
+      backgroundColor: COLORS.PARTY_2,
     },
   ],
   3: [
     PARTY_NUMBER_BASE,
     {
-      backgroundColor: COLORS.RED,
+      backgroundColor: COLORS.PARTY_3,
     },
   ],
   4: [
     PARTY_NUMBER_BASE,
     {
-      backgroundColor: COLORS.MAIN,
+      backgroundColor: COLORS.PARTY_4,
+    },
+  ],
+  5: [
+    PARTY_NUMBER_BASE,
+    {
+      backgroundColor: COLORS.PARTY_5,
     },
   ],
 });
