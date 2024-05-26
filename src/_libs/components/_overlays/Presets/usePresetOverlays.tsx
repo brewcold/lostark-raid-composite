@@ -3,6 +3,7 @@ import { useAtom } from 'jotai';
 import { useCallback } from 'react';
 import { partyInfo } from 'src/store/party';
 import { preset, PresetKeys, currentPreset, Preset } from 'src/store/preset';
+import ui from 'src/_libs/constants/ui';
 import { Btn } from '../../_common/Btn/Btn';
 import Flex from '../../_common/Flex/Flex';
 import { Overlay } from '../../_common/Overlay/Overlay';
@@ -65,22 +66,23 @@ usePresetOverlay.Save = ({ presets, presetKey, reducer }: PresetOverlayProps) =>
     <Overlay
       body={
         <Txt>
-          {presetKey[1]}번 프리셋이 적용되어 있습니다.
+          {presetKey[1]}
+          {ui.descriptions.presetIsApplied}
+          <br />
+          {ui.descriptions.preset_party}
           {Array.from(presets[presetKey])
             .map(p => p.characterName)
             .join(', ')}
-          <br />
-          으로 구성된 공격대입니다.
         </Txt>
       }
       control={
         <Flex width="fill" justifyContents="flexEnd" alignItems="center">
-          <Btn onClick={() => reducer(presetKey, 'save')}>프리셋 저장</Btn>
+          <Btn onClick={() => reducer(presetKey, 'save')}>{ui.buttons.presetSave}</Btn>
           <Spacing size="0.5rem" dir="hori" />
-          <Btn onClick={() => reducer(presetKey, 'delete')}>프리셋 삭제</Btn>
+          <Btn onClick={() => reducer(presetKey, 'delete')}>{ui.buttons.presetDelete}</Btn>
           <Spacing size="0.5rem" dir="hori" />
           <Btn variant="SECONDARY" onClick={() => reducer(presetKey, 'close')}>
-            닫기
+            {ui.buttons.close}
           </Btn>
         </Flex>
       }
@@ -93,15 +95,20 @@ usePresetOverlay.Delete = ({ presets, presetKey, reducer }: PresetOverlayProps) 
     <Overlay
       body={
         <>
-          <Txt>{presetKey[1]}번 프리셋은 비어 있습니다.</Txt>
+          <Txt>
+            [{presetKey[1]}
+            {ui.descriptions.presetNum}]
+          </Txt>
+          <br />
+          <Txt>{ui.descriptions.presetIsEmpty}</Txt>
         </>
       }
       control={
         <Flex width="fill" justifyContents="flexEnd" alignItems="center">
-          <Btn onClick={() => reducer(presetKey, 'save')}>프리셋 저장</Btn>
+          <Btn onClick={() => reducer(presetKey, 'save')}>{ui.buttons.presetSave}</Btn>
           <Spacing size="0.5rem" dir="hori" />
           <Btn variant="SECONDARY" onClick={() => reducer(presetKey, 'close')}>
-            닫기
+            {ui.buttons.close}
           </Btn>
         </Flex>
       }
