@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai';
-import { useEffect } from 'react';
-import { partyInfo, partyMembers } from 'src/store/party';
+import { DragEvent, useEffect, useRef, useState } from 'react';
+import { Member, partyInfo, partyMembers } from 'src/store/party';
 import { classEngravingType } from 'src/_libs/types';
 import { cynergy } from 'src/_libs/constants/cynergy';
 import { useCharInfo } from 'src/_libs/hooks/useCharInfo';
@@ -20,16 +20,30 @@ import {
   INFO_SPAN,
   INFO_SPAN_BOLD,
   ITEM_LEVEL,
+  PARTY_NUMBER,
   SUB_INFO_SPAN,
   TOGGLE,
   TOGGLE_DETAIL,
 } from './CharCard.css';
 
-export function CharCard({ characterName }: { characterName: string }) {
+export type DragActions = {
+  onDragStart: (e: DragEvent) => void;
+  onDragEnter: (e: DragEvent) => void;
+  onDragOver: (e: DragEvent) => void;
+  onDragEnd: (e: DragEvent) => void;
+  onDragLeave: (e: DragEvent) => void;
+};
+
+interface CharCardProps {
+  draggable?: boolean;
+  characterName: string;
+  dragActions: DragActions;
+}
+
+export function CharCard({ draggable, characterName, dragActions }: CharCardProps) {
   const { data, isFetching, status } = useCharInfo(characterName);
 
   const [party, setParty] = useAtom(partyInfo);
-  const [members] = useAtom(partyMembers);
 
   if (data) {
     const { ArmoryCard, ArmoryEngraving, ArmoryGem, ArmoryProfile, ArmoryEquipment, ArmorySkills } = data;
@@ -44,7 +58,7 @@ export function CharCard({ characterName }: { characterName: string }) {
     }).map(e => e.Name.slice(0, e.Name.indexOf('Lv')).trim() as (typeof classEngravingType)[number]);
 
     const classCynergy = Array.from(
-      new Set(classEngraving.map(e => cynergy[ArmoryProfile.CharacterClassName][e]?.join(', ')))
+      new Set(classEngraving.map(e => cynergy[ArmoryProfile.CharacterClassName][e]))
     ).join(', ');
 
     const gemsList = ArmoryGem?.Gems.map(g => {
@@ -91,9 +105,14 @@ export function CharCard({ characterName }: { characterName: string }) {
     let armorLevel = 0;
     const armorTypes = ['투구', '상의', '하의', '장갑', '어깨'];
 
+    const order = Array.from(party).find(m => m.characterName === ArmoryProfile.CharacterName)?.order || 1;
+
+    const partyNumber = order % 4 === 1 ? '공대장' : Math.floor(order / 4) + 1;
+
     return (
-      <CardBase>
+      <CardBase draggable={draggable} dragActions={dragActions}>
         <View>
+          <Txt styleVariant={PARTY_NUMBER[partyNumber]}>{partyNumber}</Txt>
           <Txt as="h1" styleVariant={CHAR_NAME}>
             {ArmoryProfile.CharacterName}
             <Txt as="span" styleVariant={ITEM_LEVEL}>

@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { COLORS } from 'src/_libs/style/colors';
 
 export const BASE = style({
@@ -9,10 +9,46 @@ export const BASE = style({
   border: `1px solid ${COLORS.THEME}`,
   borderRadius: '1.15rem',
   padding: '0.75rem 1.15rem 1.15rem 1.15rem',
+  cursor: 'pointer',
+  userSelect: 'none',
 });
 
 export const CARD_BODY = style({
   height: '100%',
+});
+
+const PARTY_NUMBER_BASE = style({
+  fontSize: '0.8rem',
+  padding: '0.25rem 0.35rem 0.25rem 0.35rem',
+  borderRadius: '0.5rem',
+  color: COLORS.WHITE,
+});
+export const PARTY_NUMBER = styleVariants({
+  공대장: [PARTY_NUMBER_BASE, { backgroundColor: COLORS.YELLOW }],
+  1: [
+    PARTY_NUMBER_BASE,
+    {
+      backgroundColor: COLORS.THEME,
+    },
+  ],
+  2: [
+    PARTY_NUMBER_BASE,
+    {
+      backgroundColor: COLORS.GREEN,
+    },
+  ],
+  3: [
+    PARTY_NUMBER_BASE,
+    {
+      backgroundColor: COLORS.RED,
+    },
+  ],
+  4: [
+    PARTY_NUMBER_BASE,
+    {
+      backgroundColor: COLORS.MAIN,
+    },
+  ],
 });
 
 export const CHAR_NAME = style({
