@@ -9,15 +9,16 @@ export const BASE = style({
   zIndex: 999,
 
   '@media': {
-    '(width > 600px)': {
+    '(width > 800)': {
       justifyContent: 'space-between',
       alignItems: 'center',
       position: 'sticky',
       top: 0,
     },
-    '(0 <= width <= 600px)': {
+    '(0 <= width <= 800)': {
       width: '100vw',
       flexDirection: 'column',
+      columnGap: '0.75rem',
       justifyContent: 'spaceBetween',
       alignItems: 'flex-Start',
       position: 'fixed',
