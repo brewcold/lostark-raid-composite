@@ -89,45 +89,6 @@ export default function PartyStatus() {
                 characterName={members.characterName}
               />
             );
-            // else
-            //   return (
-            //     <Fragment key={idx}>
-            //       <View styleVariant={GRID_ITEM_PARTY_NUM}>
-            //         <Txt styleVariant={PARTY_NUM}>{Math.floor(idx / 4) + 1} 파티</Txt>
-            //       </View>
-            //       <CharCard
-            //         dragActions={{
-            //           onDragStart: e => {
-            //             e.stopPropagation();
-            //             dragStart();
-            //             dragItem.current = idx;
-            //             dragOverItem.current = idx;
-            //           },
-            //           onDragEnter: e => {
-            //             e.stopPropagation();
-            //             e.preventDefault();
-            //             dragOverItem.current = idx;
-            //           },
-            //           onDragOver: e => {
-            //             e.preventDefault();
-            //             e.stopPropagation();
-            //             onItemChange();
-            //           },
-            //           onDragEnd: e => {
-            //             e.stopPropagation();
-            //             onItemChange();
-            //             dragEnd();
-            //           },
-            //           onDragLeave: e => {
-            //             e.stopPropagation();
-            //             dragEnd();
-            //           },
-            //         }}
-            //         key={members.characterName}
-            //         characterName={members.characterName}
-            //       />
-            //     </Fragment>
-            // );
           })}
         </View>
       )}
