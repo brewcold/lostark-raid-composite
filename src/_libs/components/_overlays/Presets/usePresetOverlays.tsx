@@ -41,12 +41,13 @@ export const usePresetOverlay = () => {
       const IS_SAVED = presets[presetKey].length > 0;
       const MODIFYING = appliedPreset === presetKey;
 
-      if (MODIFYING) open(<usePresetOverlay.Save presets={presets} presetKey={presetKey} reducer={presetReducer} />);
+      if (MODIFYING)
+        open(<usePresetOverlay.Save presets={presets} presetKey={presetKey} presetReducer={presetReducer} />);
       else if (IS_SAVED) {
         setParty(new Set(presets[presetKey]));
         setAppliedPreset(presetKey);
       } else {
-        open(<usePresetOverlay.Delete presets={presets} presetKey={presetKey} reducer={presetReducer} />);
+        open(<usePresetOverlay.Delete presets={presets} presetKey={presetKey} presetReducer={presetReducer} />);
         setAppliedPreset(null);
       }
     },
@@ -59,19 +60,21 @@ export const usePresetOverlay = () => {
 interface PresetOverlayProps {
   presets: Preset;
   presetKey: PresetKeys;
-  reducer: (presetKey: PresetKeys, action: 'save' | 'delete' | 'close') => void;
+  presetReducer: (presetKey: PresetKeys, action: 'save' | 'delete' | 'close') => void;
 }
-usePresetOverlay.Save = ({ presets, presetKey, reducer }: PresetOverlayProps) => {
+usePresetOverlay.Save = ({ presets, presetKey, presetReducer }: PresetOverlayProps) => {
   return (
     <Overlay
       body={
         <>
-          <Txt as="h3">
+          <Txt as="h2">
             {presetKey[1]}
             {ui.descriptions.presetIsApplied}
           </Txt>
+          <Spacing size="1rem" />
+          <Txt as="h3">{ui.descriptions.preset_party}</Txt>
+          <Spacing size="0.5rem" />
           <Txt as="p">
-            {ui.descriptions.preset_party}
             {Array.from(presets[presetKey])
               .map(p => p.characterName)
               .join(', ')}
@@ -80,11 +83,11 @@ usePresetOverlay.Save = ({ presets, presetKey, reducer }: PresetOverlayProps) =>
       }
       control={
         <Flex width="fill" justifyContents="flexEnd" alignItems="center">
-          <Btn onClick={() => reducer(presetKey, 'save')}>{ui.buttons.presetSave}</Btn>
+          <Btn onClick={() => presetReducer(presetKey, 'save')}>{ui.buttons.presetOverwrite}</Btn>
           <Spacing size="0.5rem" dir="hori" />
-          <Btn onClick={() => reducer(presetKey, 'delete')}>{ui.buttons.presetDelete}</Btn>
+          <Btn onClick={() => presetReducer(presetKey, 'delete')}>{ui.buttons.presetDelete}</Btn>
           <Spacing size="0.5rem" dir="hori" />
-          <Btn variant="SECONDARY" onClick={() => reducer(presetKey, 'close')}>
+          <Btn variant="SECONDARY" onClick={() => presetReducer(presetKey, 'close')}>
             {ui.buttons.close}
           </Btn>
         </Flex>
@@ -93,23 +96,24 @@ usePresetOverlay.Save = ({ presets, presetKey, reducer }: PresetOverlayProps) =>
   );
 };
 
-usePresetOverlay.Delete = ({ presets, presetKey, reducer }: PresetOverlayProps) => {
+usePresetOverlay.Delete = ({ presets, presetKey, presetReducer }: PresetOverlayProps) => {
   return (
     <Overlay
       body={
         <>
-          <Txt as="h3">
+          <Txt as="h2">
             {ui.descriptions.presetNum}
             {presetKey[1]}
           </Txt>
+          <Spacing size="1rem" />
           <Txt as="p">{ui.descriptions.presetIsEmpty}</Txt>
         </>
       }
       control={
         <Flex width="fill" justifyContents="flexEnd" alignItems="center">
-          <Btn onClick={() => reducer(presetKey, 'save')}>{ui.buttons.presetSave}</Btn>
+          <Btn onClick={() => presetReducer(presetKey, 'save')}>{ui.buttons.presetSave}</Btn>
           <Spacing size="0.5rem" dir="hori" />
-          <Btn variant="SECONDARY" onClick={() => reducer(presetKey, 'close')}>
+          <Btn variant="SECONDARY" onClick={() => presetReducer(presetKey, 'close')}>
             {ui.buttons.close}
           </Btn>
         </Flex>

@@ -23,6 +23,7 @@ export default {
     close: '닫기',
     cynergy: '시너지 가이드',
     presetSave: '프리셋 저장',
+    presetOverwrite: '프리셋 덮어쓰기',
     presetDelete: '프리셋 삭제',
   },
   tutorial: [
