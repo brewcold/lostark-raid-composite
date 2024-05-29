@@ -1,6 +1,7 @@
 export default {
   placeholders: {
     searchCharacterName: '캐릭터 이름',
+    emptyCard: '',
   },
   titles: {
     preset: '',
@@ -16,6 +17,7 @@ export default {
     example: '닉네임 예) 노돌리, 카아안, 클라스, 주다영, 필례, 괴물쥐, 부먹펩시파인애플피자지코, 베베초, 베르앤도',
   },
   buttons: {
+    more_info: '상세 스펙',
     initialize: '공격대 리셋',
     search: '찾기',
     tutorial: '도움말',

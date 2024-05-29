@@ -19,9 +19,9 @@ export const CARD_BODY = style({
 });
 
 const PARTY_NUMBER_BASE = style({
-  fontSize: '0.8rem',
-  padding: '0.25rem 0.35rem 0.25rem 0.35rem',
-  borderRadius: '0.5rem',
+  fontSize: '0.75rem',
+  padding: '0.2rem 0.35rem 0.2rem 0.35rem',
+  borderRadius: '1rem',
   color: COLORS.WHITE,
 });
 export const PARTY_NUMBER = styleVariants({
@@ -61,7 +61,7 @@ export const PARTY_NUMBER = styleVariants({
 export const CHAR_NAME = style({
   fontSize: '1.05rem',
   fontWeight: '600',
-  marginTop: '0.5rem',
+  marginTop: '0.25rem',
   lineHeight: 1.3,
   color: COLORS.MAIN,
 });
@@ -76,8 +76,7 @@ export const ITEM_LEVEL = style({
 
 export const INFO = style({
   fontSize: '0.85rem',
-  lineHeight: 1.3,
-  marginBottom: '0.5rem',
+  lineHeight: 1.5,
   color: COLORS.MAIN,
 });
 
@@ -125,4 +124,8 @@ export const TOGGLE = style({
 export const TOGGLE_DETAIL = style({
   margin: 0,
   padding: 0,
+});
+
+export const EMPTY_CARD = style({
+  color: COLORS.THEME,
 });

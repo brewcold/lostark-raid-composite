@@ -1,11 +1,11 @@
 'use client';
 import { useCharInfo } from '../../hooks/useCharInfo';
-import { useRef } from 'react';
+import { Suspense, useRef } from 'react';
 import { Spacing } from '../_common/Spacing/spacing';
 import { View } from '../_common/View/View';
 import { CharCard } from '../CharCard/CharCard';
 import { useAtom } from 'jotai';
-import { Member, partyInfo } from 'src/store/party';
+import { Member, Party, partyCard, partyInfo } from 'src/store/party';
 import { Txt } from '../_common/Txt/Txt';
 import { GRID, CENTERED, SITE_TITLE, INFO } from './PartyStatus.css';
 import { Loader } from '../_common/Loader/Loader';
@@ -18,6 +18,7 @@ export default function PartyStatus() {
   const [characterName] = useAtom(input);
   const { isLoading } = useCharInfo(characterName);
   const [party, setParty] = useAtom(partyInfo);
+  const [CARD] = useAtom(partyCard);
 
   const [dragging, dragStart, dragEnd] = useBooleanState();
   const dragItem = useRef<number | null>(null);
@@ -25,20 +26,21 @@ export default function PartyStatus() {
 
   function onItemChange() {
     if (dragItem.current !== null && dragOverItem.current !== null) {
-      console.log('CH', dragItem.current, dragOverItem.current);
-      const copied = Array.from(party);
+      const copied = Array.from(CARD);
       const draggingMember: Member = copied[dragItem.current];
       const targetMember: Member = copied[dragOverItem.current];
 
-      const deleted = copied.filter(
-        m => m.characterName !== draggingMember.characterName && m.characterName !== targetMember.characterName
-      );
+      const draggingIndex = copied.findIndex(m => m.order === draggingMember.order);
+      const targetIndex = copied.findIndex(m => m.order === targetMember.order);
 
       const temp = draggingMember.order;
       draggingMember.order = targetMember.order;
       targetMember.order = temp;
 
-      const result = [...deleted, draggingMember, targetMember].sort((o1, o2) => o1.order - o2.order);
+      copied[draggingIndex] = draggingMember;
+      copied[targetIndex] = targetMember;
+
+      const result = copied.sort((o1, o2) => o1.order - o2.order);
 
       setParty(new Set(result));
     }
@@ -50,12 +52,9 @@ export default function PartyStatus() {
   return (
     <View>
       <Spacing size="2rem" />
-      {party.size === 0 && <PartyStatus.Init />}
-      {party.size === 0 && isLoading ? (
-        <PartyStatus.IsLoading />
-      ) : (
+      <Suspense fallback={<PartyStatus.IsLoading />}>
         <View styleVariant={GRID}>
-          {Array.from(party).map((members, idx) => {
+          {CARD.map((members, idx) => {
             return (
               <CharCard
                 draggable
@@ -85,13 +84,13 @@ export default function PartyStatus() {
                     dragEnd();
                   },
                 }}
-                key={members.characterName}
+                key={idx}
                 characterName={members.characterName}
               />
             );
           })}
         </View>
-      )}
+      </Suspense>
     </View>
   );
 }
@@ -102,7 +101,7 @@ PartyStatus.Init = () => {
       <Txt as="h1" styleVariant={SITE_TITLE}>
         {meta.TITLE}
       </Txt>
-      <Spacing size="1rem" />
+      <Spacing size="0.5rem" />
       <Txt as="h2" styleVariant={INFO}>
         {ui.fallbacks.init}
         <br />

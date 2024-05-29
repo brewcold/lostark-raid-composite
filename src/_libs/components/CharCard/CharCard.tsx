@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai';
-import { DragEvent, Fragment, useEffect, useRef, useState } from 'react';
-import { Member, partyInfo, partyMembers } from 'src/store/party';
+import { DragEvent, Fragment } from 'react';
+import { partyCard, partyInfo } from 'src/store/party';
 import { classEngravingType } from 'src/_libs/types';
 import { cynergy } from 'src/_libs/constants/cynergy';
 import { useCharInfo } from 'src/_libs/hooks/useCharInfo';
@@ -12,10 +12,9 @@ import { Txt } from '../_common/Txt/Txt';
 import { View } from '../_common/View/View';
 import { CardBase } from './CardBase';
 import {
-  CARD_BODY,
-  CARD_FOOTER,
   CENTERED,
   CHAR_NAME,
+  EMPTY_CARD,
   INFO,
   INFO_SPAN,
   INFO_SPAN_BOLD,
@@ -25,9 +24,9 @@ import {
   TOGGLE,
   TOGGLE_DETAIL,
 } from './CharCard.css';
-import { CardHeader } from './CardHeader';
 import { ErrorBoundary } from '@sentry/nextjs';
 import Error from '../_pages/error';
+import ui from 'src/_libs/constants/ui';
 
 export type DragActions = {
   onDragStart: (e: DragEvent) => void;
@@ -46,9 +45,18 @@ interface CharCardProps {
 export function CharCard({ draggable, characterName, dragActions }: CharCardProps) {
   const { data, isFetching, status } = useCharInfo(characterName);
 
-  const [party, setParty] = useAtom(partyInfo);
+  const [_, setParty] = useAtom(partyInfo);
+  const [party] = useAtom(partyCard);
 
-  if (data) {
+  if (characterName === '') {
+    return (
+      <CardBase draggable={draggable} dragActions={dragActions}>
+        <View styleVariant={CENTERED}>
+          <Txt styleVariant={EMPTY_CARD}>{ui.placeholders.emptyCard}</Txt>
+        </View>
+      </CardBase>
+    );
+  } else if (data) {
     const { ArmoryCard, ArmoryEngraving, ArmoryGem, ArmoryProfile, ArmoryEquipment, ArmorySkills } = data;
 
     const cards = ArmoryCard?.Effects[0].Items;
@@ -108,7 +116,7 @@ export function CharCard({ draggable, characterName, dragActions }: CharCardProp
     const armorTypes = ['무기', '투구', '상의', '하의', '장갑', '어깨'];
     const armorSet = ['악몽', '사멸', '구원', '지배', '파괴', '배신', '매혹'];
 
-    const order = Array.from(party).find(m => m.characterName === ArmoryProfile.CharacterName)?.order || 1;
+    const order = party.find(m => m.characterName === ArmoryProfile.CharacterName)?.order || 1;
     const partyNumber = order === 1 ? '공대장' : Math.floor((order - 1) / 4) + 1;
 
     return (
@@ -120,17 +128,15 @@ export function CharCard({ draggable, characterName, dragActions }: CharCardProp
               variant="TEXT"
               type="button"
               size="FIT"
-              onClick={() =>
-                setParty(
-                  new Set(
-                    Array.from(party)
-                      .filter(c => c.characterName !== characterName)
-                      .map((m, idx) => {
-                        return { order: idx + 1, characterName: m.characterName };
-                      })
-                  )
-                )
-              }>
+              onClick={() => {
+                const result = party
+                  .filter(c => c.characterName !== characterName)
+                  .map((m, idx) => {
+                    return { order: idx + 1, characterName: m.characterName };
+                  });
+                result.push({ order: party.length + 1, characterName: '' });
+                setParty(new Set(result));
+              }}>
               삭제
             </Btn>
           </Flex>
@@ -141,7 +147,6 @@ export function CharCard({ draggable, characterName, dragActions }: CharCardProp
                 {ArmoryProfile.ItemAvgLevel}
               </Txt>
             </Txt>
-            <Spacing size="0.5rem" />
             <View>
               <Txt as="p" styleVariant={INFO}>{`${classEngraving?.join(', ') || ''} ${
                 ArmoryProfile.CharacterClassName
@@ -150,8 +155,9 @@ export function CharCard({ draggable, characterName, dragActions }: CharCardProp
                 {classCynergy}
               </Txt>
             </View>
+            <Spacing size="0.25rem" />
             <details className={TOGGLE_DETAIL}>
-              <summary className={TOGGLE}>정보 더보기</summary>
+              <summary className={TOGGLE}>{ui.buttons.more_info}</summary>
               <Spacing size="0.5rem" />
               <View>
                 <Txt as="p" styleVariant={INFO}>
@@ -205,15 +211,11 @@ export function CharCard({ draggable, characterName, dragActions }: CharCardProp
         </View>
       </CardBase>
     );
-  } else if (status === 'pending')
+  } else {
     return (
-      <CardBase>
-        <View styleVariant={CENTERED}>
-          <Loader />
-        </View>
+      <CardBase draggable={draggable} dragActions={dragActions}>
+        <View styleVariant={CENTERED}>{<Loader />}</View>
       </CardBase>
     );
-  else {
-    return null;
   }
 }
