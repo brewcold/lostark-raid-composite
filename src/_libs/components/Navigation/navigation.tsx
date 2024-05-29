@@ -2,7 +2,7 @@
 import { View } from '../_common/View/View';
 import { Form } from '../Search/form';
 import { Menu } from './menu';
-import { BASE } from './navigation.css';
+import { BASE, DISPLAY } from './navigation.css';
 import { Preset } from '../Preset/preset';
 
 export function Navigation() {
@@ -10,7 +10,7 @@ export function Navigation() {
     <View styleVariant={BASE}>
       <Preset />
       <Form />
-      <Menu />
+      <Menu styleVariant={DISPLAY} />
     </View>
   );
 }

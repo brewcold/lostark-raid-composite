@@ -9,20 +9,29 @@ export const BASE = style({
   zIndex: 999,
 
   '@media': {
-    '(width > 800px)': {
+    '(width > 480px)': {
       justifyContent: 'space-between',
       alignItems: 'center',
       position: 'sticky',
       top: 0,
     },
-    '(0 <= width <= 800px)': {
+    '(0 <= width <= 480px)': {
       width: '100vw',
       flexDirection: 'column',
-      columnGap: '0.75rem',
-      justifyContent: 'space-between',
-      alignItems: 'flex-start',
+      rowGap: '0.5rem',
+      justifyContent: 'center',
+      alignItems: 'flex-end',
       position: 'fixed',
       bottom: 0,
+    },
+  },
+});
+
+export const DISPLAY = style({
+  '@media': {
+    '(width > 480px)': {},
+    '(0 <= width <= 480px)': {
+      display: 'none',
     },
   },
 });
