@@ -1,7 +1,7 @@
 export default {
   placeholders: {
     searchCharacterName: '캐릭터 이름',
-    emptyCard: '',
+    emptyCard: '빈 슬롯',
   },
   titles: {
     preset: '',

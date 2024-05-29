@@ -128,5 +128,6 @@ export const TOGGLE_DETAIL = style({
 });
 
 export const EMPTY_CARD = style({
-  color: COLORS.THEME,
+  fontSize: '0.85rem',
+  color: COLORS.GRAY,
 });
