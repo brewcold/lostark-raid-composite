@@ -4,6 +4,7 @@ import { COLORS } from 'src/_libs/style/colors';
 import { Providers } from './providers';
 import meta from 'src/_libs/constants/meta';
 import { Navigation } from 'src/_libs/components/Navigation/navigation';
+import { Footer } from 'src/_libs/components/Footer/Footer';
 
 export const metadata: Metadata = {
   title: meta.TITLE,
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Providers>
             <Navigation />
             {children}
+            <Footer />
           </Providers>
         </div>
       </body>
