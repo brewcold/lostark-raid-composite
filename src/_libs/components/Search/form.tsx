@@ -1,17 +1,19 @@
 import { useForm, useModal } from '@syyu/util/react';
 import { useAtom } from 'jotai';
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { input } from 'src/store/input';
-import { partyInfo, partyMembers } from 'src/store/party';
+import { partyInfo, partyMembers, partyReducer } from 'src/store/party';
 import alerts from 'src/_libs/constants/alerts';
 import ui from 'src/_libs/constants/ui';
 import { useCharInfo } from 'src/_libs/hooks/useCharInfo';
+import { DISPLAY } from '../Navigation/navigation.css';
 import { Btn } from '../_common/Btn/Btn';
 import Flex from '../_common/Flex/Flex';
 import { Input } from '../_common/Input/Input';
 import { Modal } from '../_common/Modal/Modal';
 import { Spacing } from '../_common/Spacing/spacing';
 import { Txt } from '../_common/Txt/Txt';
+import { View } from '../_common/View/View';
 interface formValues {
   characterName: string;
 }
@@ -48,9 +50,9 @@ export function Form() {
   useEffect(() => {
     if (characterName.length === 0) return;
     if (members.has(characterName)) {
-      open(<Modal duration="1500">{alerts.IS_DUPLICATED}</Modal>);
       setCharacterName('');
-    } else if (party.size >= 20) {
+      open(<Modal duration="1500">{alerts.IS_DUPLICATED}</Modal>);
+    } else if (members.size >= 20) {
       open(<Modal duration="1500">{alerts.IS_FULL}</Modal>);
       setParty(
         prevParty =>
@@ -64,11 +66,15 @@ export function Form() {
       );
     } else {
       setParty(prevParty => {
+        const idx = Array.from(members).length - 1;
         const newParty = Array.from(prevParty);
-        newParty.push({ order: prevParty.size + 1, characterName });
+        newParty[idx] = { order: idx + 1, characterName };
+        newParty.sort((o1, o2) => o1.order - o2.order);
         return new Set([...newParty]);
       });
+      setValues({ characterName: '' });
     }
+    setCharacterName('');
     setValues({ characterName: '' });
   }, [characterName]);
   return (
@@ -90,9 +96,11 @@ export function Form() {
             {ui.buttons.search}
           </Btn>
           <Spacing size="0.5rem" dir="hori" />
-          <Btn variant="SECONDARY" onClick={() => setParty(new Set())} size="SMALL">
-            {ui.buttons.initialize}
-          </Btn>
+          <View styleVariant={DISPLAY}>
+            <Btn variant="SECONDARY" onClick={() => setParty(new Set())} size="SMALL">
+              {ui.buttons.initialize}
+            </Btn>
+          </View>
         </Flex>
       </form>
     </Flex>

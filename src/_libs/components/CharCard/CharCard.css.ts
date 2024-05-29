@@ -4,6 +4,7 @@ import { COLORS } from 'src/_libs/style/colors';
 export const BASE = style({
   width: '100%',
   display: 'flex',
+  minHeight: '8.75rem',
   flexDirection: 'column',
   justifyContent: 'space-between',
   border: `1px solid ${COLORS.THEME}`,

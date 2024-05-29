@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { DragEvent, Fragment } from 'react';
+import { DragEvent, Fragment, Key } from 'react';
 import { partyCard, partyInfo } from 'src/store/party';
 import { classEngravingType } from 'src/_libs/types';
 import { cynergy } from 'src/_libs/constants/cynergy';
@@ -38,11 +38,12 @@ export type DragActions = {
 
 interface CharCardProps {
   draggable?: boolean;
+  KEY: number;
   characterName: string;
   dragActions: DragActions;
 }
 
-export function CharCard({ draggable, characterName, dragActions }: CharCardProps) {
+export function CharCard({ KEY, draggable, characterName, dragActions }: CharCardProps) {
   const { data, isFetching, status } = useCharInfo(characterName);
 
   const [_, setParty] = useAtom(partyInfo);
@@ -134,7 +135,6 @@ export function CharCard({ draggable, characterName, dragActions }: CharCardProp
                   .map((m, idx) => {
                     return { order: idx + 1, characterName: m.characterName };
                   });
-                result.push({ order: party.length + 1, characterName: '' });
                 setParty(new Set(result));
               }}>
               삭제
