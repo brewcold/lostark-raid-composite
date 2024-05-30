@@ -6,7 +6,8 @@ export const BASE = style({
 });
 
 export const FOOTER_TEXT = style({
-  marginTop: '5rem',
+  marginTop: '3rem',
+  lineHeight: '1.65',
   fontSize: '0.85rem',
   color: COLORS.THEME,
 });
