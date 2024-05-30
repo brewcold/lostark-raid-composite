@@ -76,7 +76,7 @@ usePresetOverlay.Save = ({ presets, presetKey, presetReducer }: PresetOverlayPro
           <Spacing size="0.5rem" />
           <Txt as="p">
             {Array.from(presets[presetKey])
-              .map(p => p.characterName)
+              .map(p => p.characterName.length > 0 && p.characterName)
               .join(', ')}
           </Txt>
         </>
