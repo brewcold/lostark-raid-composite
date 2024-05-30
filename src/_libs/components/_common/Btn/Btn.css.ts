@@ -112,7 +112,7 @@ export const VARIANT = styleVariants({
     border: `1px solid ${COLORS.THEME}`,
     color: COLORS.THEME,
     borderRadius: '0.5rem',
-    width: '1.75rem',
+    width: '1.5rem',
     height: '2.5rem',
     transition: 'all 0.1s',
     padding: '0 0.75rem 0 0.75rem',
