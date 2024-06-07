@@ -52,7 +52,9 @@ export default function PartyStatus() {
   return (
     <View>
       <Spacing size="2rem" />
+      <PartyStatus.Init />
       <Suspense fallback={<PartyStatus.IsLoading />}>
+        <Spacing size="1rem" />
         <View styleVariant={GRID}>
           {CARD.map((members, idx) => {
             return (
