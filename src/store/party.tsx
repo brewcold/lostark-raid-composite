@@ -81,9 +81,10 @@ export const partyReducer = (state: PartyState, action: PartyAction): PartyState
       return {
         ...state,
         party: new Set(
-          Array.from(state.party)
-            .filter(m => m.characterName !== action.characterName)
-            .map((m, idx) => ({ ...m, order: idx + 1 }))
+          Array.from(state.party).map((m, idx) => {
+            if (m.characterName === action.characterName) return { order: idx + 1, characterName: '' };
+            else return m;
+          })
         ),
         members: new Set(Array.from(state.members).filter(name => name !== action.characterName)),
       };
