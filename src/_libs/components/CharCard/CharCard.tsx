@@ -1,6 +1,6 @@
-import { useAtom } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import { DragEvent, Fragment, Key } from 'react';
-import { partyCard, partyInfo } from 'src/store/party';
+import { partyCard, partyInfo, partyMembers, partyReducer } from 'src/store/party';
 import { classEngravingType } from 'src/_libs/types';
 import { cynergy } from 'src/_libs/constants/cynergy';
 import { useCharInfo } from 'src/_libs/hooks/useCharInfo';
@@ -46,7 +46,8 @@ interface CharCardProps {
 export function CharCard({ KEY, draggable, characterName, dragActions }: CharCardProps) {
   const { data, isFetching, status } = useCharInfo(characterName);
 
-  const [_, setParty] = useAtom(partyInfo);
+  const [members, setParty] = useAtom(partyInfo);
+  const memberNames = useAtomValue(partyMembers);
   const [party] = useAtom(partyCard);
 
   if (characterName === '') {
@@ -130,12 +131,14 @@ export function CharCard({ KEY, draggable, characterName, dragActions }: CharCar
               type="button"
               size="FIT"
               onClick={() => {
-                const result = party
-                  .filter(c => c.characterName !== characterName)
-                  .map((m, idx) => {
-                    return { order: idx + 1, characterName: m.characterName };
-                  });
-                setParty(new Set(result));
+                const result = partyReducer(
+                  { party: members, members: memberNames },
+                  {
+                    type: 'DELETE',
+                    characterName,
+                  }
+                );
+                setParty(result.party);
               }}>
               삭제
             </Btn>

@@ -29,14 +29,8 @@ export const partyCard = atom(get => {
   return padding;
 });
 
-//Reducers
-interface PartyMember {
-  order: number;
-  characterName: string;
-}
-
 interface PartyState {
-  party: Set<PartyMember>;
+  party: Set<Member>;
   members: Set<string>;
 }
 
@@ -70,7 +64,7 @@ export const partyReducer = (state: PartyState, action: PartyAction): PartyState
         action.open(<Modal duration="1500">{alerts.IS_FULL}</Modal>);
         return state;
       }
-      const newMember: PartyMember = { order: Array.from(state.members).length, characterName: action.characterName };
+      const newMember: Member = { order: Array.from(state.members).length, characterName: action.characterName };
       return {
         ...state,
         party: new Set([...Array.from(state.party), newMember]),
@@ -82,8 +76,9 @@ export const partyReducer = (state: PartyState, action: PartyAction): PartyState
         ...state,
         party: new Set(
           Array.from(state.party).map((m, idx) => {
-            if (m.characterName === action.characterName) return { order: idx + 1, characterName: '' };
-            else return m;
+            if (m.characterName === action.characterName) {
+              return { order: m.order, characterName: '' };
+            } else return m;
           })
         ),
         members: new Set(Array.from(state.members).filter(name => name !== action.characterName)),
@@ -99,7 +94,7 @@ export const partyReducer = (state: PartyState, action: PartyAction): PartyState
 };
 
 if (process.env.NODE_ENV !== 'production') {
-  partyMembers.debugLabel = '공대원';
+  partyMembers.debugLabel = '공대원 명단';
   partyInfo.debugLabel = '공대';
   partyCard.debugLabel = '카드 렌더링 정보';
 }
