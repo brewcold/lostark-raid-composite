@@ -6,6 +6,8 @@ export class LostarkAPIError extends Error {
   json: () => any;
 
   constructor(error: Response) {
+    //TODO: 200인 경우에도 응답이 null로 오면 에러로 잡아야는데, network resp의 특성상 throw해도
+    //에러로 안뜸.
     super(error.statusText);
 
     const status = (this.status = error.status || 0);
@@ -18,6 +20,10 @@ export class LostarkAPIError extends Error {
     this.json = error.json.bind(error);
 
     switch (status) {
+      case 200:
+        this.message = 'NO CHARACTER';
+        name += 'NoCharacterError';
+        break;
       case 400:
         this.message = 'Bad Request';
         name += 'BadRequestError';
