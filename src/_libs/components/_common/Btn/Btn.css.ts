@@ -32,6 +32,21 @@ export const VARIANT = styleVariants({
       },
     },
   },
+  CAUTION: {
+    backgroundColor: COLORS.YELLOW,
+    border: '1px solid transparent',
+    color: COLORS.WHITE,
+    transition: 'all 0.15s',
+    padding: '0 0.75rem 0 0.75rem',
+    borderRadius: '0.75rem',
+    selectors: {
+      '&:hover': {
+        backgroundColor: COLORS.YELLOW_DARK,
+        border: `1px solid ${COLORS.YELLOW_DARK}`,
+        color: COLORS.WHITE,
+      },
+    },
+  },
   WARN: {
     backgroundColor: COLORS.RED,
     border: '1px solid transparent',

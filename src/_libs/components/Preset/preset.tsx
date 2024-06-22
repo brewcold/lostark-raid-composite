@@ -4,7 +4,6 @@ import { preset, presetKeys } from 'src/store/preset';
 import { Btn } from '../_common/Btn/Btn';
 import Flex from '../_common/Flex/Flex';
 import { Spacing } from '../_common/Spacing/spacing';
-import { Txt } from '../_common/Txt/Txt';
 import { usePresetOverlay } from '../_overlays/Presets/usePresetOverlays';
 
 export function Preset() {
