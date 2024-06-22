@@ -215,6 +215,7 @@ export function CharCard({ KEY, draggable, characterName, dragActions }: CharCar
       </CardBase>
     );
   } else {
+    //TODO: DragActions 추가 구현 - 드래그 중 상태 변경되어야 함
     return (
       <CardBase draggable={draggable} dragActions={dragActions}>
         <View styleVariant={CENTERED}>{<Loader />}</View>
