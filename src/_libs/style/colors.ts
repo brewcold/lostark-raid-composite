@@ -17,6 +17,7 @@ export const COLORS = {
   RED,
   RED_DARK: '#8c4c4c',
   YELLOW,
+  YELLOW_DARK: '#B59951',
   WHITE: '#fff',
   PARTY_1: GREEN,
   PARTY_2: THEME,
