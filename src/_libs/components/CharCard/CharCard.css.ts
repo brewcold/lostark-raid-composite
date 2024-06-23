@@ -13,6 +13,12 @@ export const BASE = style({
   cursor: 'pointer',
   userSelect: 'none',
   backgroundColor: COLORS.WHITE,
+  selectors: {
+    '&:hover': {
+      border: `2px solid ${COLORS.MAIN}`,
+      // outlineOffset: '0.2rem',
+    },
+  },
 });
 
 export const CARD_BODY = style({

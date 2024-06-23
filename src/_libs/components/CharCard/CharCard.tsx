@@ -38,12 +38,11 @@ export type DragActions = {
 
 interface CharCardProps {
   draggable?: boolean;
-  KEY: number;
   characterName: string;
   dragActions: DragActions;
 }
 
-export function CharCard({ KEY, draggable, characterName, dragActions }: CharCardProps) {
+export function CharCard({ draggable, characterName, dragActions }: CharCardProps) {
   const { data, isFetching, status } = useCharInfo(characterName);
 
   const [members, setParty] = useAtom(partyInfo);

@@ -81,15 +81,13 @@ export const VARIANT = styleVariants({
     backgroundColor: COLORS.WHITE,
     border: `1px solid ${COLORS.GRAY}`,
     color: COLORS.THEME,
-    transition: 'all 0.15s',
+    transition: 'all 0.1s',
     padding: '0 0.75rem 0 0.75rem',
     borderRadius: '0.75rem',
-
     selectors: {
       '&:hover': {
-        border: `1px solid transparent`,
-        backgroundColor: COLORS.MAIN_OPACITY15,
-        color: COLORS.MAIN,
+        outline: `1px solid ${COLORS.MAIN}`,
+        outlineOffset: '0.2rem',
       },
     },
   },
@@ -135,6 +133,8 @@ export const VARIANT = styleVariants({
       '&:hover': {
         border: `1px solid ${COLORS.MAIN}`,
         color: COLORS.MAIN,
+        outline: `1px solid ${COLORS.MAIN}`,
+        outlineOffset: '0.15rem',
       },
     },
   },

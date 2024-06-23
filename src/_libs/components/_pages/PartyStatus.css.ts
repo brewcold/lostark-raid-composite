@@ -17,7 +17,7 @@ export const GRID = style({
   marginBottom: '5rem',
   display: 'grid',
   gridTemplateColumns: 'repeat(4, 1fr)',
-  gap: '0.35rem',
+  gap: '0.5rem',
 });
 
 export const GRID_ITEM_PARTY_NUM = style({

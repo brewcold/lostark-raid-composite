@@ -59,7 +59,7 @@ export default function PartyStatus() {
           {CARD.map((members, idx) => {
             return (
               <CharCard
-                KEY={idx}
+                key={members.characterName}
                 draggable
                 dragActions={{
                   onDragStart: e => {
@@ -87,7 +87,6 @@ export default function PartyStatus() {
                     dragEnd();
                   },
                 }}
-                key={idx}
                 characterName={members.characterName}
               />
             );

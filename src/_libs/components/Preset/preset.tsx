@@ -19,7 +19,7 @@ export function Preset() {
             const IS_SAVED = presets[KEY].length > 0;
             return (
               <Fragment key={n}>
-                <Spacing size="0.25rem" dir="hori" />
+                <Spacing size="0.35rem" dir="hori" />
                 <Btn
                   variant={IS_SAVED ? 'PRESET_SAVED' : 'PRESET_NOT_SAVED'}
                   size="FIT"
