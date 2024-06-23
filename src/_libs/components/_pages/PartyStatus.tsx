@@ -59,7 +59,7 @@ export default function PartyStatus() {
           {CARD.map((members, idx) => {
             return (
               <CharCard
-                key={members.characterName}
+                key={idx}
                 draggable
                 dragActions={{
                   onDragStart: e => {
