@@ -64,8 +64,8 @@ export const partyReducer = (state: PartyState, action: PartyAction): PartyState
         action.open(<Modal duration="1500">{alerts.IS_FULL}</Modal>);
         return state;
       }
-      const order = Array.from(state.party).findIndex(m => m.characterName === '') + 1;
-      const newMember: Member = { order, characterName: action.characterName };
+      const idx = Array.from(state.party).findIndex(m => m.characterName === '') + 1;
+      const newMember: Member = { order: idx + 1, characterName: action.characterName };
       return {
         ...state,
         party: new Set([...Array.from(state.party), newMember]),

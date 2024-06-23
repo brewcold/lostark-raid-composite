@@ -60,10 +60,10 @@ export function Form() {
           )
       );
     } else {
-      const order = Array.from(party).findIndex(m => m.characterName === '');
+      const idx = Array.from(party).findIndex(m => m.characterName === '');
       setParty(prevParty => {
         const newParty = Array.from(prevParty);
-        newParty[order] = { order, characterName };
+        newParty[idx] = { order: idx + 1, characterName };
         newParty.sort((o1, o2) => o1.order - o2.order);
         return new Set([...newParty]);
       });
