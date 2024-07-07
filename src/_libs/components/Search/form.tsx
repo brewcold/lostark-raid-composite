@@ -21,13 +21,12 @@ interface formValues {
 }
 
 export function Form() {
-  const [previousQueryKey, setPreviousQueryKey] = useState<string[]>([]);
   const [characterName, setCharacterName] = useAtom(input);
 
   const [_, setAppliedPreset] = useAtom<PresetKeys | null>(currentPreset);
   const [party, setParty] = useAtom(partyInfo);
   const [members] = useAtom(partyMembers);
-  const { data, isLoading, error } = useCharInfo(characterName);
+  const { data, isLoading } = useCharInfo(characterName);
   const initialValues: formValues = { characterName: '' };
   const onSubmit = (v: formValues) => setCharacterName(v.characterName.trim());
 
@@ -43,7 +42,6 @@ export function Form() {
       return;
     }
 
-    setPreviousQueryKey([...previousQueryKey, characterName]);
     if (members.has(characterName)) {
       setCharacterName('');
       open(<Modal duration="1500">{alerts.IS_DUPLICATED}</Modal>);
@@ -75,21 +73,10 @@ export function Form() {
 
   // TODO: API상 존재하지 않는 캐릭터인 경우 null이 응답으로 오는데
   // 이 경우 해당 카드를 다시 삭제해야 함
-  // useEffect(() => {
-  //   if (!data) {
-  //     setParty(
-  //       prevParty =>
-  //         new Set(
-  //           Array.from(prevParty)
-  //             .filter(m => previousQueryKey[-1] !== m.characterName)
-  //             .map((m, idx) => {
-  //               return { order: idx + 1, characterName: m.characterName };
-  //             })
-  //         )
-  //     );
-  //     previousQueryKey.pop();
-  //   }
-  // }, [data, error, previousQueryKey]);
+  useEffect(() => {
+    console.log('뮤뮤');
+    if (data === null) console.log('abcd');
+  }, [data]);
 
   return (
     <Flex flexDirection="column" justifyContents="flexStart">
@@ -100,6 +87,7 @@ export function Form() {
         }}>
         <Flex width="fill" flexDirection="row" justifyContents="center">
           <Input
+            disabled={isLoading}
             name="characterName"
             value={values.characterName}
             onChange={handleChange}
@@ -112,6 +100,7 @@ export function Form() {
           <Spacing size="0.5rem" dir="hori" />
           <View styleVariant={DISPLAY}>
             <Btn
+              disabled={isLoading}
               variant="SECONDARY"
               onClick={() => {
                 setParty(new Set(EMPTY_PARTY));
