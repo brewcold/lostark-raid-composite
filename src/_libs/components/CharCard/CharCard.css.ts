@@ -15,8 +15,8 @@ export const BASE = style({
   backgroundColor: COLORS.WHITE,
   selectors: {
     '&:hover': {
-      border: `2px solid ${COLORS.MAIN}`,
-      // outlineOffset: '0.2rem',
+      outline: `2px solid ${COLORS.MAIN}`,
+      outlineOffset: '0.2rem',
     },
   },
 });
