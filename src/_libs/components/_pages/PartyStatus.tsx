@@ -59,6 +59,7 @@ export default function PartyStatus() {
           {CARD.map((members, idx) => {
             return (
               <CharCard
+                partyNumber={Math.floor(idx / 4) + 1}
                 key={idx}
                 draggable
                 dragActions={{
