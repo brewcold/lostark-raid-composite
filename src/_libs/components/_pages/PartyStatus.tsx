@@ -104,12 +104,12 @@ PartyStatus.Init = () => {
       <Txt as="h1" styleVariant={SITE_TITLE}>
         {meta.TITLE}
       </Txt>
-      <Spacing size="0.5rem" />
+      {/* <Spacing size="0.5rem" />
       <Txt as="h2" styleVariant={INFO}>
         {ui.fallbacks.init}
         <br />
         {ui.fallbacks.example}
-      </Txt>
+      </Txt> */}
     </View>
   );
 };

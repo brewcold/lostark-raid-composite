@@ -1,7 +1,7 @@
 import { useAtom, useAtomValue } from 'jotai';
 import { DragEvent, Fragment } from 'react';
 import { partyCard, partyInfo, partyMembers, partyReducer } from 'src/store/party';
-import { classEngravingType } from 'src/_libs/types';
+import { classEngravingType, GemsApiType } from 'src/_libs/types';
 import { cynergy } from 'src/_libs/constants/cynergy';
 import { useCharInfo } from 'src/_libs/hooks/useCharInfo';
 import { Btn } from '../_common/Btn/Btn';
@@ -90,51 +90,30 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
   function CharacterCard({ data }) {
     const { ArmoryCard, ArmoryEngraving, ArmoryGem, ArmoryProfile, ArmoryEquipment, ArmorySkills } = data;
 
-    const cards = ArmoryCard?.Effects[0].Items;
-    const cardOption = ArmoryCard?.Effects[0].Items[cards.length - 1].Name;
+    const cards = ArmoryCard?.Effects[0]?.Items;
+    const cardOption = ArmoryCard?.Effects[0]?.Items[cards.length - 1]?.Name;
 
     const classEngraving: (typeof classEngravingType)[number][] = ArmoryEngraving?.Effects.filter(e => {
       const trimIdx = e.Name.indexOf('Lv');
       const trimmed = e.Name.slice(0, trimIdx).trim() as (typeof classEngravingType)[number];
       return classEngravingType.includes(trimmed);
-    }).map(e => e.Name.slice(0, e.Name.indexOf('Lv')).trim() as (typeof classEngravingType)[number]);
+    })?.map(e => e.Name.slice(0, e.Name.indexOf('Lv')).trim() as (typeof classEngravingType)[number]);
 
     const classCynergy = Array.from(
       new Set(classEngraving?.map(e => cynergy[ArmoryProfile.CharacterClassName][e])) || []
     ).join(', ');
 
-    const gemsList = ArmoryGem?.Gems.map(g => {
+    const gemsList = ArmoryGem?.Gems?.map(g => {
       const idx = g.Name.indexOf('보석');
       const level = g.Name.indexOf('10레벨');
       if (level !== -1) return g.Name.slice(idx - 9, idx - 2);
       else if (idx !== -1) return g.Name.slice(idx - 8, idx - 2);
       else return '0';
     }) || ['장착한 보석 없음'];
-    const gems: Map<string, number> = new Map();
 
-    const sortedGems = gemsList.sort((o1, o2) => {
-      const level1 = parseInt(o1);
-      const level2 = parseInt(o2);
+    const gems: Map<GemsApiType, number> = new Map();
 
-      // 레벨이 높은 순서대로 정렬
-      if (level1 !== level2) {
-        return level2 - level1;
-      }
-
-      // 레벨이 같을 경우 "멸화"가 "홍염"보다 우선
-      const type1 = o1.slice(4);
-      const type2 = o2.slice(4);
-
-      if (type1 === type2) {
-        return 0;
-      } else if (type1 === '멸화' && type2 === '홍염') {
-        return -1;
-      } else {
-        return 1;
-      }
-    });
-
-    sortedGems.forEach(g => {
+    gemsList.forEach((g: GemsApiType) => {
       if (g === '장착한 보석 없음') gems.set(g, 0);
       else if (gems.has(g)) {
         const currentCount = gems.get(g) || 0;
@@ -142,6 +121,31 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
       } else {
         gems.set(g, 1);
       }
+    });
+
+    const GEMS = Array.from(gems.keys()).sort((a, b) => {
+      const gemTypePriority = {
+        겁화: 0,
+        멸화: 1,
+        작열: 2,
+        홍염: 3,
+      };
+
+      const parseGem = gem => {
+        const [level, type] = gem.split('레벨 ');
+        return { level: parseInt(level), type };
+      };
+
+      const aGem = parseGem(a.replace('의 보석', ''));
+      const bGem = parseGem(b.replace('의 보석', ''));
+
+      const aAdjustedLevel = aGem.type === '겁화' || aGem.type === '작열' ? aGem.level + 2 : aGem.level;
+      const bAdjustedLevel = bGem.type === '겁화' || bGem.type === '작열' ? bGem.level + 2 : bGem.level;
+
+      if (aAdjustedLevel !== bAdjustedLevel) {
+        return bAdjustedLevel - aAdjustedLevel;
+      }
+      return gemTypePriority[aGem.type] - gemTypePriority[bGem.type];
     });
 
     const armorTypes = ['무기', '투구', '상의', '하의', '장갑', '어깨'];
@@ -175,17 +179,20 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
             </Txt>
             <Spacing size="0.5rem" />
             <Txt as="p" styleVariant={INFO}>
-              {Array.from(gems.keys()).map(k => {
+              {GEMS.map(k => {
                 const amount = gems.get(k) || 0;
                 return (
-                  <Txt as="span" styleVariant={INFO_SPAN_BOLD} key={k}>
-                    {`${k} `}
-                    {amount > 0 && (
-                      <Txt as="span" styleVariant={SUB_INFO_SPAN}>
-                        ×{amount}
-                      </Txt>
-                    )}
-                  </Txt>
+                  <>
+                    <Txt as="span" styleVariant={INFO_SPAN_BOLD} key={k}>
+                      {`${k}`}
+                      {amount > 0 && (
+                        <Txt as="span" styleVariant={SUB_INFO_SPAN}>
+                          {`×${amount}`}
+                        </Txt>
+                      )}
+                    </Txt>
+                    <Spacing size="0.3rem" dir="hori" />
+                  </>
                 );
               })}
             </Txt>

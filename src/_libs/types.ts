@@ -299,3 +299,53 @@ export const classEngravingType = [
 export type ClassType = (typeof classType)[number];
 export type ClassEngravingType = (typeof classEngravingType)[number];
 export type ClassEngravingMap = Record<ClassEngravingType, [ClassType]>;
+
+type GemSuffix = '의 보석';
+type GemType = '겁화' | '멸화' | '홍염' | '작열';
+type Level = '1레벨' | '2레벨' | '3레벨' | '4레벨' | '5레벨' | '6레벨' | '7레벨' | '8레벨' | '9레벨' | '10레벨';
+
+export type GemsApiType = `${Level} ${GemType}${GemSuffix}` | '장착한 보석 없음';
+export const gemTypes = [
+  '10레벨 겁화',
+  '9레벨 겁화',
+  '8레벨 겁화',
+  '7레벨 겁화',
+  '6레벨 겁화',
+  '5레벨 겁화',
+  '4레벨 겁화',
+  '3레벨 겁화',
+  '2레벨 겁화',
+  '1레벨 겁화',
+  '10레벨 멸화',
+  '9레벨 멸화',
+  '8레벨 멸화',
+  '7레벨 멸화',
+  '6레벨 멸화',
+  '5레벨 멸화',
+  '4레벨 멸화',
+  '3레벨 멸화',
+  '2레벨 멸화',
+  '1레벨 멸화',
+  '10레벨 홍염',
+  '9레벨 홍염',
+  '8레벨 홍염',
+  '7레벨 홍염',
+  '6레벨 홍염',
+  '5레벨 홍염',
+  '4레벨 홍염',
+  '3레벨 홍염',
+  '2레벨 홍염',
+  '1레벨 홍염',
+  '10레벨 작열',
+  '9레벨 작열',
+  '8레벨 작열',
+  '7레벨 작열',
+  '6레벨 작열',
+  '5레벨 작열',
+  '4레벨 작열',
+  '3레벨 작열',
+  '2레벨 작열',
+  '1레벨 작열',
+];
+
+export const gemTypesWithSuffix = gemTypes.map(gem => `${gem}의 보석`);
