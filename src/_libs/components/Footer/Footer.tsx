@@ -10,7 +10,7 @@ export function Footer() {
         Copyright 2024. Lostark Raid Composite All Rights Reserved.
         <br />이 서비스는 Smilegate RPG의 OPEN API를 사용합니다.
       </Txt>
-      <Spacing size="3rem" />
+      <Spacing size="1rem" />
     </View>
   );
 }

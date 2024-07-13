@@ -13,10 +13,10 @@ export function Menu({ styleVariant }: { styleVariant: string }) {
   return (
     <View styleVariant={styleVariant}>
       <Flex flexDirection="row" justifyContents="center">
-        <Btn variant="WHITE" onClick={() => (!isOpen ? open(<Cynergy />) : close())}>
+        {/* <Btn variant="WHITE" onClick={() => (!isOpen ? open(<Cynergy />) : close())}>
           {ui.buttons.cynergy}
         </Btn>
-        <Spacing size="0.5rem" dir="hori" />
+        <Spacing size="0.5rem" dir="hori" /> */}
         <Btn variant="WHITE" onClick={() => (!isOpen ? open(<Tutorial />) : close())}>
           {ui.buttons.tutorial}
         </Btn>
