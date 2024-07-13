@@ -19,6 +19,7 @@ import {
   INFO_SPAN,
   INFO_SPAN_BOLD,
   ITEM_LEVEL,
+  LEFT,
   PARTY_NUMBER,
   SUB_INFO_SPAN,
   TOGGLE,
@@ -152,77 +153,79 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
     const armorSet = ['악몽', '사멸', '구원', '지배', '파괴', '배신', '매혹'];
 
     return (
-      <ErrorBoundary fallback={<Error />}>
-        <Txt as="h1" styleVariant={CHAR_NAME}>
-          {ArmoryProfile.CharacterName}
-          <Txt as="span" styleVariant={ITEM_LEVEL}>
-            {ArmoryProfile.ItemAvgLevel}
-          </Txt>
-        </Txt>
-        <View>
-          <Txt as="p" styleVariant={INFO}>{`${classEngraving?.join(', ') || ''} ${
-            ArmoryProfile.CharacterClassName
-          }`}</Txt>
-          <Txt as="p" styleVariant={INFO}>
-            {classCynergy}
-          </Txt>
-        </View>
-        <Spacing size="0.25rem" />
-        <details className={TOGGLE_DETAIL}>
-          <summary className={TOGGLE}>{ui.buttons.more_info}</summary>
-          <Spacing size="0.5rem" />
-          <View>
-            <Txt as="p" styleVariant={INFO}>
-              <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
-                {cardOption}
-              </Txt>
+      <View styleVariant={LEFT}>
+        <ErrorBoundary fallback={<Error />}>
+          <Txt as="h1" styleVariant={CHAR_NAME}>
+            {ArmoryProfile.CharacterName}
+            <Txt as="span" styleVariant={ITEM_LEVEL}>
+              {ArmoryProfile.ItemAvgLevel}
             </Txt>
+          </Txt>
+          <View>
+            <Txt as="p" styleVariant={INFO}>{`${classEngraving?.join(', ') || ''} ${
+              ArmoryProfile.CharacterClassName
+            }`}</Txt>
+            <Txt as="p" styleVariant={INFO}>
+              {classCynergy}
+            </Txt>
+          </View>
+          <Spacing size="0.25rem" />
+          <details className={TOGGLE_DETAIL}>
+            <summary className={TOGGLE}>{ui.buttons.more_info}</summary>
+            <Spacing size="0.5rem" />
+            <View>
+              <Txt as="p" styleVariant={INFO}>
+                <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
+                  {cardOption}
+                </Txt>
+              </Txt>
+              <Spacing size="0.5rem" />
+              <Txt as="p" styleVariant={INFO}>
+                {GEMS.map(k => {
+                  const amount = gems.get(k) || 0;
+                  return (
+                    <>
+                      <Txt as="span" styleVariant={INFO_SPAN_BOLD} key={k}>
+                        {`${k}`}
+                        {amount > 0 && (
+                          <Txt as="span" styleVariant={SUB_INFO_SPAN}>
+                            {`×${amount}`}
+                          </Txt>
+                        )}
+                      </Txt>
+                      <Spacing size="0.3rem" dir="hori" />
+                    </>
+                  );
+                })}
+              </Txt>
+            </View>
             <Spacing size="0.5rem" />
             <Txt as="p" styleVariant={INFO}>
-              {GEMS.map(k => {
-                const amount = gems.get(k) || 0;
-                return (
-                  <>
-                    <Txt as="span" styleVariant={INFO_SPAN_BOLD} key={k}>
-                      {`${k}`}
-                      {amount > 0 && (
-                        <Txt as="span" styleVariant={SUB_INFO_SPAN}>
-                          {`×${amount}`}
-                        </Txt>
-                      )}
-                    </Txt>
-                    <Spacing size="0.3rem" dir="hori" />
-                  </>
-                );
+              {ArmoryEquipment?.map(a => {
+                const type = a.Type;
+                if (armorTypes.includes(type)) {
+                  return (
+                    <Fragment key={a.Name}>
+                      <Txt as="span" styleVariant={INFO_SPAN}>
+                        {a.Type === '무기' ? a.Type + ' ' + a.Name : a.Name}
+                      </Txt>
+                      <br />
+                    </Fragment>
+                  );
+                }
+                // TODO: 세트 레벨별 이름 및 계승상태 매칭 필요
               })}
             </Txt>
-          </View>
-          <Spacing size="0.5rem" />
-          <Txt as="p" styleVariant={INFO}>
-            {ArmoryEquipment?.map(a => {
-              const type = a.Type;
-              if (armorTypes.includes(type)) {
-                return (
-                  <Fragment key={a.Name}>
-                    <Txt as="span" styleVariant={INFO_SPAN}>
-                      {a.Type === '무기' ? a.Type + ' ' + a.Name : a.Name}
-                    </Txt>
-                    <br />
-                  </Fragment>
-                );
-              }
-              // TODO: 세트 레벨별 이름 및 계승상태 매칭 필요
-            })}
-          </Txt>
-          <Spacing size="0.5rem" />
-          <View>
-            <Txt as="p" styleVariant={INFO}>
-              {`전투 레벨 ${ArmoryProfile.CharacterLevel} 원정대 ${ArmoryProfile.ExpeditionLevel}`} <br />
-              {`스킬포인트 ${ArmoryProfile.UsingSkillPoint} / ${ArmoryProfile.TotalSkillPoint}`}
-            </Txt>
-          </View>
-        </details>
-      </ErrorBoundary>
+            <Spacing size="0.5rem" />
+            <View>
+              <Txt as="p" styleVariant={INFO}>
+                {`전투 레벨 ${ArmoryProfile.CharacterLevel} 원정대 ${ArmoryProfile.ExpeditionLevel}`} <br />
+                {`스킬포인트 ${ArmoryProfile.UsingSkillPoint} / ${ArmoryProfile.TotalSkillPoint}`}
+              </Txt>
+            </View>
+          </details>
+        </ErrorBoundary>
+      </View>
     );
   }
 

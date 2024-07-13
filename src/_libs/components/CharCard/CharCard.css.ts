@@ -6,7 +6,7 @@ export const BASE = style({
   display: 'flex',
   minHeight: '8.75rem',
   flexDirection: 'column',
-  justifyContent: 'space-between',
+  justifyContent: 'flexStart',
   border: `1px solid ${COLORS.THEME}`,
   borderRadius: '1.15rem',
   padding: '0.75rem 1.15rem 1.15rem 1.15rem',
@@ -99,7 +99,7 @@ export const INFO_SPAN = style({
 });
 
 export const INFO_SPAN_BOLD = style({
-  whiteSpace: 'nowrap',
+  whiteSpace: 'normal',
   fontSize: '0.85rem',
   lineHeight: 1.3,
   fontWeight: 600,
@@ -116,6 +116,11 @@ export const SUB_INFO_SPAN = style({
 export const CARD_FOOTER = style({
   width: '100%',
   marginTop: '1rem',
+});
+
+export const LEFT = style({
+  width: '100%',
+  height: '100%',
 });
 
 export const CENTERED = style({
