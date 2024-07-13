@@ -10,7 +10,7 @@ export const BASE = style({
   border: `1px solid ${COLORS.THEME}`,
   borderRadius: '1.15rem',
   padding: '0.75rem 1.15rem 1.15rem 1.15rem',
-  cursor: 'pointer',
+  cursor: 'grab',
   userSelect: 'none',
   backgroundColor: COLORS.WHITE,
   selectors: {
