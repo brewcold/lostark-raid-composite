@@ -97,8 +97,8 @@ export function Form() {
           <Btn type="submit" isLoading={isLoading} size="SMALL">
             {ui.buttons.search}
           </Btn>
-          <Spacing size="0.5rem" dir="hori" />
           <View styleVariant={DISPLAY}>
+            <Spacing size="0.5rem" dir="hori" />
             <Btn
               disabled={isLoading}
               variant="SECONDARY"

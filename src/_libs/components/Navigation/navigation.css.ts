@@ -9,13 +9,13 @@ export const BASE = style({
   zIndex: 999,
 
   '@media': {
-    '(width > 480px)': {
+    '(width > 680px)': {
       justifyContent: 'space-between',
       alignItems: 'center',
       position: 'sticky',
       top: 0,
     },
-    '(0 <= width <= 480px)': {
+    '(0 <= width <= 680px)': {
       width: '100vw',
       flexDirection: 'column',
       rowGap: '0.5rem',
@@ -30,7 +30,7 @@ export const BASE = style({
 export const DISPLAY = style({
   '@media': {
     '(width > 480px)': {},
-    '(0 <= width <= 480px)': {
+    '(0 <= width <= 680px)': {
       display: 'none',
     },
   },
