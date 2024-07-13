@@ -18,6 +18,10 @@ export const BASE = style({
       outline: `2px solid ${COLORS.MAIN}`,
       outlineOffset: '0.2rem',
     },
+    '&:active': {
+      outline: 'none',
+      cursor: 'move',
+    },
   },
 });
 
