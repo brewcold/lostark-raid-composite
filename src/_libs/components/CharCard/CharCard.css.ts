@@ -94,16 +94,15 @@ export const INFO = style({
 export const INFO_SPAN = style({
   fontSize: '0.85rem',
   lineHeight: 1.3,
-  marginBottom: '0.5rem',
   color: COLORS.MAIN,
 });
 
 export const INFO_SPAN_BOLD = style({
+  display: 'inline-block',
   whiteSpace: 'normal',
   fontSize: '0.85rem',
   lineHeight: 1.3,
   fontWeight: 600,
-  marginBottom: '0.5rem',
   color: COLORS.MAIN,
 });
 
@@ -134,12 +133,14 @@ export const CENTERED = style({
 export const TOGGLE = style({
   cursor: 'pointer',
   color: COLORS.THEME,
-  fontSize: '0.85rem',
+  fontSize: '0.9rem',
+  textAlign: 'right',
 });
 
 export const TOGGLE_DETAIL = style({
   margin: 0,
   padding: 0,
+  textAlign: 'left',
 });
 
 export const EMPTY_CARD = style({
