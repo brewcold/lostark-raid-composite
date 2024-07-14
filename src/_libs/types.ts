@@ -1,6 +1,7 @@
 import { cynergy } from './constants/cynergy';
 
 interface ArmoryProfile {
+  ArkPassive: ArkPassive;
   CharacterImage: string;
   ExpeditionLevel: number;
   PvpGradeName: string;
@@ -42,6 +43,11 @@ interface ArmoryEquipment {
 }
 
 interface ArmoryEngraving {
+  ArkPassiveEffects?: {
+    Icon: string;
+    Name: (typeof classEngravingType)[number];
+    Description: string;
+  }[];
   Effects: {
     Icon: string;
     Name: (typeof classEngravingType)[number];
@@ -192,6 +198,23 @@ interface ArmoryCard {
 interface ArmoryGem {
   Effects: { Icon: string; GemSlot: number; Name: string; Description: string }[];
   Gems: { Icon: string; Slot: number; Name: string; Level: number; Tooltip: string }[];
+}
+
+interface ArkPassive {
+  IsArkPassive: boolean;
+  Points: [ArkPassiveEvolve, ArkPassiveEnlightenment];
+}
+
+interface ArkPassiveEvolve {
+  Name: '진화';
+  Tooltip: string;
+  Value: number;
+}
+
+interface ArkPassiveEnlightenment {
+  Name: '깨달음';
+  Tooltip: string;
+  Value: number;
 }
 
 export interface Armory {
