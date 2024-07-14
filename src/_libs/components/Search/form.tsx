@@ -71,13 +71,6 @@ export function Form() {
     setValues({ characterName: '' });
   }, [characterName]);
 
-  // TODO: API상 존재하지 않는 캐릭터인 경우 null이 응답으로 오는데
-  // 이 경우 해당 카드를 다시 삭제해야 함
-  useEffect(() => {
-    console.log('뮤뮤');
-    if (data === null) console.log('abcd');
-  }, [data]);
-
   return (
     <Flex flexDirection="column" justifyContents="flexStart">
       <form
