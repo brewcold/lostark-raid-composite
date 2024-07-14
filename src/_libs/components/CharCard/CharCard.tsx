@@ -186,11 +186,16 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
         <View>
           <Txt as="p" styleVariant={INFO}>
             <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
+              {transcendenceGrade}
+            </Txt>
+          </Txt>
+          <Spacing size="0.5rem" />
+          <Txt as="p" styleVariant={INFO}>
+            <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
               {cardOption}
             </Txt>
           </Txt>
           <Spacing size="0.5rem" />
-          {transcendenceGrade}
           <Txt as="p" styleVariant={INFO}>
             {GEMS.map(k => {
               const amount = gemsAmount.get(k) || 0;
