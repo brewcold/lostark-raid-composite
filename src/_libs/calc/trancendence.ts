@@ -7,7 +7,8 @@ export function calcTranscendenceGrade(tooltip: string): number {
 }
 
 export function calcTotalTranscendence(equipments: ArmoryEquipment[]): string {
-  const html = JSON.parse(equipments[0].Tooltip).Element_009.value.Element_000.contentStr.Element_001.contentStr;
+  const html = JSON.parse(equipments[0].Tooltip)?.Element_009?.value?.Element_000?.contentStr?.Element_001?.contentStr;
+
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
   const text = doc.body.textContent?.slice(13);

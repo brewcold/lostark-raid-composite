@@ -179,17 +179,17 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
     const { ArmoryCard, ArmoryGem, ArmoryProfile, ArmoryEquipment } = data;
     const [_, cardOption] = calcCard(ArmoryCard);
     const [gemsAmount, GEMS] = calcGems(ArmoryGem);
-    const transcendenceGrade = calcTotalTranscendence(ArmoryEquipment);
+    // const transcendenceGrade = calcTotalTranscendence(ArmoryEquipment);
 
     return (
       <>
         <View>
-          <Txt as="p" styleVariant={INFO}>
+          {/* <Txt as="p" styleVariant={INFO}>
             <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
               {transcendenceGrade}
             </Txt>
-          </Txt>
-          <Spacing size="0.5rem" />
+          </Txt> */}
+          {/* <Spacing size="0.5rem" /> */}
           <Txt as="p" styleVariant={INFO}>
             <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
               {cardOption}
