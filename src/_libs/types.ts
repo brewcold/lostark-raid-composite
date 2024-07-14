@@ -34,15 +34,16 @@ interface Tendency {
   MaxPoint: number;
 }
 
-interface ArmoryEquipment {
+export const armorTypes = ['무기', '투구', '상의', '하의', '장갑', '어깨'];
+export interface ArmoryEquipment {
   Type: string;
   Name: string;
   Icon: string;
   Grade: string;
-  Tooltip: Tooltip;
+  Tooltip: string;
 }
 
-interface ArmoryEngraving {
+export interface ArmoryEngraving {
   ArkPassiveEffects?: {
     Icon: string;
     Name: (typeof classEngravingType)[number];
@@ -57,11 +58,11 @@ interface ArmoryEngraving {
     Slot: number;
     Name: string;
     Icon: string;
-    Tooltop: string;
+    Tooltip: string;
   }[];
 }
 
-interface Tooltip {
+export interface Tooltip {
   Element_000: ElementNameTagBox;
   Element_001: ElementItemTitle;
   Element_002?: ElementSingleTextBox;
@@ -186,7 +187,18 @@ interface ArmorySkill {
   Tooltip: Tooltip;
 }
 
-interface ArmoryCard {
+export interface ArmoryCard {
+  Cards: Card[];
+  Effects: {
+    CardSlots: [];
+    Items: {
+      Name: string;
+      Description: string;
+    }[];
+  }[];
+}
+
+export interface Card {
   Name: string;
   AwakeCount: number;
   AwakeTotal: number;
@@ -195,7 +207,7 @@ interface ArmoryCard {
   Tooltip: Tooltip;
 }
 
-interface ArmoryGem {
+export interface ArmoryGem {
   Effects: { Icon: string; GemSlot: number; Name: string; Description: string }[];
   Gems: { Icon: string; Slot: number; Name: string; Level: number; Tooltip: string }[];
 }
@@ -224,7 +236,7 @@ export interface Armory {
   ArmoryEngraving: ArmoryEngraving;
   ArmoryGem: ArmoryGem;
   ArmoryCard: {
-    Cards: ArmoryCard[];
+    Cards: Card[];
     Effects: {
       CardSlots: [];
       Items: {

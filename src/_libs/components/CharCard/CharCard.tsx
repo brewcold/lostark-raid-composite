@@ -1,8 +1,8 @@
 import { useAtom, useAtomValue } from 'jotai';
 import { DragEvent, Fragment, MouseEvent, useEffect, useRef } from 'react';
 import { partyCard, partyInfo, partyMembers, partyReducer } from 'src/store/party';
-import { Armory, classEngravingType, GemsApiType } from 'src/_libs/types';
-import { cynergy } from 'src/_libs/constants/cynergy';
+import { armorTypes, Armory } from 'src/_libs/types';
+import { calcCard } from '../../calc/card';
 import { useCharInfo } from 'src/_libs/hooks/useCharInfo';
 import { Btn } from '../_common/Btn/Btn';
 import Flex from '../_common/Flex/Flex';
@@ -29,8 +29,10 @@ import { ErrorBoundary } from '@sentry/nextjs';
 import Error from '../_pages/error';
 import ui from 'src/_libs/constants/ui';
 import { useBooleanState, useModal } from '@syyu/util/react';
-
 import { Overlay } from '../_common/Overlay/Overlay';
+import { calcTotalTranscendence } from 'src/_libs/calc/trancendence';
+import { calcGems } from 'src/_libs/calc/gems';
+import { calcEngraving } from 'src/_libs/calc/class-engraving';
 
 export type DragActions = {
   onDragStart: (e: DragEvent) => void;
@@ -92,17 +94,9 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
   }
 
   function CharacterCard({ data }: { data: Armory }) {
-    const { ArmoryCard, ArmoryEngraving, ArmoryGem, ArmoryProfile, ArmoryEquipment, ArmorySkills } = data;
+    const { ArmoryEngraving, ArmoryGem, ArmoryProfile, ArmoryEquipment, ArmorySkills } = data;
 
-    const classEngraving: (typeof classEngravingType)[number][] = ArmoryEngraving?.Effects.filter(e => {
-      const trimIdx = e.Name.indexOf('Lv');
-      const trimmed = e.Name.slice(0, trimIdx).trim() as (typeof classEngravingType)[number];
-      return classEngravingType.includes(trimmed);
-    })?.map(e => e.Name.slice(0, e.Name.indexOf('Lv')).trim() as (typeof classEngravingType)[number]);
-
-    const classCynergy = Array.from(
-      new Set(classEngraving?.map(e => cynergy[ArmoryProfile.CharacterClassName][e])) || []
-    ).join(', ');
+    const [classEngraving, classCynergy] = calcEngraving(ArmoryEngraving, ArmoryProfile.CharacterClassName);
 
     const { open, close } = useModal();
     const handleDetailOpen = () => open(<Overlay body={<DetailSpec data={data} />} control={<></>} />);
@@ -182,67 +176,10 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
   }
 
   function DetailSpec({ data }: { data: Armory }) {
-    const { ArmoryCard, ArmoryEngraving, ArmoryGem, ArmoryProfile, ArmoryEquipment, ArmorySkills } = data;
-
-    const cards = ArmoryCard?.Effects[0]?.Items;
-    const cardOption = ArmoryCard?.Effects[0]?.Items[cards.length - 1]?.Name;
-
-    const classEngraving: (typeof classEngravingType)[number][] = ArmoryEngraving?.Effects.filter(e => {
-      const trimIdx = e.Name.indexOf('Lv');
-      const trimmed = e.Name.slice(0, trimIdx).trim() as (typeof classEngravingType)[number];
-      return classEngravingType.includes(trimmed);
-    })?.map(e => e.Name.slice(0, e.Name.indexOf('Lv')).trim() as (typeof classEngravingType)[number]);
-
-    const classCynergy = Array.from(
-      new Set(classEngraving?.map(e => cynergy[ArmoryProfile.CharacterClassName][e])) || []
-    ).join(', ');
-
-    const gemsList = ArmoryGem?.Gems?.map(g => {
-      const idx = g.Name.indexOf('보석');
-      const level = g.Name.indexOf('10레벨');
-      if (level !== -1) return g.Name.slice(idx - 9, idx - 2);
-      else if (idx !== -1) return g.Name.slice(idx - 8, idx - 2);
-      else return '0';
-    }) || ['장착한 보석 없음'];
-
-    const gems: Map<GemsApiType, number> = new Map();
-
-    gemsList.forEach((g: GemsApiType) => {
-      if (g === '장착한 보석 없음') gems.set(g, 0);
-      else if (gems.has(g)) {
-        const currentCount = gems.get(g) || 0;
-        gems.set(g, currentCount + 1);
-      } else {
-        gems.set(g, 1);
-      }
-    });
-
-    const GEMS = Array.from(gems.keys()).sort((a, b) => {
-      const gemTypePriority = {
-        겁화: 0,
-        멸화: 1,
-        작열: 2,
-        홍염: 3,
-      };
-
-      const parseGem = gem => {
-        const [level, type] = gem.split('레벨 ');
-        return { level: parseInt(level), type };
-      };
-
-      const aGem = parseGem(a.replace('의 보석', ''));
-      const bGem = parseGem(b.replace('의 보석', ''));
-
-      const aAdjustedLevel = aGem.type === '겁화' || aGem.type === '작열' ? aGem.level + 2 : aGem.level;
-      const bAdjustedLevel = bGem.type === '겁화' || bGem.type === '작열' ? bGem.level + 2 : bGem.level;
-
-      if (aAdjustedLevel !== bAdjustedLevel) {
-        return bAdjustedLevel - aAdjustedLevel;
-      }
-      return gemTypePriority[aGem.type] - gemTypePriority[bGem.type];
-    });
-
-    const armorTypes = ['무기', '투구', '상의', '하의', '장갑', '어깨'];
+    const { ArmoryCard, ArmoryGem, ArmoryProfile, ArmoryEquipment } = data;
+    const [_, cardOption] = calcCard(ArmoryCard);
+    const [gemsAmount, GEMS] = calcGems(ArmoryGem);
+    const transcendenceGrade = calcTotalTranscendence(ArmoryEquipment);
 
     return (
       <>
@@ -253,9 +190,10 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
             </Txt>
           </Txt>
           <Spacing size="0.5rem" />
+          {transcendenceGrade}
           <Txt as="p" styleVariant={INFO}>
             {GEMS.map(k => {
-              const amount = gems.get(k) || 0;
+              const amount = gemsAmount.get(k) || 0;
               return (
                 <Fragment key={k}>
                   <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
