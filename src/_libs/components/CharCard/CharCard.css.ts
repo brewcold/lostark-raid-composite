@@ -9,7 +9,7 @@ export const BASE = style({
   justifyContent: 'flexStart',
   border: `1px solid ${COLORS.THEME}`,
   borderRadius: '1.15rem',
-  padding: '0.75rem 1.15rem 1.15rem 1.15rem',
+  padding: '0.75rem ',
   cursor: 'grab',
   userSelect: 'none',
   backgroundColor: COLORS.WHITE,
