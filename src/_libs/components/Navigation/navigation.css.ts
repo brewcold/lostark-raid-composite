@@ -4,15 +4,13 @@ import { COLORS } from 'src/_libs/style/colors';
 export const BASE = style({
   display: 'flex',
   backgroundColor: 'white',
-
   padding: '0.75rem',
   zIndex: 999,
-
+  position: 'sticky',
   '@media': {
     '(width > 680px)': {
       justifyContent: 'space-between',
       alignItems: 'center',
-      position: 'sticky',
       top: 0,
     },
     '(0 <= width <= 680px)': {
