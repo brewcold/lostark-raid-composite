@@ -277,6 +277,7 @@ export const classType = [
 ] as const;
 
 export const classEngravingType = [
+  '',
   '고독한 기사',
   '전투 태세',
   '광기',

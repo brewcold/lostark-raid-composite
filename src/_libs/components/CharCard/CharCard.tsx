@@ -96,7 +96,7 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
   function CharacterCard({ data }: { data: Armory }) {
     const { ArmoryEngraving, ArmoryGem, ArmoryProfile, ArmoryEquipment, ArmorySkills } = data;
 
-    const [classEngraving, classCynergy] = calcEngraving(ArmoryEngraving, ArmoryProfile.CharacterClassName);
+    const [classEngraving, classCynergy] = calcEngraving(data, ArmoryProfile.CharacterClassName);
 
     const { open, close } = useModal();
     const handleDetailOpen = () => open(<Overlay body={<DetailSpec data={data} />} control={<></>} />);
