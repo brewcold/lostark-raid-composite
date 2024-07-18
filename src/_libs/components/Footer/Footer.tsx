@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Spacing } from '../_common/Spacing/spacing';
 import { Txt } from '../_common/Txt/Txt';
 import { View } from '../_common/View/View';
@@ -7,8 +8,11 @@ export function Footer() {
   return (
     <View as="footer" styleVariant={BASE}>
       <Txt as="p" styleVariant={FOOTER_TEXT}>
-        Copyright 2024. Lostark Raid Composite All Rights Reserved.
-        <br />이 서비스는 Smilegate RPG의 OPEN API를 사용합니다.
+        Copyright 2024. SpringDodari All Rights Reserved.
+        <br />
+        <Link href="https://docs.google.com/document/d/1PrJGUO1PV_XpMSoj_Z0zyw922M1tZZ6MqKLe-39X9lk/edit?usp=sharing">
+          업데이트 로그
+        </Link>
       </Txt>
       <Spacing size="1rem" />
     </View>
