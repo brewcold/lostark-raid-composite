@@ -1,5 +1,4 @@
 import { atom } from 'jotai';
-import { useReducer } from 'react';
 import { Modal } from 'src/_libs/components/_common/Modal/Modal';
 import alerts from 'src/_libs/constants/alerts';
 export interface Member {

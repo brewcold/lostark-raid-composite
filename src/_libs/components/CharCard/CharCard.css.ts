@@ -31,7 +31,7 @@ export const CARD_BODY = style({
 
 const PARTY_NUMBER_BASE = style({
   fontSize: '0.75rem',
-  padding: '0.2rem 0.35rem 0.2rem 0.35rem',
+  padding: '0.35rem',
   borderRadius: '1rem',
   color: COLORS.WHITE,
 });
