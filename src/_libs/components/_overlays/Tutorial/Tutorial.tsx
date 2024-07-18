@@ -1,11 +1,12 @@
 import { useModal } from '@syyu/util/react';
+import Link from 'next/link';
 import ui from 'src/_libs/constants/ui';
 import { Btn } from '../../_common/Btn/Btn';
 import Flex from '../../_common/Flex/Flex';
 import { Overlay } from '../../_common/Overlay/Overlay';
 import { Spacing } from '../../_common/Spacing/spacing';
 import { Txt } from '../../_common/Txt/Txt';
-import { OL, OL_LI, OVERLAY_BODY, OVERLAY_TITLE, UL, UL_LI } from '../Overlays.css';
+import { OL, OL_LI, OVERLAY_BODY, OVERLAY_TITLE, UL, UL_LI, UL_LI_LINK } from '../Overlays.css';
 
 export function Tutorial() {
   const { close } = useModal();
@@ -23,6 +24,14 @@ export function Tutorial() {
                 <Txt styleVariant={OVERLAY_BODY}>{t}</Txt>
               </li>
             ))}
+            <li className={UL_LI_LINK}>
+              <Txt
+                as="Link"
+                styleVariant={OVERLAY_BODY}
+                href="https://docs.google.com/document/d/1PrJGUO1PV_XpMSoj_Z0zyw922M1tZZ6MqKLe-39X9lk/edit?usp=sharing">
+                업데이트 내역 및 이슈 보기
+              </Txt>
+            </li>
           </ul>
         </>
       }

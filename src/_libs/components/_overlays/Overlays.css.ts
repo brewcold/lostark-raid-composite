@@ -28,3 +28,10 @@ export const UL_LI = style({
   marginLeft: '1.2rem',
   color: COLORS.MAIN,
 });
+export const UL_LI_LINK = style({
+  listStyleType: 'disc',
+  textDecoration: 'underline',
+  textUnderlineOffset: '0.2rem',
+  marginLeft: '1.2rem',
+  color: COLORS.THEME,
+});
