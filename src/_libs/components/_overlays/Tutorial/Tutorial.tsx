@@ -26,9 +26,10 @@ export function Tutorial() {
             ))}
             <li className={UL_LI_LINK}>
               <Txt
-                as="Link"
+                as="a"
                 styleVariant={OVERLAY_BODY}
-                href="https://docs.google.com/document/d/1PrJGUO1PV_XpMSoj_Z0zyw922M1tZZ6MqKLe-39X9lk/edit?usp=sharing">
+                href="https://docs.google.com/document/d/1PrJGUO1PV_XpMSoj_Z0zyw922M1tZZ6MqKLe-39X9lk/edit?usp=sharing"
+                target="_blank">
                 업데이트 내역 및 이슈 보기
               </Txt>
             </li>
