@@ -12,10 +12,8 @@ export function Txt<T extends ElementType>({ as, href, children, styleVariant, .
 
   if (Component === 'Link') {
     return (
-      <Link href={href || ''}>
-        <span className={styleVariant} {...props}>
-          {children}
-        </span>
+      <Link href={href || ''} {...props}>
+        <span className={styleVariant}>{children}</span>
       </Link>
     );
   }
