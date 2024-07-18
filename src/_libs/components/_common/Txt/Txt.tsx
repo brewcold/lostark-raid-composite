@@ -19,7 +19,7 @@ export function Txt<T extends ElementType>({ as, href, children, styleVariant, .
   }
 
   return (
-    <Component className={styleVariant} {...props}>
+    <Component className={styleVariant} href={href} {...props}>
       {children}
     </Component>
   );
