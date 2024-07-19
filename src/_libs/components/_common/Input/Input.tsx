@@ -14,18 +14,7 @@ interface InputProps extends ComponentPropsWithRef<'input'> {
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 function Component(
-  {
-    disabled,
-    name,
-    type = 'string',
-    placeholder,
-    value,
-    width = '12rem',
-    onChange,
-    onFocus,
-    onBlur,
-    ...props
-  }: InputProps,
+  { disabled, name, type = 'string', placeholder, value, width, onChange, onFocus, onBlur, ...props }: InputProps,
   ref: RefObject<HTMLInputElement>
 ) {
   return (
