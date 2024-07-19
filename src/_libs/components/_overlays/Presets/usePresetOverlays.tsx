@@ -93,10 +93,6 @@ usePresetOverlay.Overwrite = ({ presets, presetKey, presetAction }: PresetOverla
           <Btn onClick={() => presetAction(presetKey, 'apply')}>{ui.buttons.presetApply}</Btn>
           <Spacing size="1rem" />
           <Flex justifyContents="flexEnd">
-            <Btn variant="CAUTION" onClick={() => presetAction(presetKey, 'overwrite')}>
-              {ui.buttons.presetOverwrite}
-            </Btn>
-            <Spacing size="0.5rem" dir="hori" />
             <Btn variant="WARN" onClick={() => presetAction(presetKey, 'delete')}>
               {ui.buttons.presetDelete}
             </Btn>

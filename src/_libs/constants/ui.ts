@@ -26,7 +26,6 @@ export default {
     cynergy: '시너지 가이드',
     presetSave: '새로운 프리셋 저장',
     presetApply: '프리셋 적용',
-    presetOverwrite: '프리셋 덮어쓰기',
     presetDelete: '프리셋 삭제',
   },
   tutorial: [
