@@ -1,6 +1,6 @@
 export default {
   placeholders: {
-    searchCharacterName: '캐릭터 이름',
+    searchCharacterName: '닉네임',
     emptyCard: '빈 슬롯',
   },
   titles: {
@@ -8,25 +8,25 @@ export default {
   },
   descriptions: {
     presetNum: '프리셋 #',
-    presetIsEmpty: '빈 프리셋입니다.',
-    presetIsApplied: '번 프리셋이 적용되어 있습니다.',
-    preset_party: '공격대 구성: ',
+    presetIsEmpty: '<빈 프리셋>',
+    presetIsApplied: '번 프리셋 적용됨',
+    preset_party: '공격대 구성원: ',
   },
   fallbacks: {
-    init: '캐릭터 이름을 검색하거나 좌측 상단의 공격대 프리셋을 불러올 수 있습니다. 캐릭터 카드를 드래그해서 이동시킬 수 있습니다.',
+    init: '닉네임을 검색하거나 좌측 상단의 공격대 프리셋을 불러올 수 있습니다. 캐릭터 카드를 드래그해서 이동시킬 수 있습니다.',
     example: '닉네임 예) 노돌리, 카아안, 클라스, 주다영, 필례, 괴물쥐, 부먹펩시파인애플피자지코, 베베초, 베르앤도',
   },
   buttons: {
     more_info: '상세 스펙',
-    initialize: '공격대 리셋',
-    search: '찾기',
+    initialize: '초기화',
+    search: '검색',
     tutorial: '도움말',
     inquiry: '문의 및 버그 제보',
     close: '닫기',
     cynergy: '시너지 가이드',
-    presetSave: '새로운 프리셋 저장',
+    presetSave: '새 프리셋 저장',
     presetApply: '프리셋 적용',
-    presetDelete: '프리셋 삭제',
+    presetDelete: '삭제',
   },
   tutorial: [
     '주의: 브라우저 사용 기록을 초기화하면 저장된 프리셋이 사라질 수 있습니다.',
