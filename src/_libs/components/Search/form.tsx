@@ -1,6 +1,6 @@
 import { useForm, useModal } from '@syyu/util/react';
 import { useAtom } from 'jotai';
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 import { input } from 'src/store/input';
 import { EMPTY_PARTY, partyInfo, partyMembers, partyReducer } from 'src/store/party';
 import { currentPreset, PresetKeys } from 'src/store/preset';
@@ -28,7 +28,11 @@ export function Form() {
   const [members] = useAtom(partyMembers);
   const { data, isLoading } = useCharInfo(characterName);
   const initialValues: formValues = { characterName: '' };
-  const onSubmit = (v: formValues) => setCharacterName(v.characterName.trim());
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const onSubmit = (v: formValues) => {
+    setCharacterName(v.characterName.trim());
+  };
 
   const { values, setValues, handleChange, submit } = useForm<formValues>({
     initialValues,
@@ -39,6 +43,7 @@ export function Form() {
 
   useEffect(() => {
     if (characterName.length === 0) {
+      inputRef.current?.focus();
       return;
     }
 
@@ -80,6 +85,7 @@ export function Form() {
         }}>
         <Flex width="fill" flexDirection="row" justifyContents="center">
           <Input
+            ref={inputRef}
             disabled={isLoading}
             name="characterName"
             value={values.characterName}

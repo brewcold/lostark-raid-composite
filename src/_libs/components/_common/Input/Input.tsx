@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, forwardRef } from 'react';
+import { ComponentPropsWithRef, forwardRef, RefObject } from 'react';
 import { BASE } from './Input.css';
 
 interface InputProps extends ComponentPropsWithRef<'input'> {
@@ -26,10 +26,11 @@ function Component(
     onBlur,
     ...props
   }: InputProps,
-  ref
+  ref: RefObject<HTMLInputElement>
 ) {
   return (
     <input
+      ref={ref}
       disabled={disabled}
       className={BASE}
       name={name}
