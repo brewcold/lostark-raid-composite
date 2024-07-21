@@ -16,12 +16,12 @@ export default function GlobalError({ error }: { error: Error & { digest?: strin
     <html>
       <body>
         <div>
-          <Flex justifyContents="center" alignItems="center">
+          <Flex flexDirection="column" justifyContents="center" alignItems="center">
             <Txt as="h1">오류가 발생했습니다.</Txt>
             <Spacing size="2rem" />
-            <Txt as="Link" href="/">
+            <Btn as="Link" href="/">
               돌아가기
-            </Txt>
+            </Btn>
           </Flex>
         </div>
       </body>

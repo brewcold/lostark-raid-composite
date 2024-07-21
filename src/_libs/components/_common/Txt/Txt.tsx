@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ComponentPropsWithoutRef, ElementType, PropsWithChildren } from 'react';
+import type { ComponentPropsWithoutRef, ElementType, PropsWithChildren } from 'react';
 
 type TextProps<T extends ElementType> = {
   as?: T | 'Link';
