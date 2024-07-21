@@ -1,11 +1,11 @@
 'use client';
 import Link from 'next/link';
-import { ComponentPropsWithRef, ElementType, forwardRef, PropsWithChildren } from 'react';
+import { ComponentPropsWithRef, ElementType, forwardRef, PropsWithChildren, Ref } from 'react';
 import { Loader } from '../Loader/Loader';
 import { BASE, LOADING, SIZE, VARIANT } from './Btn.css';
 
 type BtnProps<T extends ElementType> = {
-  as?: 'a' | 'Link' | 'button';
+  as?: T | 'Link';
   disabled?: boolean;
   isLoading?: boolean;
   type?: 'button' | 'submit' | 'reset';
@@ -16,9 +16,8 @@ type BtnProps<T extends ElementType> = {
 } & PropsWithChildren<ComponentPropsWithRef<T>>;
 
 function Component<T extends ElementType>(
-  ref: any,
   {
-    as,
+    as = 'button',
     href,
     disabled,
     type = 'submit',
@@ -28,12 +27,13 @@ function Component<T extends ElementType>(
     variant = 'PRIMARY',
     children,
     ...props
-  }: BtnProps<T>
+  }: BtnProps<T>,
+  ref: Ref<any>
 ) {
-  const Component = as || 'button';
+  const Comp = as;
   const CN = `${BASE} ${LOADING[String(isLoading)]} ${SIZE[size]} ${VARIANT[variant]}`;
 
-  if (Component === 'Link') {
+  if (Comp === 'Link') {
     return (
       <Link href={href || ''} {...props}>
         <button ref={ref} className={CN} type={type} onClick={onClick} disabled={disabled}>
@@ -44,9 +44,9 @@ function Component<T extends ElementType>(
   }
 
   return (
-    <Component ref={ref} href={href} className={CN} type={type} onClick={onClick} disabled={disabled} {...props}>
+    <Comp ref={ref} href={href} className={CN} type={type} onClick={onClick} disabled={disabled} {...props}>
       {isLoading ? <Loader /> : children}
-    </Component>
+    </Comp>
   );
 }
 
