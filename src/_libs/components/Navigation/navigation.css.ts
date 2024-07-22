@@ -8,12 +8,12 @@ export const BASE = style({
   zIndex: 999,
   position: 'sticky',
   '@media': {
-    '(width > 680px)': {
+    '(width > 600px)': {
       justifyContent: 'space-between',
       alignItems: 'center',
       top: 0,
     },
-    '(0 <= width <= 680px)': {
+    '(0 <= width <= 600px)': {
       width: '100vw',
       flexDirection: 'column',
       rowGap: '0.5rem',
@@ -28,7 +28,7 @@ export const BASE = style({
 export const DISPLAY = style({
   '@media': {
     '(width > 480px)': {},
-    '(0 <= width <= 680px)': {
+    '(0 <= width <= 600px)': {
       display: 'none',
     },
   },
