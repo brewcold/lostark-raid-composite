@@ -17,6 +17,11 @@ export const GRID = style({
   marginBottom: '5rem',
   display: 'grid',
   gridTemplateColumns: 'repeat(4, 1fr)',
+  '@media': {
+    '(0 <= width <= 600px)': {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+    },
+  },
   gap: '0.5rem',
 });
 
