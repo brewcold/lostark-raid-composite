@@ -1,23 +1,62 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 import { COLORS } from 'src/_libs/style/colors';
 
+export const BORDER = styleVariants({
+  1: {
+    border: `1.5px solid ${COLORS.PARTY_1}`,
+    selectors: {
+      '&:hover': {
+        outline: `2px solid ${COLORS.PARTY_1}`,
+      },
+    },
+  },
+  2: {
+    border: `1.5px solid ${COLORS.PARTY_2}`,
+    selectors: {
+      '&:hover': {
+        outline: `2px solid ${COLORS.PARTY_2}`,
+      },
+    },
+  },
+  3: {
+    border: `1.5px solid ${COLORS.PARTY_3}`,
+    selectors: {
+      '&:hover': {
+        outline: `2px solid ${COLORS.PARTY_3}`,
+      },
+    },
+  },
+  4: {
+    border: `1.5px solid ${COLORS.PARTY_4}`,
+    selectors: {
+      '&:hover': {
+        outline: `2px solid ${COLORS.PARTY_4}`,
+      },
+    },
+  },
+  5: {
+    border: `1.5px solid ${COLORS.PARTY_5}`,
+    selectors: {
+      '&:hover': {
+        outline: `2px solid ${COLORS.PARTY_5}`,
+      },
+    },
+  },
+});
+
 export const BASE = style({
   width: '100%',
   display: 'flex',
   minHeight: '8.75rem',
   flexDirection: 'column',
   justifyContent: 'flexStart',
-  border: `1px solid ${COLORS.THEME}`,
   borderRadius: '1.15rem',
   padding: '0.75rem ',
   cursor: 'grab',
   userSelect: 'none',
   backgroundColor: COLORS.WHITE,
+  outlineOffset: '0.1rem',
   selectors: {
-    '&:hover': {
-      outline: `2px solid ${COLORS.MAIN}`,
-      outlineOffset: '0.2rem',
-    },
     '&:active': {
       outline: 'none',
       cursor: 'move',

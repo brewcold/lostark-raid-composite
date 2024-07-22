@@ -68,7 +68,7 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
   };
 
   return (
-    <CardBase draggable={draggable} dragActions={dragActions}>
+    <CardBase partyNumber={partyNumber} draggable={draggable} dragActions={dragActions}>
       <Flex justifyContents="spaceBetween">
         <PartyNumber partyNumber={partyNumber} characterName={characterName} />
         <DeleteBtn onDelete={handleDelete} />
