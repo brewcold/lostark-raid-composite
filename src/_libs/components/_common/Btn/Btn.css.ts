@@ -94,7 +94,7 @@ export const VARIANT = styleVariants({
   TEXT: {
     background: 'transparent',
     border: '1px solid transparent',
-    color: COLORS.THEME,
+    color: COLORS.GRAY,
     padding: '0',
     textUnderlineOffset: '0.25rem',
     borderRadius: '0.75rem',
