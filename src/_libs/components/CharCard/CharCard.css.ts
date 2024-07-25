@@ -133,7 +133,7 @@ export const INFO = style({
 export const INFO_SPAN = style({
   fontSize: '0.85rem',
   lineHeight: 1.3,
-  color: COLORS.MAIN,
+  color: COLORS.GRAY_WHITE,
 });
 
 export const INFO_SPAN_BOLD = style({
@@ -142,13 +142,13 @@ export const INFO_SPAN_BOLD = style({
   fontSize: '0.85rem',
   lineHeight: 1.3,
   fontWeight: 600,
-  color: COLORS.MAIN,
+  color: COLORS.GRAY_WHITE,
 });
 
 export const SUB_INFO_SPAN = style({
   fontSize: '0.85rem',
   lineHeight: 1.3,
-  color: '#888',
+  color: COLORS.WHITE,
 });
 
 export const CARD_FOOTER = style({

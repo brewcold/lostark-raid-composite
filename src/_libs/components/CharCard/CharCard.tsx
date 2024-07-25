@@ -33,6 +33,7 @@ import { Overlay } from '../_common/Overlay/Overlay';
 import { calcTotalTranscendence } from 'src/_libs/calc/trancendence';
 import { calcGems } from 'src/_libs/calc/gems';
 import { calcEngraving } from 'src/_libs/calc/class-engraving';
+import { Tooltip } from '../_common/Tooltip/Tooltip';
 
 export type DragActions = {
   onDragStart: (e: DragEvent) => void;
@@ -120,21 +121,7 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
             </Txt>
           </View>
           <Spacing size="0.25rem" />
-          <details
-            className={TOGGLE_DETAIL}
-            // onMouseEnter={e => {
-            //   e.stopPropagation();
-            //   handleDetailOpen();
-            // }}
-            // onMouseLeave={e => {
-            //   e.stopPropagation();
-            //   handleDetailClose();
-            // }}>
-          >
-            <summary className={TOGGLE}>{ui.buttons.more_info}</summary>
-            <Spacing size="0.5rem" />
-            <DetailSpec data={data} />
-          </details>
+          <Tooltip tooltip={<DetailSpec data={data} />} />
         </ErrorBoundary>
       </View>
     );
@@ -234,7 +221,7 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
         </Txt>
         <Spacing size="0.5rem" />
         <View>
-          <Txt as="p" styleVariant={INFO}>
+          <Txt as="p" styleVariant={INFO_SPAN}>
             {`전투 레벨 ${ArmoryProfile.CharacterLevel} 원정대 ${ArmoryProfile.ExpeditionLevel}`} <br />
             {`스킬포인트 ${ArmoryProfile.UsingSkillPoint} / ${ArmoryProfile.TotalSkillPoint}`}
           </Txt>

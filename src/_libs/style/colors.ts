@@ -11,6 +11,8 @@ const BLACK = '#000';
 export const COLORS = {
   THEME,
   GRAY,
+  GRAY_WHITE: '#eee',
+  GRAY_LIGHT: '#ccc',
   MAIN: '#343739',
   MAIN_OPACITY85: 'rgba(68,71,111, .85)',
   MAIN_OPACITY15: 'rgba(68,71,111, .15)',
