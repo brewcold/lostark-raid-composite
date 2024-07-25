@@ -1,5 +1,6 @@
-const THEME = '#7a839c';
-const GRAY = '#888888';
+// const THEME = '#7a839c';
+const THEME = '#999A9C';
+const GRAY = '#999A9C';
 const RED = '#9c5a5a';
 const YELLOW = '#C7A961';
 const GREEN = '#7a9c7c';
@@ -11,8 +12,8 @@ const BLACK = '#000';
 export const COLORS = {
   THEME,
   GRAY,
-  GRAY_WHITE: '#eee',
-  GRAY_LIGHT: '#ccc',
+  GRAY_WHITE: '#eeefef',
+  GRAY_LIGHT: '#cccecf',
   MAIN: '#343739',
   MAIN_OPACITY85: 'rgba(68,71,111, .85)',
   MAIN_OPACITY15: 'rgba(68,71,111, .15)',

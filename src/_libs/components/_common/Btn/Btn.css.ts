@@ -18,7 +18,7 @@ export const VARIANT = styleVariants({
     },
   },
   SECONDARY: {
-    backgroundColor: COLORS.MAIN_OPACITY15,
+    backgroundColor: COLORS.GRAY_WHITE,
     border: '1px solid transparent',
     color: COLORS.MAIN,
     transition: 'all 0.15s',
