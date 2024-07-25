@@ -1,20 +1,19 @@
-import { useForm, useModal } from '@syyu/util/react';
+'use client';
+import { useModal, useForm } from '@syyu/util/react';
 import { useAtom } from 'jotai';
-import { useEffect, useReducer, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { input } from 'src/store/input';
-import { EMPTY_PARTY, partyInfo, partyMembers, partyReducer } from 'src/store/party';
+import { EMPTY_PARTY, partyInfo, partyMembers } from 'src/store/party';
 import { currentPreset, PresetKeys } from 'src/store/preset';
 import alerts from 'src/_libs/constants/alerts';
 import ui from 'src/_libs/constants/ui';
 import { useCharInfo } from 'src/_libs/hooks/useCharInfo';
-import { LostarkAPIError } from 'src/_libs/util/errors';
 import { DISPLAY } from '../Navigation/navigation.css';
 import { Btn } from '../_common/Btn/Btn';
 import Flex from '../_common/Flex/Flex';
 import { Input } from '../_common/Input/Input';
 import { Modal } from '../_common/Modal/Modal';
 import { Spacing } from '../_common/Spacing/spacing';
-import { Txt } from '../_common/Txt/Txt';
 import { View } from '../_common/View/View';
 interface formValues {
   characterName: string;
