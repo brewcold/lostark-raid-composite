@@ -13,7 +13,7 @@ export const INFO = style({
   textAlign: 'center',
 });
 export const GRID = style({
-  padding: '1rem',
+  padding: '0.75rem',
   marginBottom: '5rem',
   display: 'grid',
   gridTemplateColumns: 'repeat(4, 1fr)',

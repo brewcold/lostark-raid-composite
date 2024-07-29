@@ -8,7 +8,11 @@ export function Footer() {
   return (
     <View as="footer" styleVariant={BASE}>
       <Txt as="p" styleVariant={FOOTER_TEXT}>
-        Copyright 2024. SpringDodari All Rights Reserved.
+        © 2024 SpringDodari
+        <br />
+        SpringDodari isn’t endorsed by Smilegate RPG and doesn’t reflect the views or opinions of Smilegate RPG or
+        anyone officially involved in producing or managing Lostark. Lostark and Smilegate RPG are trademarks or
+        registered trademarks of Smilegate RPG, Inc. Lostark © Smilegate RPG, Inc.
       </Txt>
       <Spacing size="1rem" />
     </View>
