@@ -7,20 +7,14 @@ import { ALIGN_RIGHT, DISPLAY, SPEC_BTN, SPEC_BTN_COLOR, TOOLTIP_MESSAGE_BASE } 
 
 interface TooltipProps extends ComponentPropsWithoutRef<'div'> {
   tooltip: ReactNode;
+  isOpen?: boolean;
 }
 
-export function Tooltip({ tooltip }: TooltipProps) {
-  const [dp, show, hide] = useBooleanState();
-  const forceDisplay = useRef<boolean>(false);
-  const reRender = useForceRender();
+export function Tooltip({ tooltip, isOpen }: TooltipProps) {
+  const [dp, show, hide] = useBooleanState(isOpen);
+  const [fixDisplay, _, __, toggle] = useBooleanState();
 
-  const toggle = () => {
-    if (forceDisplay.current) forceDisplay.current = false;
-    else forceDisplay.current = true;
-    reRender();
-  };
-
-  const isDisplay = forceDisplay.current || dp;
+  const isDisplay = fixDisplay || dp;
 
   const SPEC_BUTTON = `${SPEC_BTN} ${isDisplay ? SPEC_BTN_COLOR.fixed : SPEC_BTN_COLOR.default}`;
   const TOOLTIP_MSG = `${TOOLTIP_MESSAGE_BASE} ${isDisplay ? DISPLAY.show : DISPLAY.hide}`;
