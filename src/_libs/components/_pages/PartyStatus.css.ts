@@ -37,15 +37,21 @@ export const PARTY_NUM = style({
 });
 
 export const CENTERED = style({
-  width: '100vw',
-  height: '3rem',
+  width: '100%',
+  height: '100%',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  textAlign: 'center',
 });
 
 export const RIGHT = style({
   display: 'flex',
   justifyContent: 'flex-end',
   alignItems: 'center',
+});
+
+export const ERROR = style({
+  color: COLORS.GRAY_LIGHT,
+  textAlign: 'center',
 });

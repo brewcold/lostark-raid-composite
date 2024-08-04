@@ -34,6 +34,7 @@ import { calcTotalTranscendence } from 'src/_libs/calc/trancendence';
 import { calcGems } from 'src/_libs/calc/gems';
 import { calcEngraving } from 'src/_libs/calc/class-engraving';
 import { Tooltip } from '../_common/Tooltip/Tooltip';
+import { ERROR } from '../_pages/PartyStatus.css';
 
 export type DragActions = {
   onDragStart: (e: DragEvent) => void;
@@ -88,7 +89,7 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
     }
 
     if (!data || status === 'error') {
-      return <ErrorCard />;
+      return <ErrorCard characterName={characterName} />;
     }
 
     return <CharacterCard data={data} />;
@@ -143,8 +144,18 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
     );
   }
 
-  function ErrorCard() {
-    return <Error />;
+  function ErrorCard({ characterName }: { characterName: string }) {
+    return (
+      <View styleVariant={CENTERED}>
+        <Txt as="p" styleVariant={ERROR}>
+          {characterName}
+        </Txt>
+        <Spacing size="0.5rem" />
+        <Txt as="p" styleVariant={ERROR}>
+          {ui.fallbacks.no_result}
+        </Txt>
+      </View>
+    );
   }
 
   function DeleteBtn({ onDelete }: { onDelete: () => void }) {
