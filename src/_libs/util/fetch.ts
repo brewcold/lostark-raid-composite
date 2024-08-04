@@ -2,27 +2,27 @@ import * as Sentry from '@sentry/nextjs';
 import { LostarkAPIError } from './errors';
 
 export const http = {
-  GET: <Res>(url: string, headers?: HeadersInit) =>
+  GET: <Res>(url: string | URL, headers?: HeadersInit) =>
     Sentry.startSpan(
       {
         name: 'GET',
-        op: url,
+        op: url.toString(),
       },
       async () => f<undefined, Res>(url, 'GET', headers)
     ),
-  POST: <Req, Res>(url: string, headers?: HeadersInit, body?: Req) =>
+  POST: <Req, Res>(url: string | URL, headers?: HeadersInit, body?: Req) =>
     Sentry.startSpan(
       {
         name: 'POST',
-        op: url,
+        op: url.toString(),
       },
       async () => await f<Req, Res>(url, 'POST', headers, body)
     ),
-  PUT: <Req, Res>(url: string, headers?: HeadersInit, body?: Req) =>
+  PUT: <Req, Res>(url: string | URL, headers?: HeadersInit, body?: Req) =>
     Sentry.startSpan(
       {
         name: 'PUT',
-        op: url,
+        op: url.toString(),
       },
       async () => await f<Req, Res>(url, 'PUT', headers, body)
     ),
@@ -30,14 +30,14 @@ export const http = {
     Sentry.startSpan(
       {
         name: 'DELETE',
-        op: url,
+        op: url.toString(),
       },
       async () => await f<undefined, Res>(url, 'DELETE', headers)
     ),
 };
 
 async function f<Req, Res = unknown>(
-  url: string,
+  url: string | URL,
   method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH',
   headers?: HeadersInit,
   body?: Req

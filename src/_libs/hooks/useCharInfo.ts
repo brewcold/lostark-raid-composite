@@ -8,7 +8,7 @@ export const useCharInfo = (characterName: string) => {
   const name = characterName.trim();
   const auth = new Headers({ Authorization: `bearer ${larkKey}`, accept: 'application/json' });
 
-  const url = `https://developer-lostark.game.onstove.com/armories/characters/${characterName}`;
+  const url = new URL(`https://developer-lostark.game.onstove.com/armories/characters/${characterName}`);
   return useQuery<Armory>({
     queryKey: ['info', name],
     queryFn: async () => await http.GET<Armory>(url, auth),
