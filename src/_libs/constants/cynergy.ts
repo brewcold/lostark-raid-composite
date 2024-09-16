@@ -36,7 +36,7 @@ export const cynergy: Record<ClassType, Partial<Record<(typeof classEngravingTyp
     '축복의 오라': [spt, clr, manaspd].join(', '),
   },
   슬레이어: { 처단자: [dmg6].join(', '), 포식자: [dmg6].join(', ') },
-  데빌헌터: { '핸드 거너': [crit10].join(', '), '강화 무기': [crit10].join(', ') },
+  데빌헌터: { '핸드 거너': [crit10].join(', '), '강화 무기': [crit10].join(', '), 핸드거너: [crit10].join(', ') },
   블래스터: { '화력 강화': [def12].join(', '), '포격 강화': [def12].join(', ') },
   호크아이: {
     '죽음의 습격': [dmg6].join(', '),
