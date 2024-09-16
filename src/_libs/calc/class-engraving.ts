@@ -11,9 +11,12 @@ export function calcEngraving(
     const 깨달음 = en.Value;
     const 도약 = leaf.Value;
     const engravings = classEngravingType.slice(1);
-    const classEngraving: (typeof classEngravingType)[number][] = [
-      engravings.find(e => data.ArkPassive.Effects[0].Description.includes(e) && e) || '',
-    ];
+    const classEngraving: (typeof classEngravingType)[number][] = engravings.reduce((acc, e) => {
+      const effect = data.ArkPassive.Effects.find(tier => tier.Description.includes(e));
+      if (effect) acc.push(e);
+      return acc;
+    }, [] as (typeof classEngravingType)[number][]);
+
     const classCynergy = classEngraving
       ?.map(e => cynergy[classname][e])
       .join(', ')

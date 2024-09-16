@@ -60,7 +60,8 @@ export const cynergy: Record<ClassType, Partial<Record<(typeof classEngravingTyp
   },
   인파이터: {
     '충격 단련': [dmg6].join(', '),
-    '체술 강화': [dmg6].join(', '),
+    '극의: 체술': [dmg6].join(', '),
+    '극의 : 체술': [dmg6].join(', '),
   },
   배틀마스터: {
     초심: [crit10, spd].join(', '),
