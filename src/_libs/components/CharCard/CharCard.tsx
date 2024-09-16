@@ -12,6 +12,7 @@ import { Txt } from '../_common/Txt/Txt';
 import { View } from '../_common/View/View';
 import { CardBase } from './CardBase';
 import {
+  AP,
   CENTERED,
   CHAR_NAME,
   EMPTY_CARD,
@@ -35,6 +36,9 @@ import { calcGems } from 'src/_libs/calc/gems';
 import { calcEngraving } from 'src/_libs/calc/class-engraving';
 import { Tooltip } from '../_common/Tooltip/Tooltip';
 import { ERROR } from '../_pages/PartyStatus.css';
+import { clearTimeout } from 'timers';
+import { Modal } from '../_common/Modal/Modal';
+import alerts from 'src/_libs/constants/alerts';
 
 export type DragActions = {
   onDragStart: (e: DragEvent) => void;
@@ -75,11 +79,18 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
         <PartyNumber partyNumber={partyNumber} characterName={characterName} />
         <DeleteBtn onDelete={handleDelete} />
       </Flex>
-      <CardContent characterName={characterName} data={data} isFetching={isFetching} status={status} />
+      <CardContent
+        handleDelete={handleDelete}
+        characterName={characterName}
+        data={data}
+        isFetching={isFetching}
+        status={status}
+      />
     </CardBase>
   );
 
-  function CardContent({ characterName, data, isFetching, status }) {
+  function CardContent({ characterName, data, isFetching, status, handleDelete }) {
+    const { open, close } = useModal();
     if (characterName === '') {
       return <EmptyCard />;
     }
@@ -89,6 +100,11 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
     }
 
     if (!data || status === 'error') {
+      useEffect(() => {
+        open(<Modal duration="1500">{alerts.NO_EXIST}</Modal>);
+        handleDelete(characterName);
+      }, []);
+
       return <ErrorCard characterName={characterName} />;
     }
 
@@ -98,7 +114,7 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
   function CharacterCard({ data }: { data: Armory }) {
     const { ArmoryEngraving, ArmoryGem, ArmoryProfile, ArmoryEquipment, ArmorySkills } = data;
 
-    const [classEngraving, classCynergy] = calcEngraving(data, ArmoryProfile.CharacterClassName);
+    const [classEngraving, classCynergy, isArkPassive] = calcEngraving(data, ArmoryProfile.CharacterClassName);
 
     const { open, close } = useModal();
     const handleDetailOpen = () => open(<Overlay body={<DetailSpec data={data} />} control={<></>} />);
@@ -114,7 +130,7 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
             </Txt>
           </Txt>
           <View>
-            <Txt as="p" styleVariant={INFO}>{`${classEngraving?.join(', ') || ''} ${
+            <Txt as="p" styleVariant={`${INFO} ${isArkPassive && AP}`}>{`${classEngraving?.join(', ') || ''} ${
               ArmoryProfile.CharacterClassName
             }`}</Txt>
             <Txt as="p" styleVariant={INFO}>

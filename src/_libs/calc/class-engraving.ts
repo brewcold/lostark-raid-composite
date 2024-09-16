@@ -1,11 +1,26 @@
-import { cynergy } from '../constants/cynergy';
-import { Armory, ArmoryEngraving, classEngravingType } from '../types';
+import { cynergy, no_mana_plz } from '../constants/cynergy';
+import { Armory, classEngravingType } from '../types';
 
-export function calcEngraving(data: Armory, classname: string): [(typeof classEngravingType)[number][], string] {
-  if (data.ArmoryEngraving.ArkPassiveEffects) {
-    console.log(data);
-    const classEngraving: (typeof classEngravingType)[number][] = [''];
-    return [classEngraving, '아크 패시브 적용'];
+export function calcEngraving(
+  data: Armory,
+  classname: string
+): [(typeof classEngravingType)[number][], string, boolean, { 진화: number; 깨달음: number; 도약: number }] {
+  if (data.ArkPassive.IsArkPassive) {
+    const [ev, en, leaf] = data.ArkPassive.Points;
+    const 진화 = ev.Value;
+    const 깨달음 = en.Value;
+    const 도약 = leaf.Value;
+    const engravings = classEngravingType.slice(1);
+    const classEngraving: (typeof classEngravingType)[number][] = [
+      engravings.find(e => data.ArkPassive.Effects[0].Description.includes(e) && e) || '',
+    ];
+    const classCynergy = classEngraving
+      ?.map(e => cynergy[classname][e])
+      .join(', ')
+      .split(', ');
+    const filtered = classCynergy.filter(c => c !== no_mana_plz).join(', ');
+
+    return [classEngraving, filtered, data.ArkPassive.IsArkPassive, { 진화, 깨달음, 도약 }];
   }
 
   const classEngraving = data?.ArmoryEngraving?.Effects?.filter(e => {
@@ -15,5 +30,10 @@ export function calcEngraving(data: Armory, classname: string): [(typeof classEn
   })?.map(e => e.Name.slice(0, e.Name.indexOf('Lv')).trim() as (typeof classEngravingType)[number]);
   const classCynergy = Array.from(new Set(classEngraving?.map(e => cynergy[classname][e])) || []).join(', ');
 
-  return [classEngraving, classCynergy];
+  const [ev, en, leaf] = data.ArkPassive.Points;
+  const 진화 = ev.Value;
+  const 깨달음 = en.Value;
+  const 도약 = leaf.Value;
+
+  return [classEngraving, classCynergy, data.ArkPassive.IsArkPassive, { 진화, 깨달음, 도약 }];
 }

@@ -5,7 +5,7 @@ const RED = '#9c5a5a';
 const YELLOW = '#C7A961';
 const GREEN = '#7a9c7c';
 const PINK = '#9c7a8c';
-const PURPLE = '#7C5A9C';
+const PURPLE = '#5347CD';
 const ORANGE = ' #C78A61';
 const BLACK = '#000';
 
@@ -20,6 +20,7 @@ export const COLORS = {
   BLACK,
   GREEN,
   GREEN_DARK: '#6c8c6e',
+  PURPLE,
   RED,
   RED_DARK: '#8c4c4c',
   YELLOW,

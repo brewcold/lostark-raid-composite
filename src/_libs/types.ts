@@ -214,7 +214,8 @@ export interface ArmoryGem {
 
 interface ArkPassive {
   IsArkPassive: boolean;
-  Points: [ArkPassiveEvolve, ArkPassiveEnlightenment];
+  Effects: [{ Description: string; Icon: string; Name: String; Tooltip: string }];
+  Points: [ArkPassiveEvolve, ArkPassiveEnlightenment, ArkPassiveLeaf];
 }
 
 interface ArkPassiveEvolve {
@@ -229,7 +230,14 @@ interface ArkPassiveEnlightenment {
   Value: number;
 }
 
+interface ArkPassiveLeaf {
+  Name: '도약';
+  Tooltip: string;
+  Value: number;
+}
+
 export interface Armory {
+  ArkPassive: ArkPassive;
   ArmoryProfile: ArmoryProfile;
   ArmoryEquipment: ArmoryEquipment[];
   ArmorySkills: ArmorySkill[];

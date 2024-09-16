@@ -130,6 +130,10 @@ export const INFO = style({
   color: COLORS.MAIN,
 });
 
+export const AP = style({
+  color: COLORS.PURPLE,
+});
+
 export const INFO_SPAN = style({
   fontSize: '0.85rem',
   lineHeight: 1.3,
