@@ -5,13 +5,15 @@ const RED = '#9c5a5a';
 const YELLOW = '#C7A961';
 const GREEN = '#7a9c7c';
 const PINK = '#9c7a8c';
-const PURPLE = '#5347CD';
+const AP_PURPLE = '#5347CD';
+const PURPLE = 'purple';
 const ORANGE = ' #C78A61';
 const BLACK = '#000';
 
 export const COLORS = {
   THEME,
   GRAY,
+  AP_PURPLE,
   GRAY_WHITE: '#eeefef',
   GRAY_LIGHT: '#cccecf',
   MAIN: '#343739',

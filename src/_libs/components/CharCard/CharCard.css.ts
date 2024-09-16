@@ -131,7 +131,7 @@ export const INFO = style({
 });
 
 export const AP = style({
-  color: COLORS.PURPLE,
+  color: COLORS.AP_PURPLE,
 });
 
 export const INFO_SPAN = style({
