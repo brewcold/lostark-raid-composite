@@ -193,22 +193,38 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
     const { ArmoryCard, ArmoryGem, ArmoryProfile, ArmoryEquipment } = data;
     const [_, cardOption] = calcCard(ArmoryCard);
     const [gemsAmount, GEMS] = calcGems(ArmoryGem);
-    // const transcendenceGrade = calcTotalTranscendence(ArmoryEquipment);
+    const [classEngraving, classCynergy, isArkPassive, { 깨달음, 도약, 진화 }] = calcEngraving(
+      data,
+      ArmoryProfile.CharacterClassName
+    );
+
+    const { 방어구, 무기 } = calcTotalTranscendence(ArmoryEquipment);
 
     return (
       <>
         <View>
-          {/* <Txt as="p" styleVariant={INFO}>
-            <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
-              {transcendenceGrade}
+          <Txt as="span">
+            <Txt as="span" styleVariant={INFO_SPAN}>
+              초월 합
             </Txt>
-          </Txt> */}
-          {/* <Spacing size="0.5rem" /> */}
-          <Txt as="p" styleVariant={INFO}>
+            <Spacing size="0.5rem" dir="hori" />
+            <Txt as="span" styleVariant={INFO_SPAN}>
+              방어구
+            </Txt>
             <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
-              {cardOption}
+              {방어구}
+            </Txt>
+            <Spacing size="0.5rem" dir="hori" />
+          </Txt>
+          <Txt as="span">
+            <Txt as="span" styleVariant={INFO_SPAN}>
+              무기
+            </Txt>
+            <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
+              {무기}
             </Txt>
           </Txt>
+
           <Spacing size="0.5rem" />
           <Txt as="p" styleVariant={INFO}>
             {GEMS.map(k => {
@@ -229,6 +245,49 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
             })}
           </Txt>
         </View>
+        {isArkPassive ? (
+          <View>
+            <Spacing size="0.5rem" />
+            <Txt as="p" styleVariant={INFO}>
+              <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
+                아크 패시브 적용
+              </Txt>
+            </Txt>
+            <Txt as="span" styleVariant={INFO}>
+              <Txt as="span" styleVariant={SUB_INFO_SPAN}>
+                진화
+              </Txt>
+              <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
+                {진화}
+              </Txt>
+              <Spacing size="0.5rem" dir="hori" />
+            </Txt>
+            <Txt as="span" styleVariant={INFO}>
+              <Txt as="span" styleVariant={SUB_INFO_SPAN}>
+                깨달음
+              </Txt>
+              <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
+                {깨달음}
+              </Txt>
+              <Spacing size="0.5rem" dir="hori" />
+            </Txt>
+            <Txt as="span" styleVariant={INFO}>
+              <Txt as="span" styleVariant={SUB_INFO_SPAN}>
+                도약
+              </Txt>
+              <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
+                {도약}
+              </Txt>
+            </Txt>
+          </View>
+        ) : (
+          <View>
+            <Spacing size="0.5rem" />
+            <Txt as="span" styleVariant={SUB_INFO_SPAN}>
+              아크 패시브 미적용
+            </Txt>
+          </View>
+        )}
         <Spacing size="0.5rem" />
         <Txt as="p" styleVariant={INFO}>
           {ArmoryEquipment?.map(a => {
@@ -245,6 +304,12 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
             }
             // TODO: 세트 레벨별 이름 및 계승상태 매칭 필요
           })}
+        </Txt>
+        <Spacing size="0.5rem" />
+        <Txt as="p" styleVariant={INFO}>
+          <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
+            {cardOption}
+          </Txt>
         </Txt>
         <Spacing size="0.5rem" />
         <View>

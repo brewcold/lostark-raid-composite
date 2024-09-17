@@ -165,7 +165,7 @@ interface ElementIndentStringGroup {
   value: { [key: string]: IndentStringGroupValue };
 }
 
-interface IndentStringGroupValue {
+export interface IndentStringGroupValue {
   contentStr: { [key: string]: IndentContentStr };
   topStr: string;
 }
