@@ -6,7 +6,7 @@ const YELLOW = '#C7A961';
 const GREEN = '#7a9c7c';
 const PINK = '#9c7a8c';
 const AP_PURPLE = '#5347CD';
-const PURPLE = 'purple';
+const PURPLE = '#A374DB';
 const ORANGE = ' #C78A61';
 const BLACK = '#000';
 
