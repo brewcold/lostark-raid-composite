@@ -149,6 +149,24 @@ export const INFO_SPAN_BOLD = style({
   color: COLORS.GRAY_WHITE,
 });
 
+export const INFO_SPAN_isArkPassive = style({
+  display: 'inline-block',
+  whiteSpace: 'normal',
+  fontSize: '0.85rem',
+  lineHeight: 1.3,
+  fontWeight: 600,
+  color: 'yellow',
+});
+
+export const INFO_SPAN_TRANS = style({
+  display: 'inline-block',
+  whiteSpace: 'normal',
+  fontSize: '0.85rem',
+  lineHeight: 1.3,
+  fontWeight: 600,
+  color: COLORS.YELLOW,
+});
+
 export const SUB_INFO_SPAN = style({
   fontSize: '0.85rem',
   lineHeight: 1.3,

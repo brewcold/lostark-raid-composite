@@ -19,6 +19,8 @@ import {
   INFO,
   INFO_SPAN,
   INFO_SPAN_BOLD,
+  INFO_SPAN_isArkPassive,
+  INFO_SPAN_TRANS,
   ITEM_LEVEL,
   LEFT,
   PARTY_NUMBER,
@@ -193,10 +195,7 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
     const { ArmoryCard, ArmoryGem, ArmoryProfile, ArmoryEquipment } = data;
     const [_, cardOption] = calcCard(ArmoryCard);
     const [gemsAmount, GEMS] = calcGems(ArmoryGem);
-    const [classEngraving, classCynergy, isArkPassive, { 깨달음, 도약, 진화 }] = calcEngraving(
-      data,
-      ArmoryProfile.CharacterClassName
-    );
+    const [__, ___, isArkPassive, { 깨달음, 도약, 진화 }] = calcEngraving(data, ArmoryProfile.CharacterClassName);
 
     const { 방어구, 무기 } = calcTotalTranscendence(ArmoryEquipment);
 
@@ -207,24 +206,11 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
             <Txt as="span" styleVariant={INFO_SPAN}>
               초월 합
             </Txt>
-            <Spacing size="0.5rem" dir="hori" />
-            <Txt as="span" styleVariant={INFO_SPAN}>
-              방어구
-            </Txt>
-            <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
-              {방어구}
-            </Txt>
-            <Spacing size="0.5rem" dir="hori" />
-          </Txt>
-          <Txt as="span">
-            <Txt as="span" styleVariant={INFO_SPAN}>
-              무기
-            </Txt>
-            <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
-              {무기}
+            <Spacing size="0.35rem" dir="hori" />
+            <Txt as="span" styleVariant={INFO_SPAN_TRANS}>
+              {방어구 || 무기}
             </Txt>
           </Txt>
-
           <Spacing size="0.5rem" />
           <Txt as="p" styleVariant={INFO}>
             {GEMS.map(k => {
@@ -245,11 +231,42 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
             })}
           </Txt>
         </View>
+
+        <Spacing size="0.5rem" />
+        <Txt as="p" styleVariant={INFO}>
+          {ArmoryEquipment?.map(a => {
+            const type = a.Type;
+            if (armorTypes.includes(type)) {
+              return (
+                <Fragment key={a.Name}>
+                  <Txt as="span" styleVariant={INFO_SPAN}>
+                    {a.Type === '무기' ? a.Type + ' ' + a.Name : a.Name}
+                  </Txt>
+                  <br />
+                </Fragment>
+              );
+            }
+            // TODO: 세트 레벨별 이름 및 계승상태 매칭 필요
+          })}
+        </Txt>
+        <Spacing size="0.5rem" />
+        <Txt as="p" styleVariant={INFO}>
+          <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
+            {cardOption}
+          </Txt>
+        </Txt>
+        <Spacing size="0.5rem" />
+        <View>
+          <Txt as="p" styleVariant={INFO_SPAN}>
+            {`전투 레벨 ${ArmoryProfile.CharacterLevel} 원정대 ${ArmoryProfile.ExpeditionLevel}`} <br />
+            {`스킬포인트 ${ArmoryProfile.UsingSkillPoint} / ${ArmoryProfile.TotalSkillPoint}`}
+          </Txt>
+        </View>
+        <Spacing size="0.5rem" />
         {isArkPassive ? (
           <View>
-            <Spacing size="0.5rem" />
             <Txt as="p" styleVariant={INFO}>
-              <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
+              <Txt as="span" styleVariant={INFO_SPAN_isArkPassive}>
                 아크 패시브 적용
               </Txt>
             </Txt>
@@ -282,42 +299,11 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
           </View>
         ) : (
           <View>
-            <Spacing size="0.5rem" />
             <Txt as="span" styleVariant={SUB_INFO_SPAN}>
               아크 패시브 미적용
             </Txt>
           </View>
         )}
-        <Spacing size="0.5rem" />
-        <Txt as="p" styleVariant={INFO}>
-          {ArmoryEquipment?.map(a => {
-            const type = a.Type;
-            if (armorTypes.includes(type)) {
-              return (
-                <Fragment key={a.Name}>
-                  <Txt as="span" styleVariant={INFO_SPAN}>
-                    {a.Type === '무기' ? a.Type + ' ' + a.Name : a.Name}
-                  </Txt>
-                  <br />
-                </Fragment>
-              );
-            }
-            // TODO: 세트 레벨별 이름 및 계승상태 매칭 필요
-          })}
-        </Txt>
-        <Spacing size="0.5rem" />
-        <Txt as="p" styleVariant={INFO}>
-          <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
-            {cardOption}
-          </Txt>
-        </Txt>
-        <Spacing size="0.5rem" />
-        <View>
-          <Txt as="p" styleVariant={INFO_SPAN}>
-            {`전투 레벨 ${ArmoryProfile.CharacterLevel} 원정대 ${ArmoryProfile.ExpeditionLevel}`} <br />
-            {`스킬포인트 ${ArmoryProfile.UsingSkillPoint} / ${ArmoryProfile.TotalSkillPoint}`}
-          </Txt>
-        </View>
       </>
     );
   }
