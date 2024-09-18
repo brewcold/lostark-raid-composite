@@ -3,12 +3,7 @@ import { ArmoryEquipment } from 'src/_libs/types';
 export function isArmor<T extends Partial<ArmoryEquipment>>(e: T) {
   return (
     e.Type !== undefined &&
-    (e.Type === '투구' ||
-      e.Type === '상의' ||
-      e.Type === '하의' ||
-      e.Type === '하의' ||
-      e.Type === '장갑' ||
-      e.Type === '어깨')
+    (e.Type === '투구' || e.Type === '상의' || e.Type === '하의' || e.Type === '장갑' || e.Type === '어깨')
   );
 }
 

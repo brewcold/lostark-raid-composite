@@ -7,10 +7,11 @@ const GREEN = '#7a9c7c';
 const PINK = '#9c7a8c';
 const AP_PURPLE = '#5347CD';
 const PURPLE = '#A374DB';
-const ORANGE = ' #C78A61';
+const ORANGE = '#C78A61';
 const BLACK = '#000';
 
 export const COLORS = {
+  ELIXIR: ORANGE,
   THEME,
   GRAY,
   AP_PURPLE,

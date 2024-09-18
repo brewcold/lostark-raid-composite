@@ -19,6 +19,7 @@ import {
   INFO,
   INFO_SPAN,
   INFO_SPAN_BOLD,
+  INFO_SPAN_ELIXIR,
   INFO_SPAN_isArkPassive,
   INFO_SPAN_TRANS,
   ITEM_LEVEL,
@@ -41,6 +42,7 @@ import { ERROR } from '../_pages/PartyStatus.css';
 import { clearTimeout } from 'timers';
 import { Modal } from '../_common/Modal/Modal';
 import alerts from 'src/_libs/constants/alerts';
+import { calcElixir } from 'src/_libs/calc/elixir';
 
 export type DragActions = {
   onDragStart: (e: DragEvent) => void;
@@ -165,11 +167,11 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
   function ErrorCard({ characterName }: { characterName: string }) {
     return (
       <View styleVariant={CENTERED}>
-        <Txt as="p" styleVariant={ERROR}>
+        <Txt as="span" styleVariant={ERROR}>
           {characterName}
         </Txt>
         <Spacing size="0.5rem" />
-        <Txt as="p" styleVariant={ERROR}>
+        <Txt as="span" styleVariant={ERROR}>
           {ui.fallbacks.no_result}
         </Txt>
       </View>
@@ -197,21 +199,26 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
     const [gemsAmount, GEMS] = calcGems(ArmoryGem);
     const [__, ___, isArkPassive, { 깨달음, 도약, 진화 }] = calcEngraving(data, ArmoryProfile.CharacterClassName);
 
-    const { 방어구, 무기 } = calcTotalTranscendence(ArmoryEquipment);
+    const 초월합 = calcTotalTranscendence(ArmoryEquipment);
+    const { 세트효과, 레벨합 } = calcElixir(ArmoryEquipment);
 
     return (
       <>
         <View>
           <Txt as="span">
-            <Txt as="span" styleVariant={INFO_SPAN}>
-              초월 합
+            <Txt as="span" styleVariant={INFO_SPAN_ELIXIR}>
+              {세트효과} {레벨합}
             </Txt>
             <Spacing size="0.35rem" dir="hori" />
+            <Txt as="span" styleVariant={INFO_SPAN}>
+              초월
+            </Txt>
+            <Spacing size="0.15rem" dir="hori" />
             <Txt as="span" styleVariant={INFO_SPAN_TRANS}>
-              {방어구 || 무기}
+              {초월합}
             </Txt>
           </Txt>
-          <Spacing size="0.5rem" />
+          <Spacing size="0.35rem" />
           <Txt as="p" styleVariant={INFO}>
             {GEMS.map(k => {
               const amount = gemsAmount.get(k) || 0;
@@ -232,7 +239,7 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
           </Txt>
         </View>
 
-        <Spacing size="0.5rem" />
+        <Spacing size="0.35rem" />
         <Txt as="p" styleVariant={INFO}>
           {ArmoryEquipment?.map(a => {
             const type = a.Type;
@@ -249,20 +256,20 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
             // TODO: 세트 레벨별 이름 및 계승상태 매칭 필요
           })}
         </Txt>
-        <Spacing size="0.5rem" />
+        <Spacing size="0.35rem" />
         <Txt as="p" styleVariant={INFO}>
           <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
             {cardOption}
           </Txt>
         </Txt>
-        <Spacing size="0.5rem" />
+        <Spacing size="0.35rem" />
         <View>
           <Txt as="p" styleVariant={INFO_SPAN}>
             {`전투 레벨 ${ArmoryProfile.CharacterLevel} 원정대 ${ArmoryProfile.ExpeditionLevel}`} <br />
             {`스킬포인트 ${ArmoryProfile.UsingSkillPoint} / ${ArmoryProfile.TotalSkillPoint}`}
           </Txt>
         </View>
-        <Spacing size="0.5rem" />
+        <Spacing size="0.35rem" />
         {isArkPassive ? (
           <View>
             <Txt as="p" styleVariant={INFO}>

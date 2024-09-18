@@ -5,7 +5,7 @@ export function calcTranscendenceGrade(tooltip: string): number {
   return match ? parseInt(match[1]) : 0;
 }
 
-export function calcTotalTranscendence(equipments: ArmoryEquipment[]): { 방어구: number; 무기: number } {
+export function calcTotalTranscendence(equipments: ArmoryEquipment[]): number {
   let html: string = '';
 
   equipments.some(e => {
@@ -13,10 +13,10 @@ export function calcTotalTranscendence(equipments: ArmoryEquipment[]): { 방어�
     const equipment = tooltip.Element_009?.value?.Element_000?.contentStr?.Element_001?.contentStr;
     const esther = tooltip.Element_010?.value?.Element_000?.contentStr?.Element_001?.contentStr;
 
-    if (typeof html === 'undefined') {
+    if (!equipment && esther) {
       html = esther;
       return true;
-    } else {
+    } else if (equipment) {
       html = equipment;
       return true;
     }
@@ -26,5 +26,5 @@ export function calcTotalTranscendence(equipments: ArmoryEquipment[]): { 방어�
   const TEXT = parser.parseFromString(html, 'text/html');
   const 초월수치 = Number(TEXT.body.textContent?.slice(13).slice(0, -1)) || 0;
 
-  return { 방어구: 초월수치, 무기: 0 };
+  return 초월수치;
 }

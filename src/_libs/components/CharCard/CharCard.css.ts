@@ -167,6 +167,15 @@ export const INFO_SPAN_TRANS = style({
   color: COLORS.YELLOW,
 });
 
+export const INFO_SPAN_ELIXIR = style({
+  display: 'inline-block',
+  whiteSpace: 'normal',
+  fontSize: '0.85rem',
+  lineHeight: 1.3,
+  fontWeight: 600,
+  color: COLORS.ELIXIR,
+});
+
 export const SUB_INFO_SPAN = style({
   fontSize: '0.85rem',
   lineHeight: 1.3,
