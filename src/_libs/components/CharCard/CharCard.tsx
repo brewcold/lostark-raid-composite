@@ -207,7 +207,7 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
         <View>
           <Txt as="span">
             <Txt as="span" styleVariant={INFO_SPAN_ELIXIR}>
-              {세트효과} {레벨합}
+              엘릭서 점검중
             </Txt>
             <Spacing size="0.35rem" dir="hori" />
             <Txt as="span" styleVariant={INFO_SPAN}>
