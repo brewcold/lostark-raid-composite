@@ -48,7 +48,7 @@ export const BORDER = styleVariants({
 export const BASE = style({
   width: '100%',
   display: 'flex',
-  minHeight: '9.25rem',
+  minHeight: '10.5rem',
   flexDirection: 'column',
   justifyContent: 'flexStart',
   borderRadius: '1.15rem',
