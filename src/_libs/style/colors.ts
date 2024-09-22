@@ -7,11 +7,12 @@ const GREEN = '#7a9c7c';
 const PINK = '#9c7a8c';
 const AP_PURPLE = '#5347CD';
 const PURPLE = '#A374DB';
-const ORANGE = '#C78A61';
+const ORANGE = '#D79A71';
 const BLACK = '#000';
 
 export const COLORS = {
   ELIXIR: ORANGE,
+  ORANGE,
   THEME,
   GRAY,
   AP_PURPLE,
@@ -34,4 +35,11 @@ export const COLORS = {
   PARTY_3: YELLOW,
   PARTY_4: RED,
   PARTY_5: GRAY,
+  고대: '#D8BB9D',
+  유물: '#FA5E60',
+  전설: '#FAA030',
+  영웅: '#8500B2',
+  희귀: '#0091CC',
+  고급: '#498001',
+  일반: '#eeefef',
 };

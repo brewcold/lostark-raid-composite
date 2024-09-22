@@ -16,6 +16,7 @@ import {
   CENTERED,
   CHAR_NAME,
   EMPTY_CARD,
+  GEMS_COLOR,
   INFO,
   INFO_SPAN,
   INFO_SPAN_BOLD,
@@ -129,9 +130,9 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
         <ErrorBoundary fallback={<Error />}>
           <Txt as="h1" styleVariant={CHAR_NAME}>
             {ArmoryProfile.CharacterName}
-            <Txt as="span" styleVariant={ITEM_LEVEL}>
-              {ArmoryProfile.ItemAvgLevel}
-            </Txt>
+          </Txt>
+          <Txt as="span" styleVariant={`${ITEM_LEVEL} ${isArkPassive && AP}`}>
+            {Number(ArmoryProfile.ItemAvgLevel.replace(',', '')).toFixed(1)}
           </Txt>
           <View>
             <Txt as="p" styleVariant={`${INFO} ${isArkPassive && AP}`}>{`${classEngraving?.join(', ') || ''} ${
@@ -224,7 +225,7 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
               const amount = gemsAmount.get(k) || 0;
               return (
                 <Fragment key={k}>
-                  <Txt as="span" styleVariant={INFO_SPAN_BOLD}>
+                  <Txt as="span" styleVariant={`${INFO_SPAN_BOLD} ${GEMS_COLOR[k]}`}>
                     {`${k}`}
                     {amount > 0 && (
                       <Txt as="span" styleVariant={SUB_INFO_SPAN}>
@@ -265,8 +266,23 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
         <Spacing size="0.35rem" />
         <View>
           <Txt as="p" styleVariant={INFO_SPAN}>
-            {`전투 레벨 ${ArmoryProfile.CharacterLevel} 원정대 ${ArmoryProfile.ExpeditionLevel}`} <br />
-            {`스킬포인트 ${ArmoryProfile.UsingSkillPoint} / ${ArmoryProfile.TotalSkillPoint}`}
+            전투 레벨
+            <Spacing size="0.15rem" dir="hori" />
+            <Txt as="span" styleVariant={SUB_INFO_SPAN}>
+              {ArmoryProfile.CharacterLevel}
+            </Txt>
+            <Spacing size="0.35rem" dir="hori" />
+            원정대
+            <Spacing size="0.15rem" dir="hori" />
+            <Txt as="span" styleVariant={SUB_INFO_SPAN}>
+              {ArmoryProfile.ExpeditionLevel}
+            </Txt>
+            <Spacing size="0" />
+            스킬포인트
+            <Spacing size="0.15rem" dir="hori" />
+            <Txt as="span" styleVariant={SUB_INFO_SPAN}>
+              {ArmoryProfile.UsingSkillPoint} / {ArmoryProfile.TotalSkillPoint}
+            </Txt>
           </Txt>
         </View>
         <Spacing size="0.35rem" />

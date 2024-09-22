@@ -1,5 +1,6 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 import { COLORS } from 'src/_libs/style/colors';
+import { MONOSPACE } from 'src/_libs/style/font.css';
 
 export const BORDER = styleVariants({
   1: {
@@ -51,7 +52,7 @@ export const BASE = style({
   flexDirection: 'column',
   justifyContent: 'flexStart',
   borderRadius: '1.15rem',
-  padding: '0.75rem ',
+  padding: '0.8rem ',
   cursor: 'grab',
   userSelect: 'none',
   backgroundColor: COLORS.WHITE,
@@ -69,7 +70,7 @@ export const CARD_BODY = style({
 });
 
 const PARTY_NUMBER_BASE = style({
-  fontSize: '0.75rem',
+  fontSize: '0.8rem',
   padding: '0.35rem',
   borderRadius: '1rem',
   color: COLORS.WHITE,
@@ -117,9 +118,10 @@ export const CHAR_NAME = style({
 });
 
 export const ITEM_LEVEL = style({
-  marginLeft: '0.25rem',
   fontSize: '0.85rem',
+  letterSpacing: '-0.03rem',
   lineHeight: 1.3,
+  fontFamily: `${MONOSPACE}, monospace`,
   marginBottom: '0.5rem',
   color: COLORS.MAIN,
 });
@@ -131,7 +133,7 @@ export const INFO = style({
 });
 
 export const AP = style({
-  color: COLORS.AP_PURPLE,
+  color: COLORS.ORANGE,
 });
 
 export const INFO_SPAN = style({
@@ -143,10 +145,73 @@ export const INFO_SPAN = style({
 export const INFO_SPAN_BOLD = style({
   display: 'inline-block',
   whiteSpace: 'normal',
-  fontSize: '0.85rem',
+  fontSize: '0.8rem',
   lineHeight: 1.3,
   fontWeight: 600,
+  fontFamily: `${MONOSPACE}, monospace`,
+  wordSpacing: '-0.3rem',
   color: COLORS.GRAY_WHITE,
+});
+
+export const GEMS_COLOR = styleVariants({
+  '10겁': { color: COLORS.고대 },
+  '9겁': { color: COLORS.유물 },
+  '8겁': { color: COLORS.유물 },
+  '7겁': { color: COLORS.유물 },
+  '6겁': { color: COLORS.전설 },
+  '5겁': { color: COLORS.전설 },
+  '4겁': { color: COLORS.일반 },
+  '3겁': { color: COLORS.일반 },
+  '2겁': { color: COLORS.일반 },
+  '1겁': { color: COLORS.일반 },
+  '10작': { color: COLORS.고대 },
+  '9작': { color: COLORS.유물 },
+  '8작': { color: COLORS.유물 },
+  '7작': { color: COLORS.유물 },
+  '6작': { color: COLORS.전설 },
+  '5작': { color: COLORS.전설 },
+  '4작': { color: COLORS.일반 },
+  '3작': { color: COLORS.일반 },
+  '2작': { color: COLORS.일반 },
+  '1작': { color: COLORS.일반 },
+  '10멸': { color: COLORS.유물 },
+  '9멸': { color: COLORS.전설 },
+  '8멸': { color: COLORS.전설 },
+  '7멸': { color: COLORS.전설 },
+  '6멸': { color: COLORS.영웅 },
+  '5멸': { color: COLORS.영웅 },
+  '4멸': { color: COLORS.일반 },
+  '3멸': { color: COLORS.일반 },
+  '2멸': { color: COLORS.일반 },
+  '1멸': { color: COLORS.일반 },
+  '10홍': { color: COLORS.유물 },
+  '9홍': { color: COLORS.전설 },
+  '8홍': { color: COLORS.전설 },
+  '7홍': { color: COLORS.전설 },
+  '6홍': { color: COLORS.영웅 },
+  '5홍': { color: COLORS.영웅 },
+  '4홍': { color: COLORS.일반 },
+  '3홍': { color: COLORS.일반 },
+  '2홍': { color: COLORS.일반 },
+  '1홍': { color: COLORS.일반 },
+  '10청': { color: COLORS.일반 },
+  '9청': { color: COLORS.일반 },
+  '6청': { color: COLORS.일반 },
+  '5청': { color: COLORS.일반 },
+  '4청': { color: COLORS.일반 },
+  '3청': { color: COLORS.일반 },
+  '2청': { color: COLORS.일반 },
+  '1청': { color: COLORS.일반 },
+  '10원': { color: COLORS.일반 },
+  '9원': { color: COLORS.일반 },
+  '8원': { color: COLORS.일반 },
+  '7원': { color: COLORS.일반 },
+  '6원': { color: COLORS.일반 },
+  '5원': { color: COLORS.일반 },
+  '4원': { color: COLORS.일반 },
+  '3원': { color: COLORS.일반 },
+  '2원': { color: COLORS.일반 },
+  '1원': { color: COLORS.일반 },
 });
 
 export const INFO_SPAN_isArkPassive = style({
@@ -161,25 +226,31 @@ export const INFO_SPAN_isArkPassive = style({
 export const INFO_SPAN_TRANS = style({
   display: 'inline-block',
   whiteSpace: 'normal',
-  fontSize: '0.85rem',
+  fontSize: '0.8rem',
   lineHeight: 1.3,
   fontWeight: 600,
+  wordSpacing: '-0.3rem',
+  fontFamily: `${MONOSPACE}, monospace`,
   color: COLORS.YELLOW,
 });
 
 export const INFO_SPAN_ELIXIR = style({
   display: 'inline-block',
   whiteSpace: 'normal',
-  fontSize: '0.85rem',
+  fontSize: '0.8rem',
   lineHeight: 1.3,
   fontWeight: 600,
+  wordSpacing: '-0.25rem',
+  fontFamily: `${MONOSPACE}, monospace`,
   color: COLORS.ELIXIR,
 });
 
 export const SUB_INFO_SPAN = style({
-  fontSize: '0.85rem',
+  fontSize: '0.8rem',
   lineHeight: 1.3,
-  color: COLORS.WHITE,
+  color: COLORS.GRAY_WHITE,
+  wordSpacing: '-0.2rem',
+  fontFamily: `${MONOSPACE}, monospace`,
 });
 
 export const CARD_FOOTER = style({

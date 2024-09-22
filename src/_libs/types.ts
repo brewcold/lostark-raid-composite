@@ -347,10 +347,10 @@ export type ClassEngravingType = (typeof classEngravingType)[number];
 export type ClassEngravingMap = Record<ClassEngravingType, [ClassType]>;
 
 type GemSuffix = '의 보석';
-type GemType = '겁화' | '멸화' | '홍염' | '작열';
-type Level = '1레벨' | '2레벨' | '3레벨' | '4레벨' | '5레벨' | '6레벨' | '7레벨' | '8레벨' | '9레벨' | '10레벨';
+type GemType = '겁' | '멸' | '홍' | '작';
+type Level = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10';
 
-export type GemsApiType = `${Level} ${GemType}${GemSuffix}` | '장착한 보석 없음';
+export type GemsApiType = `${Level}${GemType}` | '장착한 보석 없음';
 export const gemTypes = [
   '10레벨 겁화',
   '9레벨 겁화',
