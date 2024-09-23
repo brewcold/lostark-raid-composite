@@ -2,7 +2,7 @@
 import { Suspense, useRef } from 'react';
 import { Spacing } from '../_common/Spacing/spacing';
 import { View } from '../_common/View/View';
-import { CharCard } from '../CharCard/CharCard';
+import { CharCard } from '../CharCard/_CharCard';
 import { useAtom } from 'jotai';
 import { Member, partyCard, partyInfo } from 'src/store/party';
 import { Txt } from '../_common/Txt/Txt';

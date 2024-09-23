@@ -1,6 +1,6 @@
 import { cynergy } from './constants/cynergy';
 
-interface ArmoryProfile {
+export interface ArmoryProfile {
   ArkPassive: ArkPassive;
   CharacterImage: string;
   ExpeditionLevel: number;

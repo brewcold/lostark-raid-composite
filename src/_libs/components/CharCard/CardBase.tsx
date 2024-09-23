@@ -1,6 +1,7 @@
 import { DragEvent, PropsWithChildren, ReactNode } from 'react';
+import { Btn } from '../_common/Btn/Btn';
 import { View } from '../_common/View/View';
-import { DragActions } from './CharCard';
+import { DragActions } from './_CharCard';
 import { BASE, BORDER } from './CharCard.css';
 interface CardBaseProps {
   partyNumber: number;
@@ -18,5 +19,13 @@ export function CardBase({
     <View styleVariant={`${BASE} ${BORDER[partyNumber]}`} draggable={draggable} {...dragActions} {...props}>
       {children}
     </View>
+  );
+}
+
+export function DeleteBtn({ onDelete }: { onDelete: () => void }) {
+  return (
+    <Btn variant="TEXT" type="button" size="FIT" onClick={onDelete}>
+      삭제
+    </Btn>
   );
 }

@@ -28,6 +28,7 @@ export function calcElixir(equipments: ArmoryEquipment[]): { 세트효과: strin
     const tooltip = JSON.parse(e.Tooltip);
     const parser = new DOMParser();
 
+    console.log(tooltip);
     let equipment =
       tooltip?.Element_010?.value?.Element_000?.contentStr ||
       tooltip?.Element_009?.value?.Element_000?.contentStr ||

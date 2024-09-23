@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, ComponentPropsWithRef, ElementType, forwardRef, ReactNode } from 'react';
-import { DragActions } from '../../CharCard/CharCard';
+import { DragActions } from '../../CharCard/_CharCard';
 import { BASE } from './View.css';
 
 type ViewProps<T extends ElementType> = {
