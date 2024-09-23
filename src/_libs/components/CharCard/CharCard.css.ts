@@ -142,6 +142,14 @@ export const INFO_SPAN = style({
   color: COLORS.GRAY_WHITE,
 });
 
+export const INFO_SPAN_EQUIP = style({
+  fontSize: '0.8rem',
+  lineHeight: 1.3,
+  fontFamily: `${MONOSPACE}, monospace`,
+  wordSpacing: '-0.3rem',
+  color: COLORS.GRAY_WHITE,
+});
+
 export const INFO_SPAN_BOLD = style({
   display: 'inline-block',
   whiteSpace: 'normal',
@@ -151,6 +159,17 @@ export const INFO_SPAN_BOLD = style({
   fontFamily: `${MONOSPACE}, monospace`,
   wordSpacing: '-0.3rem',
   color: COLORS.GRAY_WHITE,
+});
+
+export const ITEM_COLOR = styleVariants({
+  에스더: { color: 'cyan' },
+  고대: { color: COLORS.고대 },
+  유물: { color: COLORS.유물 },
+  전설: { color: COLORS.전설 },
+  영웅: { color: COLORS.영웅 },
+  희귀: { color: COLORS.희귀 },
+  고급: { color: COLORS.고급 },
+  일반: { color: COLORS.일반 },
 });
 
 export const GEMS_COLOR = styleVariants({
@@ -227,6 +246,17 @@ export const INFO_SPAN_TRANS = style({
   display: 'inline-block',
   whiteSpace: 'normal',
   fontSize: '0.8rem',
+  lineHeight: 1.3,
+  fontWeight: 600,
+  wordSpacing: '-0.3rem',
+  fontFamily: `${MONOSPACE}, monospace`,
+  color: COLORS.YELLOW,
+});
+
+export const INFO_SPAN_ADV = style({
+  display: 'inline-block',
+  whiteSpace: 'normal',
+  fontSize: '0.75rem',
   lineHeight: 1.3,
   fontWeight: 600,
   wordSpacing: '-0.3rem',
