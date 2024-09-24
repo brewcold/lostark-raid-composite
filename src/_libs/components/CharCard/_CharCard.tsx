@@ -7,9 +7,9 @@ import { CardBase, DeleteBtn } from './CardBase';
 import { useModal } from '@syyu/util/react';
 import { Modal } from '../_common/Modal/Modal';
 import alerts from 'src/_libs/constants/alerts';
-import { PartyNumber } from './Thumbnail/PartyNumber';
 import { EmptyCard, ErrorCard, LoadingCard } from './Fallbacks';
 import { Thumbnail } from './Thumbnail/_Thumbnail';
+import { PartyNumber } from './PartyNumber';
 
 export type DragActions = {
   onDragStart: (e: DragEvent) => void;
@@ -46,7 +46,7 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
   return (
     <CardBase partyNumber={partyNumber} draggable={draggable} dragActions={dragActions}>
       <Flex justifyContents="spaceBetween">
-        <PartyNumber partyNumber={partyNumber} characterName={characterName} />
+        <PartyNumber partyNumber={partyNumber} />
         <DeleteBtn onDelete={handleDelete} />
       </Flex>
       <CardControl

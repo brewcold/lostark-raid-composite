@@ -65,44 +65,52 @@ export const BASE = style({
   },
 });
 
+export const PARTY_NUMBER = style({
+  color: COLORS.BLACK,
+  fontSize: '0.8rem',
+  fontFamily: MONOSPACE,
+  fontWeight: 600,
+});
+
 export const CARD_BODY = style({
   height: '100%',
 });
 
-const PARTY_NUMBER_BASE = style({
-  fontSize: '0.8rem',
-  padding: '0.35rem',
+const CHAR_ORDER_BASE = style({
+  fontSize: '0.75rem',
+  fontFamily: MONOSPACE,
+  padding: '0.7rem 0.35rem 0.7rem 0.35rem',
+  lineHeight: 0,
   borderRadius: '1rem',
   color: COLORS.WHITE,
 });
-export const PARTY_NUMBER = styleVariants({
-  공대장: [PARTY_NUMBER_BASE, { backgroundColor: COLORS.PARTY_1 }],
+export const CHAR_ORDER = styleVariants({
   1: [
-    PARTY_NUMBER_BASE,
+    CHAR_ORDER_BASE,
     {
       backgroundColor: COLORS.PARTY_1,
     },
   ],
   2: [
-    PARTY_NUMBER_BASE,
+    CHAR_ORDER_BASE,
     {
       backgroundColor: COLORS.PARTY_2,
     },
   ],
   3: [
-    PARTY_NUMBER_BASE,
+    CHAR_ORDER_BASE,
     {
       backgroundColor: COLORS.PARTY_3,
     },
   ],
   4: [
-    PARTY_NUMBER_BASE,
+    CHAR_ORDER_BASE,
     {
       backgroundColor: COLORS.PARTY_4,
     },
   ],
   5: [
-    PARTY_NUMBER_BASE,
+    CHAR_ORDER_BASE,
     {
       backgroundColor: COLORS.PARTY_5,
     },
@@ -110,10 +118,11 @@ export const PARTY_NUMBER = styleVariants({
 });
 
 export const CHAR_NAME = style({
-  fontSize: '1.05rem',
+  fontSize: '1rem',
   fontWeight: '600',
-  marginTop: '0.25rem',
-  lineHeight: 1.3,
+  lineHeight: 0,
+  padding: 0,
+  margin: 0,
   color: COLORS.MAIN,
 });
 
