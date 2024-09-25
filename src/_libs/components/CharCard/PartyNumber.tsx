@@ -1,5 +1,5 @@
 import { Txt } from '../_common/Txt/Txt';
-import { PARTY_NUMBER } from './CharCard.css';
+import { PARTY_NUMBER, PARTY_NUMBER_COLOR } from './CharCard.css';
 
 interface PartyNumberProps {
   partyName?: string;
@@ -7,5 +7,7 @@ interface PartyNumberProps {
 }
 
 export function PartyNumber({ partyName, partyNumber }: PartyNumberProps) {
-  return <Txt styleVariant={PARTY_NUMBER}>{partyName || `${partyNumber}파티`}</Txt>;
+  return (
+    <Txt styleVariant={`${PARTY_NUMBER} ${PARTY_NUMBER_COLOR[partyNumber]}`}>{`${partyNumber} ${partyName || ''}`}</Txt>
+  );
 }

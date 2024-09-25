@@ -65,8 +65,15 @@ export const BASE = style({
   },
 });
 
+export const PARTY_NUMBER_COLOR = styleVariants({
+  1: { color: COLORS.PARTY_1 },
+  2: { color: COLORS.PARTY_2 },
+  3: { color: COLORS.PARTY_3 },
+  4: { color: COLORS.PARTY_4 },
+  5: { color: COLORS.PARTY_5 },
+});
+
 export const PARTY_NUMBER = style({
-  color: COLORS.BLACK,
   fontSize: '0.8rem',
   fontFamily: MONOSPACE,
   fontWeight: 600,
