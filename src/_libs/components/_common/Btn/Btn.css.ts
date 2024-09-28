@@ -96,6 +96,10 @@ export const VARIANT = styleVariants({
     border: '1px solid transparent',
     color: COLORS.GRAY,
     padding: '0',
+    margin: 0,
+    minWidth: '1.55rem',
+    width: 'fit-content',
+    fontSize: '0.8rem',
     textUnderlineOffset: '0.25rem',
     borderRadius: '0.75rem',
     selectors: {

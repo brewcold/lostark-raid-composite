@@ -79,6 +79,31 @@ export const PARTY_NUMBER = style({
   fontWeight: 600,
 });
 
+export const PARTY_NAME = style({
+  margin: '0 0.25rem 0 0.25rem',
+  padding: '0 0.25rem 0 0.25rem',
+  border: 'none',
+  fontSize: '0.8rem',
+  fontWeight: 600,
+  width: '100%',
+  selectors: {
+    '&:focus': {
+      outline: 'none',
+    },
+    '&:active': {
+      outline: 'none',
+    },
+  },
+});
+
+export const PARTY_NAME_BORDER_COLOR = styleVariants({
+  1: { borderBottom: `1.5px solid ${COLORS.PARTY_1}`, '::placeholder': { color: COLORS.PARTY_1 } },
+  2: { borderBottom: `1.5px solid ${COLORS.PARTY_2}`, '::placeholder': { color: COLORS.PARTY_2 } },
+  3: { borderBottom: `1.5px solid ${COLORS.PARTY_3}`, '::placeholder': { color: COLORS.PARTY_3 } },
+  4: { borderBottom: `1.5px solid ${COLORS.PARTY_4}`, '::placeholder': { color: COLORS.PARTY_4 } },
+  5: { borderBottom: `1.5px solid ${COLORS.PARTY_5}`, '::placeholder': { color: COLORS.PARTY_5 } },
+});
+
 export const CARD_BODY = style({
   height: '100%',
 });

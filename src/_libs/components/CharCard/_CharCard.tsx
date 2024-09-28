@@ -1,15 +1,19 @@
 import { useAtom, useAtomValue } from 'jotai';
-import { DragEvent, useEffect } from 'react';
+import { ChangeEventHandler, DragEvent, useEffect, useRef } from 'react';
 import { partyInfo, partyMembers, partyReducer } from 'src/store/party';
 import { useCharInfo } from 'src/_libs/hooks/useCharInfo';
 import Flex from '../_common/Flex/Flex';
 import { CardBase, DeleteBtn } from './CardBase';
-import { useModal } from '@syyu/util/react';
+import { useForm, useModal } from '@syyu/util/react';
 import { Modal } from '../_common/Modal/Modal';
 import alerts from 'src/_libs/constants/alerts';
 import { EmptyCard, ErrorCard, LoadingCard } from './Fallbacks';
 import { Thumbnail } from './Thumbnail/_Thumbnail';
 import { PartyNumber } from './PartyNumber';
+import { PartyNameForm } from './PartyName';
+import { Spacing } from '../_common/Spacing/spacing';
+import { partyNameAtom } from 'src/store/party-name';
+import { objectKeys } from '@syyu/util';
 
 export type DragActions = {
   onDragStart: (e: DragEvent) => void;
@@ -29,8 +33,25 @@ interface CharCardProps {
 export function CharCard({ partyNumber, draggable, characterName, dragActions }: CharCardProps) {
   const { data, isFetching, status } = useCharInfo(characterName);
 
+  const initialValues = { partyName: '' };
+  const config = {
+    initialValues,
+    onSubmit: () => {},
+    refInputNames: objectKeys(initialValues),
+  };
+  const [partyName, setPartyName] = useAtom(partyNameAtom);
+  const { handleChange } = useForm<typeof initialValues>(config);
+  const handleInput: ChangeEventHandler<HTMLInputElement> = e => {
+    handleChange(e);
+    setPartyName({
+      ...partyName,
+      [partyNumber]: e.target.value,
+    });
+  };
+
   const [members, setParty] = useAtom(partyInfo);
   const memberNames = useAtomValue(partyMembers);
+  const ref = useRef(null);
 
   const handleDelete = () => {
     const result = partyReducer(
@@ -45,8 +66,9 @@ export function CharCard({ partyNumber, draggable, characterName, dragActions }:
 
   return (
     <CardBase partyNumber={partyNumber} draggable={draggable} dragActions={dragActions}>
-      <Flex justifyContents="spaceBetween">
+      <Flex justifyContents="spaceBetween" flexWrap="nowrap" alignItems="center" width="fill">
         <PartyNumber partyNumber={partyNumber} />
+        <PartyNameForm partyName={partyName[partyNumber]} partyNumber={partyNumber} onChange={handleInput} ref={ref} />
         <DeleteBtn onDelete={handleDelete} />
       </Flex>
       <CardControl

@@ -2,6 +2,7 @@ export default {
   placeholders: {
     searchCharacterName: '닉네임',
     emptyCard: '빈 슬롯',
+    partyNameInput: '파티명',
   },
   titles: {
     preset: '',

@@ -1,7 +1,7 @@
 import { Txt } from '../_common/Txt/Txt';
 import { PARTY_NUMBER, PARTY_NUMBER_COLOR } from './CharCard.css';
 
-interface PartyNumberProps {
+export interface PartyNumberProps {
   partyName?: string;
   partyNumber: number;
 }
