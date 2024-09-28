@@ -1,10 +1,11 @@
 import { style } from '@vanilla-extract/css';
-import { COLORS } from 'src/_libs/style/colors';
 
 export const BASE = style({
   display: 'flex',
   backgroundColor: 'white',
-  padding: '0.75rem',
+  padding: '1rem 0.75rem 0.75rem 0.75rem',
+  margin: '0 auto',
+  maxWidth: '85rem',
   zIndex: 999,
   position: 'sticky',
   '@media': {

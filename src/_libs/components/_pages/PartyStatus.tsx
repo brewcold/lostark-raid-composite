@@ -6,7 +6,7 @@ import { CharCard } from '../CharCard/_CharCard';
 import { useAtom } from 'jotai';
 import { Member, partyCard, partyInfo } from 'src/store/party';
 import { Txt } from '../_common/Txt/Txt';
-import { GRID, CENTERED, SITE_TITLE } from './PartyStatus.css';
+import { GRID, CENTERED, SITE_TITLE, CENTER } from './PartyStatus.css';
 import { Loader } from '../_common/Loader/Loader';
 import meta from 'src/_libs/constants/meta';
 import { useBooleanState } from '@syyu/util/react';
@@ -47,44 +47,46 @@ export default function PartyStatus() {
   return (
     <View>
       <Suspense fallback={<PartyStatus.IsLoading />}>
-        <Spacing size="1rem" />
-        <View styleVariant={GRID}>
-          {CARD.map((members, idx) => {
-            return (
-              <CharCard
-                partyNumber={Math.floor(idx / 4) + 1}
-                key={idx}
-                draggable
-                dragActions={{
-                  onDragStart: e => {
-                    e.stopPropagation();
-                    dragStart();
-                    dragItem.current = idx;
-                  },
-                  onDragEnter: e => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    dragOverItem.current = idx;
-                  },
-                  onDragOver: e => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    // onItemChange();
-                  },
-                  onDragEnd: e => {
-                    e.stopPropagation();
-                    onItemChange();
-                    dragEnd();
-                  },
-                  onDragLeave: e => {
-                    e.stopPropagation();
-                    dragEnd();
-                  },
-                }}
-                characterName={members.characterName}
-              />
-            );
-          })}
+        <View styleVariant={CENTER}>
+          <Spacing size="1rem" />
+          <View styleVariant={GRID}>
+            {CARD.map((members, idx) => {
+              return (
+                <CharCard
+                  partyNumber={Math.floor(idx / 4) + 1}
+                  key={idx}
+                  draggable
+                  dragActions={{
+                    onDragStart: e => {
+                      e.stopPropagation();
+                      dragStart();
+                      dragItem.current = idx;
+                    },
+                    onDragEnter: e => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      dragOverItem.current = idx;
+                    },
+                    onDragOver: e => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      // onItemChange();
+                    },
+                    onDragEnd: e => {
+                      e.stopPropagation();
+                      onItemChange();
+                      dragEnd();
+                    },
+                    onDragLeave: e => {
+                      e.stopPropagation();
+                      dragEnd();
+                    },
+                  }}
+                  characterName={members.characterName}
+                />
+              );
+            })}
+          </View>
         </View>
       </Suspense>
     </View>

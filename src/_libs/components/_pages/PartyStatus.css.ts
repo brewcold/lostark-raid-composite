@@ -12,7 +12,11 @@ export const INFO = style({
   lineHeight: '1.65rem',
   textAlign: 'center',
 });
+export const CENTER = style({});
 export const GRID = style({
+  width: '100%',
+  margin: '0 auto',
+  maxWidth: '85rem',
   padding: '0.75rem',
   marginBottom: '5rem',
   display: 'grid',
