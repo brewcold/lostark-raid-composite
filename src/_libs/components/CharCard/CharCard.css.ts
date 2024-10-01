@@ -83,6 +83,7 @@ export const PARTY_NAME = style({
   margin: '0 0.25rem 0 0.25rem',
   padding: '0 0.25rem 0 0.25rem',
   border: 'none',
+  borderRadius: 0,
   fontSize: '0.8rem',
   fontWeight: 600,
   width: '100%',
